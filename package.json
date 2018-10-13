@@ -1,0 +1,51 @@
+{
+  "name": "hrsf102-mvp",
+  "version": "1.0.0",
+  "description": "Portolio Management",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "start-dev": "nodemon server/index.js",
+    "react-dev": "webpack -d --watch",
+    "dev": "npm run start-dev & npm run react-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Megaloden106/hrsf102-mvp.git"
+  },
+  "author": "Eddie Lo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Megaloden106/hrsf102-mvp/issues"
+  },
+  "homepage": "https://github.com/Megaloden106/hrsf102-mvp#readme",
+  "dependencies": {
+    "bluebird": "^3.5.2",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "pg-promise": "^8.5.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "identity-obj-proxy": "^3.0.0",
+    "nodemon": "^1.18.4",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
