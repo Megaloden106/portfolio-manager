@@ -20,7 +20,6 @@ const cn = {
 const db = pgp(cn);
 
 const queries = {
-  test: db.none(),
 };
 
 module.exports = queries;

@@ -17,9 +17,9 @@ CREATE TABLE exchanges (
 CREATE TABLE portfolios (
   id SERIAL,
   user_id SMALLINT,
-  exhange_id SMALLINT
-  PRIMARY KEY (id)
-  FOREIGN KEY (user_id) REFERENCES users (id)
+  exhange_id SMALLINT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users (id),
   FOREIGN KEY (exhange_id) REFERENCES exchanges (id)
 );
 

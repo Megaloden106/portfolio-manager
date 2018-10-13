@@ -29,7 +29,11 @@
     "pg-promise": "^8.5.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "robinhood-api": "^1.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -45,6 +49,7 @@
     "identity-obj-proxy": "^3.0.0",
     "nodemon": "^1.18.4",
     "style-loader": "^0.23.1",
+    "uglify-js": "^3.4.9",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
   }
