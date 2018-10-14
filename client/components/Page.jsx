@@ -5,7 +5,7 @@ import Analytics from './Analytics';
 import styles from './Page.css';
 
 const Page = () => (
-  <div>
+  <div className={styles.container}>
     <Graph />
     <PortfolioData />
     <Analytics />

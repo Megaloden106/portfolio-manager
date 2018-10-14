@@ -38,7 +38,5 @@ class Login extends React.Component {
 export default Login;
 
 Login.propTypes = {
-  username: PropTypes.string.isRequired,
   handleAuthSubmit: PropTypes.func.isRequired,
-  handleUsernameChange: PropTypes.func.isRequired,
 };
