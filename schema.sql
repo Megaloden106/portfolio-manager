@@ -8,6 +8,7 @@ CREATE TABLE users (
   username VARCHAR(25) NOT NULL UNIQUE,
   portfolio_summary_id SMALLINT,
   portfolio_ids JSON,
+  portfolio_exchange_ids JSON,
   PRIMARY KEY (id)
 );
 
@@ -38,8 +39,8 @@ CREATE TABLE portfolio_data (
   FOREIGN KEY (portfolio_id) REFERENCES portfolios (id)
 );
 
-INSERT INTO users (username, portfolio_summary_id, portfolio_ids)
-VALUES ('eddielo', 1, '[2]');
+INSERT INTO users (username, portfolio_summary_id, portfolio_ids, portfolio_exchange_ids)
+VALUES ('eddielo', 1, '[2]', '[1]');
 
 INSERT INTO portfolios (name, user_id)
 VALUES ('Summary', 1);
@@ -51,7 +52,7 @@ INSERT INTO portfolios (name, user_id, exchange_id)
 VALUES ('Vanguard (4-Fund)', 1, 1);
 
 INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal)
-VALUES ('2018-10-14', 1, 1000, 1000, 0);
+VALUES ('2018-10-7', 1, 1000, 1000, 0);
 
 INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal)
 VALUES ('2018-10-14', 2, 1000, 1000, 0);

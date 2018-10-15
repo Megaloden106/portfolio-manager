@@ -32,6 +32,7 @@ const queries = {
     INNER JOIN portfolio_data ON portfolios.id = portfolio_data.portfolio_id
     AND users.id = ${id}
   `),
+  getAllExchanges: () => db.any('SELECT * FROM exchanges'),
 };
 
 module.exports = queries;
