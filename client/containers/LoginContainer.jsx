@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
+import authenticateUser from '../lib/authenticateUser';
 import Login from '../components/Login';
+import changeUser from '../actions/user';
 
 const mapDispatchToProps = dispatch => ({
-  handleAuthSubmit: (event, username) => {
-    event.preventDefault();
+  handleAuthSubmit: (username) => {
+    authenticateUser(username);
+    dispatch(changeUser(username));
   },
 });
 

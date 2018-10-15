@@ -2,16 +2,21 @@ const queries = require('../database');
 
 const model = {
   user: {
-    get: usernameOrUserId => {},
-    post: data => {},
+    get: (usernameOrUserId) => {
+      const getUser = Number.isNaN(Number(usernameOrUserId))
+        ? 'getUserByUsername'
+        : 'getUserbyId';
+      return queries[getUser](usernameOrUserId);
+    },
+    post: (data) => {},
     put: (usernameOrUserId, data) => {},
-    delete: usernameOrUserId => {},
+    delete: (usernameOrUserId) => {},
   },
   portfolio: {
-    get: portfolioId => {},
-    post: data => {},
+    get: (portfolioId) => {},
+    post: (data) => {},
     put: (portfolioId, data) => {},
-    delete: portfolioId => {},
+    delete: (portfolioId) => {},
   },
 };
 

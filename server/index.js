@@ -14,6 +14,9 @@ app.use(parser.json());
 
 app.use('/', express.static('public'));
 
+app.use('/api', router);
+
+
 app.set('port', process.env.PORT || 8888);
 
 app.listen(app.get('port'), () => {

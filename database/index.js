@@ -3,7 +3,7 @@ const Promise = require('bluebird');
 const initOptions = {
   promiseLib: Promise,
   query(event) {
-    console.warn('QUERY:', event.query);
+    console.error('QUERY:', event.query);
   },
   error(error, event) {
     if (event.cn) {
@@ -20,6 +20,18 @@ const cn = {
 const db = pgp(cn);
 
 const queries = {
+  getUserByUsername: username => db.any(`
+    SELECT * FROM users
+    INNER JOIN portfolios ON portfolios.id = users.portfolio_summary_id
+    INNER JOIN portfolio_data ON portfolios.id = portfolio_data.portfolio_id
+    AND users.username = '${username}';
+  `),
+  getUserById: id => db.any(`
+    SELECT * FROM users
+    INNER JOIN portfolios ON portfolios.id = users.portfolio_summary_id
+    INNER JOIN portfolio_data ON portfolios.id = portfolio_data.portfolio_id
+    AND users.id = ${id}
+  `),
 };
 
 module.exports = queries;

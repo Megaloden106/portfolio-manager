@@ -1,20 +1,20 @@
 const router = require('express').Router();
 const controller = require('./controller');
 
-router.route('/api/user/:usernameOrUserId')
+router.route('/user/:usernameOrUserId')
   .get(controller.user.get)
   .put(controller.user.put)
   .delete(controller.user.delete);
 
-router.route('/api/user')
+router.route('/user')
   .post(controller.user.post);
 
-router.route('/api/portfolio/:portfolioId')
+router.route('/portfolio/:portfolioId')
   .get(controller.portfolio.get)
   .put(controller.portfolio.put)
   .delete(controller.portfolio.delete);
 
-router.route('/api/portfolio')
+router.route('/portfolio')
   .post(controller.portfolio.post);
 
 module.exports = router;

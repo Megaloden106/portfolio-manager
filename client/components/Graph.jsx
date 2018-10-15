@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Graph.css'
+import styles from './Graph.css';
 
 const Graph = () => (
   <div className={styles.container}>

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Login from '../containers/LoginContainer';
-import Nav from './Nav';
-import Page from './Page';
+import LoginContainer from '../containers/LoginContainer';
+import NavContainer from '../containers/NavContainer';
+import Portfolio from './Portfolio';
 
 class Home extends React.Component {
   componentDidMount() {}
@@ -10,9 +10,9 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Login />
-        <Nav />
-        <Page />
+        <LoginContainer />
+        <NavContainer />
+        <Portfolio />
       </div>
     );
   }

@@ -2,9 +2,9 @@ import React from 'react';
 import Graph from './Graph';
 import PortfolioData from './PortfolioData';
 import Analytics from './Analytics';
-import styles from './Page.css';
+import styles from './Portfolio.css';
 
-const Page = () => (
+const Portfolio = () => (
   <div className={styles.container}>
     <Graph />
     <PortfolioData />
@@ -12,4 +12,4 @@ const Page = () => (
   </div>
 );
 
-export default Page;
+export default Portfolio;
