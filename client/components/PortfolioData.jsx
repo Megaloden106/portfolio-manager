@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './PortfolioData.css';
+import styles from '../styles/PortfolioData.css';
 
 const PortfolioData = () => (
   <div className={styles.container}>

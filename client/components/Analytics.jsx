@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Analytics.css';
+import styles from '../styles/Analytics.css';
 
 const Analytics = () => (
   <div className={styles.container}>

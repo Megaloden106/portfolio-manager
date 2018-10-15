@@ -2,7 +2,7 @@ import React from 'react';
 
 import LoginContainer from '../containers/LoginContainer';
 import NavContainer from '../containers/NavContainer';
-import Portfolio from './Portfolio';
+import PageContainer from '../containers/PageContainer';
 // import store from '../store';
 
 class Home extends React.Component {
@@ -13,7 +13,7 @@ class Home extends React.Component {
       <div>
         <LoginContainer />
         <NavContainer />
-        <Portfolio />
+        <PageContainer />
       </div>
     );
   }

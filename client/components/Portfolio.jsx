@@ -2,7 +2,7 @@ import React from 'react';
 import Graph from './Graph';
 import PortfolioData from './PortfolioData';
 import Analytics from './Analytics';
-import styles from './Portfolio.css';
+import styles from '../styles/Portfolio.css';
 
 const Portfolio = () => (
   <div className={styles.container}>

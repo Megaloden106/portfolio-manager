@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Login.css';
+import styles from '../styles/Login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -44,7 +43,3 @@ class Login extends React.Component {
 }
 
 export default Login;
-
-Login.propTypes = {
-  handleAuthSubmit: PropTypes.func.isRequired,
-};

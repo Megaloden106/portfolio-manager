@@ -1,13 +1,5 @@
 .container {
   position: relative;
-  display: grid;
-  grid-template-areas:
-    'graph portfolio'
-    'graph portfolio'
-    'graph portfolio'
-    'graph portfolio'
-    'analytics portfolio'
-    'analytics portfolio';
   margin: 0 5%;
   height: 90%;
   width: 90%;

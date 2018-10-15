@@ -9,7 +9,7 @@ module.exports = {
   extends: "airbnb",
   rules: {
     "no-console": ["error", { allow: ["warn", "error"] }],
-    // "label-has-for": off,
+    "react/prop-types": 0,
   },
   env: {
     browser: true,
