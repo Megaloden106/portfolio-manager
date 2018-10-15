@@ -6,7 +6,7 @@ import styles from '../styles/Portfolio.css';
 
 const Portfolio = ({ data }) => (
   <div className={styles.container}>
-    <Graph />
+    <Graph data={data} />
     <PortfolioData data={data} />
     <Analytics />
   </div>

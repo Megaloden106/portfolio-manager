@@ -80,3 +80,98 @@ VALUES ('2018-10-14', 2, 2100, 1000, 0, 100, 100);
 
 INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
 VALUES ('2018-10-14', 3, 105, 100, 0, 5, 5);
+
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);
+INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+VALUES ('2018-10-14', 1, 2205, 100, 0, 5, 105);

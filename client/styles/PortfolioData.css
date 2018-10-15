@@ -3,15 +3,33 @@
   margin: 4.5% 5% 4.5% 2.5%;
   border-radius: 10px;
   background-color: white;
+  overflow-y: scroll;
 }
 
 table {
   text-align: center;
+  width: 100%;
   border-collapse: collapse;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+th {
+  font-size: 24px;
+  background-color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 td {
-  border: 1px solid black;
-  width: 10%;
   overflow-wrap: break-word;
+  width: 10%;
+}
+
+.even-row {
+  background-color: #F5F6F8;
+}
+
+.odd-row {
+  background-color: #EEEEEE;
 }

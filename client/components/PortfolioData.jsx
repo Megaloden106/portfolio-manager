@@ -4,14 +4,14 @@ import styles from '../styles/PortfolioData.css';
 
 const PortfolioData = ({ data }) => (
   <div className={styles.container}>
-    {/* <table>
+    <table>
       <thead>
         <tr>
           <th colSpan="6">Balance and Returns</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr className={styles.oddRow}>
           <td>Date</td>
           <td>Balance</td>
           <td>Deposit</td>
@@ -19,8 +19,11 @@ const PortfolioData = ({ data }) => (
           <td>Returns</td>
           <td>Cumulative Returns</td>
         </tr>
-        {data.map(entry => (
-          <tr key={entry.balance}>
+        {data.map((entry, idx) => (
+          <tr
+            key={entry.balance}
+            className={idx % 2 === 0 ? styles.evenRow : styles.oddRow}
+          >
             <td>{moment(entry.date).format('MMM D, YYYY')}</td>
             <td>{entry.balance}</td>
             <td>{entry.deposit}</td>
@@ -30,7 +33,7 @@ const PortfolioData = ({ data }) => (
           </tr>
         ))}
       </tbody>
-    </table> */}
+    </table>
   </div>
 );
 
