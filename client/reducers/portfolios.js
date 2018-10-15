@@ -1,6 +1,6 @@
 const portfolioReducer = (state = [{
   exchange: '+',
-  portfolio_id: null,
+  portfolioId: null,
 }], action) => {
   if (action.type === 'CHANGE_PORTFOLIOS') {
     return action.portfolios;

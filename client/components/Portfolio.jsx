@@ -4,10 +4,10 @@ import PortfolioData from './PortfolioData';
 import Analytics from './Analytics';
 import styles from '../styles/Portfolio.css';
 
-const Portfolio = () => (
+const Portfolio = ({ data }) => (
   <div className={styles.container}>
     <Graph />
-    <PortfolioData />
+    <PortfolioData data={data} />
     <Analytics />
   </div>
 );

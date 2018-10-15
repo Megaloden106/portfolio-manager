@@ -4,3 +4,14 @@
   border-radius: 10px;
   background-color: white;
 }
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid black;
+  width: 10%;
+  overflow-wrap: break-word;
+}

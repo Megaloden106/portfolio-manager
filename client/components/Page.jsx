@@ -1,5 +1,5 @@
 import React from 'react';
-import Portfolio from './Portfolio';
+import PortfolioContainer from '../containers/PortfolioContainer';
 import AddData from './AddData';
 import SignIn from './SignIn';
 import styles from '../styles/Page.css';
@@ -16,7 +16,7 @@ const Page = ({ page, user }) => {
     <div className={classes.join(' ')}>
       {!user && <SignIn />}
       {!page && <AddData />}
-      {page !== '+' && user && <Portfolio />}
+      {page !== '+' && user && <PortfolioContainer />}
     </div>
   );
 };

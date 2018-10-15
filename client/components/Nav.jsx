@@ -10,7 +10,7 @@ const Nav = ({ portfolios, currentPortfolio, handleTabClick }) => (
         currentPortfolio={currentPortfolio}
         handleTabClick={handleTabClick}
         idx={idx}
-        key={portfolio.portfolio_id}
+        key={portfolio.portfolioId}
       />
     ))}
   </div>

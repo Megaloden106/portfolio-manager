@@ -10,7 +10,7 @@ const Tab = ({
   portfolio, currentPortfolio, handleTabClick, idx,
 }) => {
   const classes = [styles.tab];
-  if (currentPortfolio === portfolio.portfolio_id) {
+  if (currentPortfolio === portfolio.portfolioId) {
     classes.push(styles.currentTab);
   } else {
     classes.push(styles.otherTab);
@@ -20,7 +20,7 @@ const Tab = ({
     <div
       className={classes.join(' ')}
       id={idx === 0 ? styles.summaryPage : null}
-      onClick={() => handleTabClick(portfolio.exchange, portfolio.portfolio_id)}
+      onClick={() => handleTabClick(portfolio.exchange, portfolio.portfolioId)}
     >
       <p>{portfolio.exchange}</p>
     </div>
