@@ -1,10 +1,30 @@
 import React from 'react';
 import styles from '../styles/Tab.css';
 
-const Tab = ({ portfolio }) => (
-  <div className={styles.container}>
-    <p>{portfolio.exchange}</p>
-  </div>
-);
+const colorScheme = {
+  Summary: styles.summary,
+  Vanguard: styles.vanguard,
+};
+
+const Tab = ({
+  portfolio, currentPortfolio, handleTabClick, idx,
+}) => {
+  const classes = [styles.tab];
+  if (currentPortfolio === portfolio.portfolio_id) {
+    classes.push(styles.currentTab);
+  } else {
+    classes.push(styles.otherTab);
+  }
+  classes.push(colorScheme[portfolio.exchange]);
+  return (
+    <div
+      className={classes.join(' ')}
+      id={idx === 0 ? styles.summaryPage : null}
+      onClick={() => handleTabClick(portfolio.exchange, portfolio.portfolio_id)}
+    >
+      <p>{portfolio.exchange}</p>
+    </div>
+  );
+};
 
 export default Tab;

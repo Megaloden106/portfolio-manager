@@ -12,6 +12,9 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
+CREATE INDEX user_ids ON users USING HASH (id);
+CREATE INDEX username ON users USING HASH (username);
+
 CREATE TABLE exchanges (
   id SERIAL,
   company VARCHAR(25) NOT NULL UNIQUE,
@@ -28,6 +31,8 @@ CREATE TABLE portfolios (
   FOREIGN KEY (exchange_id) REFERENCES exchanges (id)
 );
 
+CREATE INDEX portfolio_ids ON portfolios USING HASH (id);
+
 CREATE TABLE portfolio_data (
   id SERIAL,
   portfolio_id SMALLINT NOT NULL,
@@ -38,6 +43,11 @@ CREATE TABLE portfolio_data (
   PRIMARY KEY (id),
   FOREIGN KEY (portfolio_id) REFERENCES portfolios (id)
 );
+
+CREATE INDEX portfolio_data_ids ON portfolio_data (portfolio_id);
+
+
+-- ALTER TABLE users ADD FOREIGN KEY (portfolio_summary_id) REFERENCES portfolios (id);
 
 INSERT INTO users (username, portfolio_summary_id, portfolio_ids, portfolio_exchange_ids)
 VALUES ('eddielo', 1, '[2]', '[1]');

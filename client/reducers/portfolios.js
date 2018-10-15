@@ -1,4 +1,7 @@
-const portfolioReducer = (state = [], action) => {
+const portfolioReducer = (state = [{
+  exchange: '+',
+  portfolio_id: null,
+}], action) => {
   if (action.type === 'CHANGE_PORTFOLIOS') {
     return action.portfolios;
   }

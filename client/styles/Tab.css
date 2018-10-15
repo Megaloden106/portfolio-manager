@@ -1,9 +1,7 @@
-.container {
+.tab {
   position: relative;
   display: inline-block;
-  z-index: 2;
   width: 10%;
-  height: 6%;
   background-color: white;
   border-left: 1px solid black;
   border-right: 1px solid black;
@@ -11,4 +9,36 @@
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   text-align: center;
+}
+
+.other-tab {
+  height: 5%;
+  top: 10px;
+}
+
+.current-tab {
+  z-index: 2;
+  height: 6%;
+}
+
+#summaryPage {
+  right: 0;
+}
+
+.vanguard {
+  background-color: #96151D;
+  color: white;
+}
+
+.vanguard:hover {
+  background-color: #7D1119;
+}
+
+.summary {
+  background-color: #22CD9A;
+  color: white;
+}
+
+.summary:hover {
+  background-color: #1AE9AA;
 }

@@ -2,17 +2,17 @@ import React from 'react';
 import Tab from './Tab';
 import styles from '../styles/Nav.css';
 
-const Nav = ({ portfolios }) => (
+const Nav = ({ portfolios, currentPortfolio, handleTabClick }) => (
   <div className={styles.container}>
-    {portfolios.map(portfolio => (
+    {portfolios.map((portfolio, idx) => (
       <Tab
         portfolio={portfolio}
-        key={portfolio.portfolio_ids}
+        currentPortfolio={currentPortfolio}
+        handleTabClick={handleTabClick}
+        idx={idx}
+        key={portfolio.portfolio_id}
       />
     ))}
-    <Tab
-      portfolio={{ exchange: '+', portfolio_ids: null }}
-    />
   </div>
 );
 
