@@ -9,28 +9,53 @@ queries.getAllExchanges()
 const model = {
   user: {
     get: (usernameOrUserId) => {
-      const getUser = Number.isNaN(Number(usernameOrUserId))
-        ? 'getUserByUsername'
-        : 'getUserById';
-      return queries[getUser](usernameOrUserId)
+      const getSummary = Number.isNaN(Number(usernameOrUserId))
+        ? 'getSummaryByUsername'
+        : 'getSummaryById';
+      return queries[getSummary](usernameOrUserId)
         .then((response) => {
+          const result = {};
           const data = response.slice();
-          data[0].portfolio_exchanges = data[0]
-            .portfolio_exchange_ids.map(id => cachedExchanges[id - 1]);
-          return data.map(entry => Object
-            .assign(entry, { cumulativeReturns: entry.cumulative_returns }));
+          return queries.getPortfoliosByUserId(data[0].user_id)
+            .then((res) => {
+              result.username = data[0].username;
+              result.portfolios = data[0].exchange_ids
+                .map((id, idx) => ({
+                  name: res[idx].name,
+                  exchange: cachedExchanges[id - 1],
+                  portfolioId: data[0].portfolio_ids[idx],
+                }));
+              result.portfolioData = data.map(entry => ({
+                date: entry.date,
+                balance: entry.balance,
+                deposit: entry.deposit,
+                withdrawal: entry.withdrawal,
+                returns: entry.returns,
+                cumulativeReturns: entry.cumulative_returns,
+              }));
+              return result;
+            });
         });
     },
-    post: (data) => {},
-    put: (usernameOrUserId, data) => {},
+    post: body => queries.insertNewUser(body.username),
+    put: (usernameOrUserId, body) => {},
     delete: (usernameOrUserId) => {},
   },
   portfolio: {
     get: portfolioId => queries.getPortfolioById(portfolioId)
-      .then(data => data.map(entry => Object
-        .assign(entry, { cumulativeReturns: entry.cumulative_returns }))),
-    post: (data) => {},
-    put: (portfolioId, data) => {},
+      .then(data => data.map(entry => ({
+        date: entry.date,
+        balance: entry.balance,
+        deposit: entry.deposit,
+        withdrawal: entry.withdrawal,
+        returns: entry.returns,
+        cumulativeReturns: entry.cumulative_returns,
+      }))),
+    post: body => queries.getPortfoliosByUsername(body.username)
+      .then(({ data }) => {
+        console.log(data);
+      }),
+    put: (portfolioId, body) => {},
     delete: (portfolioId) => {},
   },
 };

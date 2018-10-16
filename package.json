@@ -7,7 +7,10 @@
     "start": "node server/index.js",
     "start-dev": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
-    "dev": "npm run start-dev & npm run react-dev"
+    "dev": "npm run start-dev & npm run react-dev",
+    "seed": "node ./database/seed.js",
+    "clear-db": "psql postgres < schema.sql",
+    "test": "node ./database/test.js"
   },
   "repository": {
     "type": "git",

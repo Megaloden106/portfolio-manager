@@ -16,14 +16,14 @@ const Tab = ({
   } else {
     classes.push(styles.otherTab);
   }
-  classes.push(colorScheme[portfolio.exchange]);
+  classes.push(colorScheme[portfolio.exchange || portfolio.name]);
   return (
     <div
       className={classes.join(' ')}
       id={idx === 0 ? styles.summaryPage : null}
-      onClick={() => handleTabClick(portfolio.exchange, portfolio.portfolioId)}
+      onClick={() => handleTabClick(portfolio.exchange || portfolio.name, portfolio.portfolioId)}
     >
-      <p>{portfolio.exchange}</p>
+      <p>{portfolio.name}</p>
     </div>
   );
 };

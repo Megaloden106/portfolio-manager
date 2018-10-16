@@ -45,6 +45,6 @@ npm install
 ### Portfolio
 
 - GET /api/portfolio/:portfolioId
-- POST /api/portfolio
+- POST /api/portfolio/:portfolioId
 - PUT / api/portfolio/:portfolioId
 - DELETE / api/portfolio/:portfolioId

@@ -55,7 +55,12 @@ class Graph extends React.Component {
     return (
       <div className={styles.container}>
         {data[0] !== undefined
-          ? <h1>{data[0].balance}</h1>
+          ? (
+            <div>
+              <h1 className={styles.balance}>{data[0].balance}</h1>
+              <i>{moment(data[0].date).format('MMMM Do, YYYY')}</i>
+            </div>
+          )
           : <h1>Balance</h1>}
         <canvas id="canvas" width="668" height="447" className={styles.canvas} />
       </div>

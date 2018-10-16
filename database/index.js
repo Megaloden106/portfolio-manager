@@ -20,25 +20,58 @@ const cn = {
 const db = pgp(cn);
 
 const queries = {
-  getUserByUsername: username => db.any(`
+  getSummaryByUsername: username => db.any(`
     SELECT * FROM users
-    INNER JOIN portfolios ON portfolios.id = users.portfolio_summary_id
+    INNER JOIN portfolios ON portfolios.id = users.portfolio_ids[1]
     INNER JOIN portfolio_data ON portfolios.id = portfolio_data.portfolio_id
     AND users.username = '${username}'
     ORDER BY portfolio_data.date DESC;
   `),
-  getUserById: id => db.any(`
+  getSummaryById: userId => db.any(`
     SELECT * FROM users
-    INNER JOIN portfolios ON portfolios.id = users.portfolio_summary_id
+    INNER JOIN portfolios ON portfolios.id = users.portfolio_ids[1]
     INNER JOIN portfolio_data ON portfolios.id = portfolio_data.portfolio_id
-    AND users.id = ${id}
+    AND users.id = ${userId}
     ORDER BY portfolio_data.date DESC;
   `),
+  getPortfoliosByUserId: userId => db.any(`
+    SELECT name FROM portfolios
+    WHERE user_id = ${userId}
+  `),
   getAllExchanges: () => db.any('SELECT * FROM exchanges'),
-  getPortfolioById: id => db.any(`
+  getPortfolioById: portfolioId => db.any(`
     SELECT * FROM portfolio_data
-    WHERE portfolio_id = ${id}
+    WHERE portfolio_id = ${portfolioId}
     ORDER BY portfolio_data.date DESC;
+  `),
+  getPortfoliosByUsername: username => db.any(`
+    SELECT portfolio_ids FROM users
+    WHERE username = '${username}'
+    LIMIT 1;
+  `).then(res => res[0]),
+  getLatestBalance: portfolioId => db.any(`
+    SELECT * FROM portfolio_data
+    WHERE portfolio_id = ${portfolioId}
+    ORDER BY date DESC
+    LIMIT 1;
+  `).then(res => res[0]),
+  insertNewUser: username => db.any(`
+    INSERT INTO users (username)
+    VALUES ('${username}')
+    RETURNING id;
+  `).then(res => res[0].id),
+  insertNewPortfolio: data => db.any(`
+    INSERT INTO portfolios (name, user_id, exchange_id)
+    VALUES ('${data.name}', ${data.userId}, ${data.exchangeId})
+    RETURNING id;
+  `).then(res => res[0].id),
+  insertPortfolioData: data => db.any(`
+    INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
+    VALUES ('${data.date}', ${data.portfolioId}, ${data.balance}, ${data.deposit}, ${data.withdrawal}, ${data.returns}, ${data.cumulativeReturns});
+  `),
+  appendIdsToUser: (portfolioId, exchangeId, username) => db.any(`
+    UPDATE users SET portfolio_ids = portfolio_ids || ${portfolioId} WHERE username = '${username}';
+    UPDATE users SET exchange_ids = exchange_ids || ${exchangeId} WHERE username = '${username}';
   `),
 };
 
