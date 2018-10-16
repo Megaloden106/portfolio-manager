@@ -4,6 +4,7 @@ import styles from '../styles/Tab.css';
 const colorScheme = {
   Summary: styles.summary,
   Vanguard: styles.vanguard,
+  '+': styles.addData,
 };
 
 const Tab = ({
