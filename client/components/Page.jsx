@@ -15,7 +15,7 @@ const Page = ({ page, user }) => {
   return (
     <div className={classes.join(' ')}>
       {!user && <SignIn />}
-      {!page && <AddData />}
+      {page === '+' && <AddData />}
       {page !== '+' && user && <PortfolioContainer />}
     </div>
   );

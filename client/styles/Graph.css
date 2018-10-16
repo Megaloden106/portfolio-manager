@@ -4,3 +4,10 @@
   background-color: white;
   border-radius: 10px;
 }
+
+.canvas {
+  position: relative;
+  bottom: 80px;
+  width: 100%;
+  height: 100%;
+}

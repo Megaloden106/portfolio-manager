@@ -9,8 +9,6 @@ const PortfolioData = ({ data }) => (
         <tr>
           <th colSpan="6">Balance and Returns</th>
         </tr>
-      </thead>
-      <tbody>
         <tr className={styles.oddRow}>
           <td>Date</td>
           <td>Balance</td>
@@ -19,9 +17,11 @@ const PortfolioData = ({ data }) => (
           <td>Returns</td>
           <td>Cumulative Returns</td>
         </tr>
+      </thead>
+      <tbody>
         {data.map((entry, idx) => (
           <tr
-            key={entry.balance}
+            key={entry.date}
             className={idx % 2 === 0 ? styles.evenRow : styles.oddRow}
           >
             <td>{moment(entry.date).format('MMM D, YYYY')}</td>

@@ -24,15 +24,22 @@ const queries = {
     SELECT * FROM users
     INNER JOIN portfolios ON portfolios.id = users.portfolio_summary_id
     INNER JOIN portfolio_data ON portfolios.id = portfolio_data.portfolio_id
-    AND users.username = '${username}';
+    AND users.username = '${username}'
+    ORDER BY portfolio_data.date DESC;
   `),
   getUserById: id => db.any(`
     SELECT * FROM users
     INNER JOIN portfolios ON portfolios.id = users.portfolio_summary_id
     INNER JOIN portfolio_data ON portfolios.id = portfolio_data.portfolio_id
     AND users.id = ${id}
+    ORDER BY portfolio_data.date DESC;
   `),
   getAllExchanges: () => db.any('SELECT * FROM exchanges'),
+  getPortfolioById: id => db.any(`
+    SELECT * FROM portfolio_data
+    WHERE portfolio_id = ${id}
+    ORDER BY portfolio_data.date DESC;
+  `),
 };
 
 module.exports = queries;

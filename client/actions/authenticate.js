@@ -15,9 +15,9 @@ const handleAuthentication = username => (dispatch) => {
         }));
       const portfolioData = data
         .map(({
-          date, balance, deposit, withdrawal, returns, cumulative_returns,
+          date, balance, deposit, withdrawal, returns, cumulativeReturns,
         }) => ({
-          date, balance, deposit, withdrawal, returns, cumulativeReturns: cumulative_returns,
+          date, balance, deposit, withdrawal, returns, cumulativeReturns,
         }));
       const summary = [{
         exchange: data[0].name,
@@ -32,7 +32,8 @@ const handleAuthentication = username => (dispatch) => {
       dispatch(changePortfolioData(portfolioData));
       dispatch(changePortfolios(summary.concat(portfolios, add)));
       dispatch(changeUser(data[0].username));
-    });
+    })
+    .catch(error => console.error(error));
 };
 
 export default handleAuthentication;

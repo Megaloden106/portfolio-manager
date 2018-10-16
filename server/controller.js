@@ -16,16 +16,16 @@ const controller = {
       .catch(error => res.status(432).send(error)),
   },
   portfolio: {
-    get: (req, res) => model.user.get(req.params.portfolioId)
+    get: (req, res) => model.portfolio.get(req.params.portfolioId)
       .then(data => res.json(data))
       .catch(error => res.status(432).send(error)),
-    post: (req, res) => model.user.post(req.body)
+    post: (req, res) => model.portfolio.post(req.body)
       .then(() => res.send('SUCCESS'))
       .catch(error => res.status(432).send(error)),
-    put: (req, res) => model.user.put(req.params.portfolioId, req.body)
+    put: (req, res) => model.portfolio.put(req.params.portfolioId, req.body)
       .then(() => res.send('SUCCESS'))
       .catch(error => res.status(432).send(error)),
-    delete: (req, res) => model.user.put(req.params.portfolioId)
+    delete: (req, res) => model.portfolio.put(req.params.portfolioId)
       .then(() => res.send('SUCCESS'))
       .catch(error => res.status(432).send(error)),
   },

@@ -17,7 +17,8 @@ const model = {
           const data = response.slice();
           data[0].portfolio_exchanges = data[0]
             .portfolio_exchange_ids.map(id => cachedExchanges[id - 1]);
-          return data;
+          return data.map(entry => Object
+            .assign(entry, { cumulativeReturns: entry.cumulative_returns }));
         });
     },
     post: (data) => {},
@@ -25,7 +26,9 @@ const model = {
     delete: (usernameOrUserId) => {},
   },
   portfolio: {
-    get: (portfolioId) => {},
+    get: portfolioId => queries.getPortfolioById(portfolioId)
+      .then(data => data.map(entry => Object
+        .assign(entry, { cumulativeReturns: entry.cumulative_returns }))),
     post: (data) => {},
     put: (portfolioId, data) => {},
     delete: (portfolioId) => {},
