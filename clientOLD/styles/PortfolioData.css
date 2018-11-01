@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   grid-area: portfolio;
   margin: 5% 5% 5% 2.5%;
   border: 1px solid white;
@@ -8,9 +9,24 @@
 }
 
 table {
-  position: relative;
   text-align: center;
   border-collapse: collapse;
+  margin: 0;
+}
+
+thead th,
+thead td {
+  position: sticky;
+  position: -webkit-sticky;
+  z-index: 5;
+}
+thead th {
+  top: 0;
+  background: white;
+}
+thead td {
+  top: 48px;
+  background: #ccc;
 }
 
 th {

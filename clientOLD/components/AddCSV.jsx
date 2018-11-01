@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/AddCSV.css';
+import styles from '../styles/AddCSV';
 
 const AddCSV = () => (
   <div className={styles.container}>

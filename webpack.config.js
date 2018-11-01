@@ -1,16 +1,18 @@
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
-const clientDIR = path.join(__dirname, '/client');
-const publicDIR = path.join(__dirname, '/public');
+const clientDIR = path.join(__dirname, 'client', 'App.jsx');
+const publicDIR = path.join(__dirname, 'public');
 
 module.exports = {
-  entry: `${clientDIR}/App.jsx`,
+  entry: `${clientDIR}`,
   output: {
     filename: 'bundle.js',
     path: publicDIR,
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.css'],
   },
   module: {
     rules: [
@@ -24,17 +26,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader',
-      },
-      {
-        test: /\.css$/,
-        loader: 'css-loader',
-        query: {
-          modules: true,
-          camelCase: 'dashes',
-          localIdentName: '[name]__[local]___[hash:base64:5]',
-        },
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              camelCase: 'dashes',
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+        ],
       },
     ],
   },
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  },
+  plugins: [new CompressionPlugin()],
 };

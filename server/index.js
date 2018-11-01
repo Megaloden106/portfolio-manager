@@ -17,7 +17,7 @@ app.use('/', express.static('public'));
 app.use('/api', router);
 
 
-app.set('port', process.env.PORT || 8888);
+app.set('port', process.env.PORT || 9999);
 
 app.listen(app.get('port'), () => {
   console.warn(`app is listening to port ${app.get('port')}`);

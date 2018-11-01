@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/Tab.css';
+import styles from '../styles/Tab';
 
 const colorScheme = {
   Summary: styles.summary,
