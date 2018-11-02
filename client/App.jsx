@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import styles from './App.css';
+import Home from './components/Home';
+import './App.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>Hello World</div>
+    <Home />
   </Provider>,
   document.getElementById('app'),
 );

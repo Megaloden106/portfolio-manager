@@ -1,0 +1,17 @@
+input[type=text] {
+  outline: none;
+}
+
+.container {
+  grid-area: login;
+  margin: 0 auto;
+  padding-left: 25px;
+}
+
+.submit {
+  display: inline-block;
+  margin: 5px 0;
+  width: 131px;
+  /* border: 1px solid black; */
+  outline: none;
+}

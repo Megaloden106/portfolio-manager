@@ -6,8 +6,11 @@ CREATE DATABASE portfolio_manager;
 CREATE TABLE users (
   id SERIAL,
   username VARCHAR(25) NOT NULL UNIQUE,
-  portfolio_ids SMALLINT[],
-  exchange_ids SMALLINT[],
+  email VARCHAR(25) NOT NULL,
+  verified BOOLEAN,
+  password VARCHAR(50) NOT NULL,
+  salt VARCHAR(50) NOT NULL,
+  summary_id INT,
   PRIMARY KEY (id)
 );
 
@@ -23,8 +26,8 @@ CREATE TABLE exchanges (
 CREATE TABLE portfolios (
   id SERIAL,
   name VARCHAR(30) NOT NULL,
-  user_id SMALLINT NOT NULL,
-  exchange_id SMALLINT,
+  user_id INT NOT NULL,
+  exchange_id INT,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users (id),
   FOREIGN KEY (exchange_id) REFERENCES exchanges (id)
@@ -34,7 +37,7 @@ CREATE INDEX portfolio_ids ON portfolios USING HASH (id);
 
 CREATE TABLE portfolio_data (
   id SERIAL,
-  portfolio_id SMALLINT NOT NULL,
+  portfolio_id INT NOT NULL,
   date DATE NOT NULL,
   balance MONEY NOT NULL,
   deposit MONEY NOT NULL,
@@ -47,32 +50,29 @@ CREATE TABLE portfolio_data (
 
 CREATE INDEX portfolio_data_ids ON portfolio_data (portfolio_id);
 
+-- INSERT INTO exchanges (company)
+-- VALUES ('Vanguard');
 
--- ALTER TABLE users ADD FOREIGN KEY (portfolio_summary_id) REFERENCES portfolios (id);
+-- INSERT INTO users (username)
+-- VALUES ('eddielo');
 
-INSERT INTO exchanges (company)
-VALUES ('Vanguard');
+-- UPDATE users SET portfolio_ids = '{1, 2, 3}' WHERE username = 'eddielo';
+-- UPDATE users SET exchange_ids = '{0, 1, 1}' WHERE username = 'eddielo';
 
-INSERT INTO users (username)
-VALUES ('eddielo');
-
-UPDATE users SET portfolio_ids = '{1, 2, 3}' WHERE username = 'eddielo';
-UPDATE users SET exchange_ids = '{0, 1, 1}' WHERE username = 'eddielo';
-
-INSERT INTO portfolios (name, user_id)
-VALUES ('Summary', 1);
+-- INSERT INTO portfolios (name, user_id)
+-- VALUES ('Summary', 1);
 
 -- INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
 -- VALUES ('2018-10-7', 1, 1000, 1000, 0, 0, 0);
 
-INSERT INTO portfolios (name, user_id, exchange_id)
-VALUES ('Vanguard (4-Fund)', 1, 1);
+-- INSERT INTO portfolios (name, user_id, exchange_id)
+-- VALUES ('Vanguard (4-Fund)', 1, 1);
 
 -- INSERT INTO portfolio_data (date, portfolio_id, balance, deposit, withdrawal, returns, cumulative_returns)
 -- VALUES ('2018-10-7', 2, 1000, 1000, 0, 0, 0);
 
-INSERT INTO portfolios (name, user_id, exchange_id)
-VALUES ('Vanguard (Retirement)', 1, 1);
+-- INSERT INTO portfolios (name, user_id, exchange_id)
+-- VALUES ('Vanguard (Retirement)', 1, 1);
 
 -- UPDATE users SET portfolio_ids = portfolio_ids || '{3}' WHERE username = 'eddielo';
 -- UPDATE users SET exchange_ids = exchange_ids || '{1}' WHERE username = 'eddielo';

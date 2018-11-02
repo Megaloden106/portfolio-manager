@@ -1,0 +1,23 @@
+.image {
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.image-container {
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 70%;
+  padding: 25px 0;
+}
+
+.login-container {
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 70%;
+  padding: 25px 0;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-areas:
+    'login about'
+}
