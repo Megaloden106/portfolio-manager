@@ -27,3 +27,8 @@
   font-size: 16px;
   margin-right: 10px;
 }
+
+button {
+  border: none;
+  outline: none;
+}
