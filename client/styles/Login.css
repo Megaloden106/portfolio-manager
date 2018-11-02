@@ -10,8 +10,8 @@ input[type=text] {
 
 .submit {
   display: inline-block;
-  margin: 5px 0;
+  margin-top: 10px;
   width: 131px;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   outline: none;
 }

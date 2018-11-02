@@ -10,7 +10,7 @@ const Signin = () => (
     <div className={styles.imageContainer}>
       <img
         src='https://s3-us-west-1.amazonaws.com/portfolio-manager-project/login.jpg'
-        alt='#'
+        alt=''
         className={styles.image}
       />
     </div>

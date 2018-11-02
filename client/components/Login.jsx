@@ -12,13 +12,18 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange() {
-    console.log(event.target);
+  handleChange(event) {
+    event.target.id === 'username'
+      ? this.setState({ username: event.target.value })
+      : this.setState({ password: event.target.value })
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(event.target);
+    this.setState({
+      username: '',
+      password: '',
+    })
   }
 
   render() {
@@ -33,12 +38,14 @@ class Login extends React.Component {
           <input
             type="text"
             value={username}
+            id="username"
             onChange={this.handleChange}
           /><br />
           password:<br />
           <input
             type="text"
             value={password}
+            id="password"
             onChange={this.handleChange}
           /><br />
         </label>
