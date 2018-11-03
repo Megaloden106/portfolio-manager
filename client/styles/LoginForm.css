@@ -1,0 +1,24 @@
+.container {
+  margin: 5%;
+  text-align: center;
+}
+
+.text {
+  outline: none;
+  border-radius: 5px;
+  border-width: 1px;
+  width: 70%;
+  height: 7%;
+  margin: 2% 0;
+  padding: 0 10px;
+}
+
+.submit {
+  outline: none;
+  border: 1px solid black;
+  width: 70%;
+  height: 7%;
+  margin: 2% 0;
+  border-radius: 5px;
+  font-size: 16px;
+}

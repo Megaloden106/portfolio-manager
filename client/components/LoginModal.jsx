@@ -1,14 +1,15 @@
 import React from 'react';
-import Banner from './Banner';
+import LoginBanner from './LoginBanner';
 import LoginForm from './LoginForm';
+import LoginRegister from './LoginRegister';
 import styles from '../styles/LoginModal';
 
 const LoginModal = () => (
   <div className={styles.container}>
-    <Banner />
+    <LoginBanner />
     <LoginForm />
     {/* <OAuth /> */}
-    {/* <Register /> */}
+    <LoginRegister />
   </div>
 );
 
