@@ -1,4 +1,4 @@
-const loginModal = (state = false, action) => {
+const loginModal = (state = true, action) => {
   if (action.type === 'TOGGLE_LOGIN_MODAL') {
     return action.loginModal;
   }

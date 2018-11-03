@@ -14,11 +14,7 @@ module.exports = {
     "jsx-a11y/no-static-element-interactions": 0,
   },
   settings: {
-    'import/resolver': {
-      webpack: {
-        config: path.join(__dirname, 'webpack.config.js'),
-      },
-    },
+    "import/resolver": "webpack",
   },
   env: {
     browser: true,

@@ -3,6 +3,7 @@
   margin: 0 auto;
   height: 70%;
   width: 70%;
+  border-radius: 10%;
 }
 
 .image-container {
@@ -18,7 +19,7 @@
   width: 70%;
   padding: 25px 0;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30% 60%;
   grid-template-areas:
     'login about'
 }

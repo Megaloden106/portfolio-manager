@@ -3,25 +3,36 @@ import { connect } from 'react-redux';
 import handleLoginModal from '../actions/login';
 import styles from '../styles/Nav';
 
-const Nav = ({ user, handleLoginModal }) => (
+const Nav = ({ user, loginModal, handleLoginClick }) => (
   <nav className={styles.navContainer}>
     <ul className={styles.list}>
       <li className={styles.item}>Home</li>
     </ul>
     {!user && (
       <div className={styles.account}>
-        <button onClick={handleLoginModal}><b>Login</b></button> or
-        <button><b>Signup</b></button>
+        <button
+          type="button"
+          onClick={() => handleLoginClick(loginModal)}
+          id="loginSubmit"
+        >
+          <b>Login</b>
+        </button>
+        or
+        <button type="button"><b>Signup</b></button>
       </div>
     )}
   </nav>
 );
 
+const mapStateToProps = state => ({
+  loginModal: state.loginModal,
+});
+
 const mapDispatchToProps = dispatch => ({
-  handleLoginModal: () => dispatch(handleLoginModal()),
+  handleLoginClick: boolean => dispatch(handleLoginModal(boolean)),
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(Nav);

@@ -1,0 +1,8 @@
+.banner-container {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  height: 75px;
+  width: 100%;
+  line-height: 75px;
+}

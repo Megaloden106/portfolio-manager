@@ -28,6 +28,7 @@
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
     "crypto": "^1.0.1",
+    "eslint-import-resolver-webpack": "^0.10.1",
     "express": "^4.16.4",
     "moment": "^2.22.2",
     "morgan": "^1.9.1",

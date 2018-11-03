@@ -1,9 +1,14 @@
 import React from 'react';
+import Banner from './Banner';
+import LoginForm from './LoginForm';
 import styles from '../styles/LoginModal';
 
 const LoginModal = () => (
   <div className={styles.container}>
-    <h1>Hello World</h1>
+    <Banner />
+    <LoginForm />
+    {/* <OAuth /> */}
+    {/* <Register /> */}
   </div>
 );
 

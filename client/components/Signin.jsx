@@ -12,8 +12,8 @@ const Signin = ({ loginModal }) => (
     {loginModal && <LoginModal />}
     <div className={styles.imageContainer}>
       <img
-        src='https://s3-us-west-1.amazonaws.com/portfolio-manager-project/login.jpg'
-        alt=''
+        src="https://s3-us-west-1.amazonaws.com/portfolio-manager-project/login.jpg"
+        alt=""
         className={styles.image}
       />
     </div>

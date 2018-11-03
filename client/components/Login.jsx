@@ -7,15 +7,17 @@ class Login extends React.Component {
     this.state = {
       username: '',
       password: '',
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    event.target.id === 'username'
-      ? this.setState({ username: event.target.value })
-      : this.setState({ password: event.target.value })
+    if (event.target.id === 'username') {
+      this.setState({ username: event.target.value });
+    } else {
+      this.setState({ password: event.target.value });
+    }
   }
 
   handleSubmit(event) {
@@ -23,7 +25,7 @@ class Login extends React.Component {
     this.setState({
       username: '',
       password: '',
-    })
+    });
   }
 
   render() {
@@ -33,21 +35,23 @@ class Login extends React.Component {
         className={styles.container}
         onSubmit={this.handleSubmit}
       >
-        <label>
-          username:<br />
+        <label htmlFor="loginInfo">
           <input
             type="text"
             value={username}
             id="username"
             onChange={this.handleChange}
-          /><br />
-          password:<br />
+            placeholder="Username"
+          />
+          <br />
           <input
             type="text"
             value={password}
             id="password"
             onChange={this.handleChange}
-          /><br />
+            placeholder="Password"
+          />
+          <br />
         </label>
         <input
           type="submit"
