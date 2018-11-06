@@ -1,24 +1,25 @@
-.text {
-  outline: none;
-  margin: 3px 0;
-  border-radius: 5px;
-  border-width: 1px;
-  width: 100%;
-  height: 25px;
-  padding: 0 10px;
-}
-
-.container {
-  grid-area: login;
+.image {
+  display: block;
   margin: 0 auto;
+  height: 70%;
+  width: 70%;
+  border-radius: 10%;
 }
 
-.submit {
-  display: inline-block;
-  margin: 3px 0;
-  width: 196px;
-  height: 25px;
-  border-radius: 5px;
+.image-container {
   border: 1px solid black;
-  outline: none;
+  margin: 0 auto;
+  width: 70%;
+  padding: 25px 0;
+}
+
+.login-container {
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 70%;
+  padding: 25px 0;
+  display: grid;
+  grid-template-columns: 30% 60%;
+  grid-template-areas:
+    'login about'
 }

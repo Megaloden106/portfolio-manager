@@ -5,7 +5,10 @@ import LoginRegister from './LoginRegister';
 import styles from '../styles/LoginModal';
 
 const LoginModal = () => (
-  <div className={styles.container}>
+  <div
+    className={styles.container}
+    id="loginModal"
+  >
     <LoginBanner />
     <LoginForm />
     {/* <OAuth /> */}

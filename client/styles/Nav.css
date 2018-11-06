@@ -27,3 +27,13 @@
   font-size: 16px;
   margin-right: 10px;
 }
+
+.account button {
+  font-size: 16px;
+  cursor: pointer;
+  height: 100%;
+}
+
+.account button:active {
+  background-color: #eee;
+}

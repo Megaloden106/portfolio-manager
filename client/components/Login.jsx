@@ -1,68 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Nav from './Nav';
+import LoginBox from './LoginBox';
+import About from './About';
+import LoginModal from './LoginModal';
 import styles from '../styles/Login';
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const Signin = ({ loginModal }) => (
+  <div>
+    <Nav />
+    {loginModal && <LoginModal />}
+    <div className={styles.imageContainer}>
+      <img
+        src="https://s3-us-west-1.amazonaws.com/portfolio-manager-project/login.jpg"
+        alt=""
+        className={styles.image}
+      />
+    </div>
+    <div className={styles.loginContainer}>
+      <LoginBox />
+      <About />
+    </div>
+  </div>
+);
 
-  handleChange(event) {
-    if (event.target.id === 'username') {
-      this.setState({ username: event.target.value });
-    } else {
-      this.setState({ password: event.target.value });
-    }
-  }
+const mapStateToProps = state => ({
+  loginModal: state.loginModal,
+});
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.setState({
-      username: '',
-      password: '',
-    });
-  }
-
-  render() {
-    const { username, password } = this.state;
-    return (
-      <form
-        className={styles.container}
-        onSubmit={this.handleSubmit}
-      >
-        <label htmlFor="loginInfo">
-          <input
-            type="text"
-            value={username}
-            id="username"
-            className={styles.text}
-            onChange={this.handleChange}
-            placeholder="Username"
-          />
-          <br />
-          <input
-            type="text"
-            value={password}
-            id="password"
-            className={styles.text}
-            onChange={this.handleChange}
-            placeholder="••••••••"
-          />
-          <br />
-        </label>
-        <input
-          type="submit"
-          value="Log in"
-          className={styles.submit}
-        />
-      </form>
-    );
-  }
-}
-
-export default Login;
+export default connect(
+  mapStateToProps,
+)(Signin);

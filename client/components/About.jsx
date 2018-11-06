@@ -7,7 +7,7 @@ const About = () => (
       &emsp;Have you been stuck managing your 401k, HSA, Roth IRA, and other porfolios?
       Originally I have used spreadsheets to manage
       this process and found it to be a painful upkeep.
-      This ongoing project was inspired to simplify this process.
+      This ongoing project was inspired to simplify this manual task.
     </p>
   </div>
 );
