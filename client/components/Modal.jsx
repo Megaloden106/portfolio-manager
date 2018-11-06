@@ -1,18 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import ModalBanner from './ModalBanner';
 import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 import LoginRegister from './LoginRegister';
 import styles from '../styles/Modal';
 
-const Modal = () => (
+const Modal = ({ modalType }) => (
   <div
     className={styles.container}
     id="modal"
   >
     <ModalBanner />
-    <LoginForm />
-    <LoginRegister />
+    {modalType === 'Login' && (
+      <div>
+        <LoginForm />
+        <LoginRegister />
+      </div>
+    )}
+    {modalType === 'Signup' && <SignupForm />}
   </div>
 );
 
-export default Modal;
+const mapStateToProps = state => ({
+  modalType: state.modalType,
+});
+
+export default connect(
+  mapStateToProps,
+)(Modal);

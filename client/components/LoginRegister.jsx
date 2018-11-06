@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { handleSignupModal } from '../actions/handleModal';
 import styles from '../styles/LoginRegister';
 
-const LoginRegister = () => (
+const LoginRegister = ({ handleSingupClick }) => (
   <div className={styles.container}>
     {'Don\'t have an account?'}
     <em> Register Now!</em>
@@ -9,10 +11,18 @@ const LoginRegister = () => (
     <button
       type="button"
       className={styles.button}
+      onClick={handleSingupClick}
     >
       Register
     </button>
   </div>
 );
 
-export default LoginRegister;
+const mapDispatchToProps = dispatch => ({
+  handleSingupClick: () => dispatch(handleSignupModal()),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(LoginRegister);

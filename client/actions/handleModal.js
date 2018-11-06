@@ -1,7 +1,11 @@
 import toggleModal from './modal';
 
 const handleLoginModal = () => (dispatch) => {
-  dispatch(toggleModal('login'));
+  dispatch(toggleModal('Login'));
 };
 
-export default handleLoginModal;
+const handleSignupModal = () => (dispatch) => {
+  dispatch(toggleModal('Signup'));
+};
+
+export { handleLoginModal, handleSignupModal };

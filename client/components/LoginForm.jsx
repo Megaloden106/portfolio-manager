@@ -13,7 +13,7 @@ class LoginForm extends React.Component {
   }
 
   handleChange(event) {
-    if (event.target.id === 'usernameModal') {
+    if (event.target.id === 'username') {
       this.setState({ username: event.target.value });
     } else {
       this.setState({ password: event.target.value });
@@ -39,21 +39,19 @@ class LoginForm extends React.Component {
           <input
             type="text"
             value={username}
-            id="usernameModal"
+            id="username"
             className={styles.text}
             onChange={this.handleChange}
             placeholder="Username"
           />
-          <br />
           <input
             type="text"
             value={password}
-            id="passwordModal"
+            id="password"
             className={styles.text}
             onChange={this.handleChange}
             placeholder="••••••••"
           />
-          <br />
         </label>
         <input
           type="submit"

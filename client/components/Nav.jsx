@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import handleLoginModal from '../actions/handleModal';
+import { handleLoginModal, handleSignupModal } from '../actions/handleModal';
 import styles from '../styles/Nav';
 
-const Nav = ({ user, modalType, handleLoginClick }) => (
+const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
   <div className={styles.navContainer}>
     <nav className={styles.navBar}>
       <ul className={styles.list}>
@@ -13,13 +13,19 @@ const Nav = ({ user, modalType, handleLoginClick }) => (
         <div className={styles.account}>
           <button
             type="button"
-            onClick={() => handleLoginClick(modalType)}
+            onClick={handleLoginClick}
             id="loginSubmit"
           >
             <b>Login</b>
           </button>
           or
-          <button type="button"><b>Signup</b></button>
+          <button
+            type="button"
+            onClick={handleSingupClick}
+            id="loginSubmit"
+          >
+            <b>Signup</b>
+          </button>
         </div>
       )}
     </nav>
@@ -31,7 +37,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLoginClick: modalType => dispatch(handleLoginModal(modalType)),
+  handleLoginClick: () => dispatch(handleLoginModal()),
+  handleSingupClick: () => dispatch(handleSignupModal()),
 });
 
 export default connect(
