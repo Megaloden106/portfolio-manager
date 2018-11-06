@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import handleLoginModal from '../actions/login';
+import handleLoginModal from '../actions/handleModal';
 import styles from '../styles/Nav';
 
 const Nav = ({ user, loginModal, handleLoginClick }) => (
