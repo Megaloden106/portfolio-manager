@@ -1,7 +1,7 @@
-import toggleLoginModal from './modal';
+import toggleModal from './modal';
 
 const handleLoginModal = () => (dispatch) => {
-  dispatch(toggleLoginModal(true));
+  dispatch(toggleModal('login'));
 };
 
 export default handleLoginModal;

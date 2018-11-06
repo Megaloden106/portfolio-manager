@@ -1,6 +1,6 @@
-const toggleLoginModal = boolean => ({
-  type: 'TOGGLE_LOGIN_MODAL',
-  loginModal: boolean,
+const toggleModal = string => ({
+  type: 'TOGGLE_MODAL',
+  modalType: string,
 });
 
-export default toggleLoginModal;
+export default toggleModal;

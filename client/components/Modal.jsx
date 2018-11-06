@@ -1,19 +1,18 @@
 import React from 'react';
-import LoginBanner from './LoginBanner';
+import ModalBanner from './ModalBanner';
 import LoginForm from './LoginForm';
 import LoginRegister from './LoginRegister';
-import styles from '../styles/LoginModal';
+import styles from '../styles/Modal';
 
-const LoginModal = () => (
+const Modal = () => (
   <div
     className={styles.container}
-    id="loginModal"
+    id="modal"
   >
-    <LoginBanner />
+    <ModalBanner />
     <LoginForm />
-    {/* <OAuth /> */}
     <LoginRegister />
   </div>
 );
 
-export default LoginModal;
+export default Modal;

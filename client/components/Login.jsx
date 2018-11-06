@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import Nav from './Nav';
 import LoginBox from './LoginBox';
 import About from './About';
-import LoginModal from './LoginModal';
+import Modal from './Modal';
 import ModalBlurLayer from './ModalBlurLayer';
 import styles from '../styles/Login';
 
-const Signin = ({ loginModal }) => (
+const Signin = ({ modalType }) => (
   <div>
     <Nav />
-    {loginModal && (
+    {modalType && (
       <div>
         <ModalBlurLayer />
-        <LoginModal />
+        <Modal />
       </div>
     )}
     <div className={styles.imageContainer}>
@@ -31,7 +31,7 @@ const Signin = ({ loginModal }) => (
 );
 
 const mapStateToProps = state => ({
-  loginModal: state.loginModal,
+  modalType: state.modalType,
 });
 
 export default connect(

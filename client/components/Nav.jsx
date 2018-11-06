@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import handleLoginModal from '../actions/handleModal';
 import styles from '../styles/Nav';
 
-const Nav = ({ user, loginModal, handleLoginClick }) => (
+const Nav = ({ user, modalType, handleLoginClick }) => (
   <div className={styles.navContainer}>
     <nav className={styles.navBar}>
       <ul className={styles.list}>
@@ -13,7 +13,7 @@ const Nav = ({ user, loginModal, handleLoginClick }) => (
         <div className={styles.account}>
           <button
             type="button"
-            onClick={() => handleLoginClick(loginModal)}
+            onClick={() => handleLoginClick(modalType)}
             id="loginSubmit"
           >
             <b>Login</b>
@@ -27,11 +27,11 @@ const Nav = ({ user, loginModal, handleLoginClick }) => (
 );
 
 const mapStateToProps = state => ({
-  loginModal: state.loginModal,
+  modalType: state.modalType,
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLoginClick: boolean => dispatch(handleLoginModal(boolean)),
+  handleLoginClick: modalType => dispatch(handleLoginModal(modalType)),
 });
 
 export default connect(

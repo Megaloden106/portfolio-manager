@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/LoginBanner';
+import styles from '../styles/ModalBanner';
 
 const LoginBanner = () => (
   <div className={styles.bannerContainer}>

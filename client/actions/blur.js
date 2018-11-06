@@ -1,7 +1,7 @@
-import toggleLoginModal from './modal';
+import toggleModal from './modal';
 
 const handleBlurLayer = () => (dispatch) => {
-  dispatch(toggleLoginModal(false));
+  dispatch(toggleModal(null));
 };
 
 export default handleBlurLayer;
