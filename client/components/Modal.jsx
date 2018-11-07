@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ModalBanner from './ModalBanner';
+import ModalError from './ModalError';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import LoginRegister from './LoginRegister';
@@ -12,6 +13,7 @@ const Modal = ({ modalType }) => (
     id="modal"
   >
     <ModalBanner />
+    <ModalError />
     {modalType === 'Login' && (
       <div>
         <LoginForm />

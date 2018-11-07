@@ -8,4 +8,8 @@ const handleSignupModal = () => (dispatch) => {
   dispatch(toggleModal('Signup'));
 };
 
-export { handleLoginModal, handleSignupModal };
+const handleLoadingModal = () => (dispatch) => {
+  dispatch(toggleModal('Loading'));
+};
+
+export { handleLoginModal, handleSignupModal, handleLoadingModal };

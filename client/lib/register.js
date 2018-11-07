@@ -21,7 +21,7 @@ const register = (creds) => {
     username: formatString(creds.username),
     password,
     salt,
-  }).catch(({ response }) => response.data);
+  });
 };
 
 export default register;

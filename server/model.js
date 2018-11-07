@@ -37,7 +37,7 @@ const model = {
     //         });
     //     });
     // },
-    post: creds => queries.register(creds),
+    post: creds => queries.insertNewUser(creds),
     // put: (usernameOrUserId, body) => {},
     // delete: (usernameOrUserId) => {},
   },

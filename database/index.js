@@ -21,7 +21,7 @@ const db = pgp(cn);
 
 const queries = {
   getAllExchanges: () => db.any('SELECT * FROM exchanges'),
-  register: ({
+  insertNewUser: ({
     name,
     email,
     username,
