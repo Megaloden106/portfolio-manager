@@ -13,7 +13,7 @@ class LoginBox extends React.Component {
   }
 
   handleChange(event) {
-    if (event.target.id === 'username') {
+    if (event.target.id === 'usr') {
       this.setState({ username: event.target.value });
     } else {
       this.setState({ password: event.target.value });
@@ -39,7 +39,7 @@ class LoginBox extends React.Component {
           <input
             type="text"
             value={username}
-            id="username"
+            id="usr"
             className={styles.text}
             onChange={this.handleChange}
             placeholder="Username"
@@ -48,7 +48,7 @@ class LoginBox extends React.Component {
           <input
             type="text"
             value={password}
-            id="password"
+            id="pwd"
             className={styles.text}
             onChange={this.handleChange}
             placeholder="••••••••"

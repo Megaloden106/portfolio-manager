@@ -5,12 +5,12 @@ CREATE DATABASE portfolio_manager;
 
 CREATE TABLE users (
   id SERIAL,
+  name VARCHAR(50) NOT NULL,
   username VARCHAR(25) NOT NULL UNIQUE,
-  email VARCHAR(25) NOT NULL,
+  email VARCHAR(35) NOT NULL UNIQUE,
   verified BOOLEAN,
-  password VARCHAR(50) NOT NULL,
-  salt VARCHAR(50) NOT NULL,
-  summary_id INT,
+  password VARCHAR(128) NOT NULL,
+  salt VARCHAR(25) NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -33,7 +33,7 @@ CREATE TABLE portfolios (
   FOREIGN KEY (exchange_id) REFERENCES exchanges (id)
 );
 
-CREATE INDEX portfolio_ids ON portfolios USING HASH (id);
+CREATE INDEX portfolio_ids ON portfolios USING HASH (user_id);
 
 CREATE TABLE portfolio_data (
   id SERIAL,

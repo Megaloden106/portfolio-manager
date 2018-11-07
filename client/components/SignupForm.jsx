@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { handleRegister } from '../actions/handleUser';
 import styles from '../styles/SignupForm';
 
 class SignupForm extends React.Component {
@@ -30,7 +32,9 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit(event) {
+    const { handleRegisterClick } = this.props;
     event.preventDefault();
+    handleRegisterClick(this.state);
     this.setState({
       firstName: '',
       lastName: '',
@@ -88,15 +92,19 @@ class SignupForm extends React.Component {
             className={styles.text}
             onChange={this.handleChange}
             placeholder="Username"
+            minLength="5"
+            maxLength="25"
             required
           />
           <input
-            type="text"
+            type="password"
             value={password}
             id="password"
             className={styles.text}
             onChange={this.handleChange}
             placeholder="Password"
+            minLength="5"
+            maxLength="25"
             required
           />
         </label>
@@ -110,4 +118,11 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm;
+const mapDispatchToProps = dispatch => ({
+  handleRegisterClick: user => dispatch(handleRegister(user)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(SignupForm);
