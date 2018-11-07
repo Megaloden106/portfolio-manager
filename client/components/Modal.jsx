@@ -5,6 +5,7 @@ import ModalError from './ModalError';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import LoginRegister from './LoginRegister';
+import Loading from './Loading';
 import styles from '../styles/Modal';
 
 const Modal = ({ modalType }) => (
@@ -12,7 +13,7 @@ const Modal = ({ modalType }) => (
     className={styles.container}
     id="modal"
   >
-    <ModalBanner />
+    {modalType !== 'Loading' && <ModalBanner />}
     <ModalError />
     {modalType === 'Login' && (
       <div>
@@ -21,6 +22,7 @@ const Modal = ({ modalType }) => (
       </div>
     )}
     {modalType === 'Signup' && <SignupForm />}
+    {modalType === 'Loading' && <Loading />}
   </div>
 );
 

@@ -4,7 +4,7 @@ import styles from '../styles/ModalBanner';
 
 const ModalBanner = ({ modalType }) => (
   <div className={styles.bannerContainer}>
-    {modalType === 'Login' ? 'Login' : 'Signup'}
+    {modalType}
   </div>
 );
 

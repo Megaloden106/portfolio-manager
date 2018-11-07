@@ -8,15 +8,10 @@ const genRandomString = length => crypto.randomBytes(Math.ceil(length / 2))
   .slice(0, length);
 
 const sha512 = (password, salt) => {
-  const hash = crypto.createHmac('sha512', salt);
-  hash.update(password);
+  const hash = crypto.createHmac('sha512', pepperS + salt);
+  hash.update(password + pepperE);
   const value = hash.digest('hex');
   return value;
 };
 
-export {
-  pepperS,
-  pepperE,
-  genRandomString,
-  sha512,
-};
+export { genRandomString, sha512 };

@@ -7,7 +7,7 @@ import Modal from './Modal';
 import ModalBlurLayer from './ModalBlurLayer';
 import styles from '../styles/Login';
 
-const Signin = ({ modalType }) => (
+const Login = ({ modalType }) => (
   <div>
     <Nav />
     {modalType && (
@@ -36,4 +36,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-)(Signin);
+)(Login);

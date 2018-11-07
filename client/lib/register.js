@@ -1,10 +1,5 @@
 import axios from 'axios';
-import {
-  pepperS,
-  pepperE,
-  genRandomString,
-  sha512,
-} from './hash';
+import { genRandomString, sha512 } from './hash';
 
 const formatString = (string) => {
   let result = string.toLowerCase();
@@ -14,7 +9,7 @@ const formatString = (string) => {
 
 const register = (creds) => {
   const salt = genRandomString(25);
-  const password = sha512(pepperS + creds.password, salt + pepperE);
+  const password = sha512(creds.password, salt);
   return axios.post('/api/user', {
     name: `${formatString(creds.firstName)} ${formatString(creds.lastName)}`,
     email: creds.email,

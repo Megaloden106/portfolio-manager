@@ -57,6 +57,28 @@ class SignupForm extends React.Component {
         className={styles.container}
         onSubmit={this.handleSubmit}
       >
+        <input
+          type="text"
+          value={username}
+          id="username"
+          className={styles.text}
+          onChange={this.handleChange}
+          placeholder="Username"
+          minLength="5"
+          maxLength="25"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          id="password"
+          className={styles.text}
+          onChange={this.handleChange}
+          placeholder="Password"
+          minLength="5"
+          maxLength="25"
+          required
+        />
         <label htmlFor="SignupInfo">
           <input
             type="text"
@@ -83,28 +105,6 @@ class SignupForm extends React.Component {
             className={styles.text}
             onChange={this.handleChange}
             placeholder="Email"
-            required
-          />
-          <input
-            type="text"
-            value={username}
-            id="username"
-            className={styles.text}
-            onChange={this.handleChange}
-            placeholder="Username"
-            minLength="5"
-            maxLength="25"
-            required
-          />
-          <input
-            type="password"
-            value={password}
-            id="password"
-            className={styles.text}
-            onChange={this.handleChange}
-            placeholder="Password"
-            minLength="5"
-            maxLength="25"
             required
           />
         </label>

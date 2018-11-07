@@ -12,4 +12,13 @@ const handleLoadingModal = () => (dispatch) => {
   dispatch(toggleModal('Loading'));
 };
 
-export { handleLoginModal, handleSignupModal, handleLoadingModal };
+const handleCloseModal = () => (dispatch) => {
+  dispatch(toggleModal(null));
+};
+
+export {
+  handleLoginModal,
+  handleSignupModal,
+  handleLoadingModal,
+  handleCloseModal,
+};
