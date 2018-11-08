@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { handleAuthentication } from '../actions/handleUser';
 import styles from '../styles/LoginForm';
 
 class LoginForm extends React.Component {
@@ -21,7 +23,9 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit(event) {
+    const { handleLoginClick } = this.props;
     event.preventDefault();
+    handleLoginClick(this.state);
     this.setState({
       username: '',
       password: '',
@@ -63,4 +67,11 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+const mapDispatchToProps = dispatch => ({
+  handleLoginClick: creds => dispatch(handleAuthentication(creds)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(LoginForm);

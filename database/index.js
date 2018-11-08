@@ -21,6 +21,7 @@ const db = pgp(cn);
 
 const queries = {
   getAllExchanges: () => db.any('SELECT * FROM exchanges'),
+  getUserInfo: username => db.any(`SELECT * FROM users WHERE username = '${username}' LIMIT 1;`),
   insertNewUser: ({
     name,
     email,

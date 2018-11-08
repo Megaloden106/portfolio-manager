@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styles from '../styles/ModalError';
 
 const ModalError = ({ modalError }) => (
@@ -8,10 +7,4 @@ const ModalError = ({ modalError }) => (
   </p>
 );
 
-const mapStateToProps = state => ({
-  modalError: state.modalError,
-});
-
-export default connect(
-  mapStateToProps,
-)(ModalError);
+export default ModalError;

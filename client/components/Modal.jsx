@@ -8,13 +8,13 @@ import LoginRegister from './LoginRegister';
 import Loading from './Loading';
 import styles from '../styles/Modal';
 
-const Modal = ({ modalType }) => (
+const Modal = ({ modalType, modalError }) => (
   <div
     className={styles.container}
     id="modal"
   >
     {modalType !== 'Loading' && <ModalBanner />}
-    <ModalError />
+    {modalError && <ModalError modalError={modalError} />}
     {modalType === 'Login' && (
       <div>
         <LoginForm />
@@ -28,6 +28,7 @@ const Modal = ({ modalType }) => (
 
 const mapStateToProps = state => ({
   modalType: state.modalType,
+  modalError: state.modalError,
 });
 
 export default connect(

@@ -119,7 +119,7 @@ class SignupForm extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleRegisterClick: user => dispatch(handleRegister(user)),
+  handleRegisterClick: creds => dispatch(handleRegister(creds)),
 });
 
 export default connect(

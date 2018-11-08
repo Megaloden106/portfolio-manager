@@ -1,11 +1,5 @@
 import axios from 'axios';
-import { genRandomString, sha512 } from './hash';
-
-const formatString = (string) => {
-  let result = string.toLowerCase();
-  result = result[0].toUpperCase() + string.slice(1);
-  return result;
-};
+import { formatString, genRandomString, sha512 } from './hash';
 
 const register = (creds) => {
   const salt = genRandomString(25);

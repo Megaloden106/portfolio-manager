@@ -1,5 +1,11 @@
 import crypto from 'crypto';
 
+const formatString = (string) => {
+  let result = string.toLowerCase();
+  result = result[0].toUpperCase() + string.slice(1);
+  return result;
+};
+
 const pepperS = 'EDAD22A92447056F616BCE5E1​​​​​';
 const pepperE = '​​​​​AB44F5679DB7D0C2D964BE62C';
 
@@ -14,4 +20,4 @@ const sha512 = (password, salt) => {
   return value;
 };
 
-export { genRandomString, sha512 };
+export { formatString, genRandomString, sha512 };

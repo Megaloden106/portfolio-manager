@@ -8,15 +8,19 @@ import {
 } from './handleModal';
 import changeModalError from './error';
 
-const handleAuthentication = user => dispatch => authenticate(user);
-
-const handleRegister = user => (dispatch) => {
+const handleAuthentication = creds => (dispatch) => {
   dispatch(handleLoadingModal());
-  return register(user)
+  return authenticate(creds)
+    .then(response => console.log(response));
+};
+
+const handleRegister = creds => (dispatch) => {
+  dispatch(handleLoadingModal());
+  return register(creds)
     .then(() => {
       dispatch(handleCloseModal());
       dispatch(changeModalError(null));
-      dispatch(handleAuthentication(user));
+      dispatch(handleAuthentication(creds));
     }).catch(({ response }) => {
       dispatch(changeModalError(response.data));
       dispatch(handleSignupModal());
