@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Loading from './Loading';
+import LoginForm from './LoginForm';
+import LoginRegister from './LoginRegister';
 import ModalBanner from './ModalBanner';
 import ModalError from './ModalError';
-import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import LoginRegister from './LoginRegister';
-import Loading from './Loading';
 import styles from '../styles/Modal';
 
 const Modal = ({ modalError, modalType }) => (

@@ -20,8 +20,16 @@ const cn = {
 const db = pgp(cn);
 
 const queries = {
-  getAllExchanges: () => db.any('SELECT * FROM exchanges'),
-  getUserInfo: username => db.any(`SELECT * FROM users WHERE username = '${username}' LIMIT 1;`),
+  getAllExchanges: () => db.any('SELECT * FROM exchanges;'),
+  getUserInfo: username => db.any(`
+    SELECT * FROM users
+    WHERE username = '${username}'
+    LIMIT 1;
+  `).then(res => res[0]),
+  getPortfolios: id => db.any(`
+    SELECT * FROM portfolios
+    WHERE user_id = ${id};
+  `),
   insertNewUser: ({
     name,
     email,
@@ -31,6 +39,11 @@ const queries = {
   }) => db.any(`
     INSERT INTO users (name, username, email, verified, password, salt)
     VALUES ('${name}', '${username}', '${email}', ${false}, '${password}', '${salt}')
+    RETURNING id;
+  `).then(res => res[0]),
+  insertNewPortfolio: (name, userId, exchangeId) => db.any(`
+    INSERT INTO portfolios (name, user_id, exchange_id)
+    VALUES ('${name}', ${userId}, ${exchangeId});
   `),
   // getSummaryByUsername: username => db.any(`
   //   SELECT * FROM users

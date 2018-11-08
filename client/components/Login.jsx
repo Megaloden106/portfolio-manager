@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Nav from './Nav';
-import LoginBox from './LoginBox';
 import About from './About';
+import LoginBox from './LoginBox';
 import Modal from './Modal';
 import ModalBlurLayer from './ModalBlurLayer';
 import styles from '../styles/Login';
 
 const Login = ({ modalType }) => (
   <div>
-    <Nav />
     {modalType && (
       <div>
         <ModalBlurLayer />

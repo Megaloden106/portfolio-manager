@@ -2,7 +2,7 @@ const model = require('./model');
 
 const controller = {
   user: {
-    get: (req, res) => model.user.get(req.params.usernameOrUserId)
+    get: (req, res) => model.user.get(req.params.user)
       .then(data => res.json(data))
       .catch((error) => {
         console.error(error.message);
@@ -14,13 +14,13 @@ const controller = {
         console.error(error.message);
         res.status(500).send(error);
       }),
-    put: (req, res) => model.user.put(req.params.usernameOrUserId, req.body)
+    put: (req, res) => model.user.put(req.params.user, req.body)
       .then(() => res.send('SUCCESS'))
       .catch((error) => {
         console.error(error.message);
         res.status(500).send(error);
       }),
-    delete: (req, res) => model.user.put(req.params.usernameOrUserId)
+    delete: (req, res) => model.user.put(req.params.user)
       .then(() => res.send('SUCCESS'))
       .catch((error) => {
         console.error(error.message);
@@ -28,7 +28,7 @@ const controller = {
       }),
   },
   portfolio: {
-    get: (req, res) => model.portfolio.get(req.params.portfolioId)
+    get: (req, res) => model.portfolio.get(req.params.portfolio)
       .then(data => res.json(data))
       .catch((error) => {
         console.error(error.message);
@@ -40,13 +40,13 @@ const controller = {
         console.error(error.message);
         res.status(500).send(error);
       }),
-    put: (req, res) => model.portfolio.put(req.params.portfolioId, req.body)
+    put: (req, res) => model.portfolio.put(req.params.portfolio, req.body)
       .then(() => res.send('SUCCESS'))
       .catch((error) => {
         console.error(error.message);
         res.status(500).send(error);
       }),
-    delete: (req, res) => model.portfolio.put(req.params.portfolioId)
+    delete: (req, res) => model.portfolio.put(req.params.portfolio)
       .then(() => res.send('SUCCESS'))
       .catch((error) => {
         console.error(error.message);

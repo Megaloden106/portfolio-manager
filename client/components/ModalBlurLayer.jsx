@@ -1,16 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import toggleModal from '../actions/modal';
 import changeModalError from '../actions/error';
+import toggleModal from '../actions/modal';
 import styles from '../styles/ModalBlurLayer';
 
-const ModalBlurLayer = ({ handleBlurLayerClick }) => (
+const ModalBlurLayer = ({ modalType, handleBlurLayerClick }) => (
   <div
     className={styles.blurContainer}
     id="blur"
-    onClick={handleBlurLayerClick}
+    onClick={modalType !== 'Loading' ? handleBlurLayerClick : null}
   />
 );
+
+const mapStateToProps = state => ({
+  modalType: state.modalType,
+});
 
 const mapDispatchToProps = dispatch => ({
   handleBlurLayerClick: () => {
@@ -20,6 +24,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(ModalBlurLayer);

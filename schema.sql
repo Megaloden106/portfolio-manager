@@ -50,8 +50,16 @@ CREATE TABLE portfolio_data (
 
 CREATE INDEX portfolio_data_ids ON portfolio_data (portfolio_id);
 
--- INSERT INTO exchanges (company)
--- VALUES ('Vanguard');
+INSERT INTO exchanges (company)
+VALUES ('Vanguard');
+INSERT INTO exchanges (company)
+VALUES ('Robinhood');
+INSERT INTO exchanges (company)
+VALUES ('E*Trade');
+INSERT INTO exchanges (company)
+VALUES ('T. Rowe Price');
+INSERT INTO exchanges (company)
+VALUES ('Health Equity');
 
 -- INSERT INTO users (username)
 -- VALUES ('eddielo');

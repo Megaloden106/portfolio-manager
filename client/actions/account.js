@@ -3,13 +3,14 @@ import authenticate from '../lib/authenticate';
 import changeModal from './modal';
 import changeModalError from './error';
 import changeUser from './user';
+import { changePortfolioList } from './portfolio';
 
 const handleAuthentication = creds => (dispatch) => {
   dispatch(changeModal('Loading'));
   return authenticate(creds)
-    .then((response) => {
-      dispatch(changeUser(response.username));
-      console.log(response);
+    .then(({ username, portfolios }) => {
+      dispatch(changeUser(username));
+      dispatch(changePortfolioList(portfolios));
       dispatch(changeModal(null));
       dispatch(changeModalError(null));
     }).catch((error) => {

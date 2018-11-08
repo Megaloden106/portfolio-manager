@@ -6,39 +6,23 @@ queries.getAllExchanges()
   .then(data => data.forEach(({ company }) => cachedExchanges.push(company)))
   .catch(error => console.error(error));
 
+const regExp = /;|'|--|\/\*|\*\/|xp_/g;
+
 const model = {
   user: {
-    // get: (usernameOrUserId) => {
-    //   const getSummary = Number.isNaN(Number(usernameOrUserId))
-    //     ? 'getSummaryByUsername'
-    //     : 'getSummaryById';
-    //   return queries[getSummary](usernameOrUserId)
-    //     .then((response) => {
-    //       const result = {};
-    //       const data = response.slice();
-    //       return queries.getPortfoliosByUserId(data[0].user_id)
-    //         .then((res) => {
-    //           result.username = data[0].username;
-    //           result.portfolios = data[0].exchange_ids
-    //             .map((id, idx) => ({
-    //               name: res[idx].name,
-    //               exchange: cachedExchanges[id - 1],
-    //               portfolioId: data[0].portfolio_ids[idx],
-    //             }));
-    //           result.portfolioData = data.map(entry => ({
-    //             date: entry.date,
-    //             balance: entry.balance,
-    //             deposit: entry.deposit,
-    //             withdrawal: entry.withdrawal,
-    //             returns: entry.returns,
-    //             cumulativeReturns: entry.cumulative_returns,
-    //           }));
-    //           return result;
-    //         });
-    //     });
-    // },
-    get: username => queries.getUserInfo(username),
-    post: creds => queries.insertNewUser(creds),
+    get: username => queries.getUserInfo(username.replace(regExp, ''))
+      .then(creds => queries.getPortfolios(creds.id)
+        .then(portfolios => Object.assign(
+          creds,
+          {
+            portfolios: portfolios.map(elem => Object.assign(
+              elem,
+              { exchange: cachedExchanges[elem.exchange_id - 1] || null },
+            )),
+          },
+        ))),
+    post: creds => queries.insertNewUser(creds)
+      .then(({ id }) => queries.insertNewPortfolio('Summary', id, null)),
     // put: (usernameOrUserId, body) => {},
     // delete: (usernameOrUserId) => {},
   },

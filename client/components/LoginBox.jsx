@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { handleAuthentication } from '../actions/account';
 import styles from '../styles/LoginBox';
 
 class LoginBox extends React.Component {
@@ -21,7 +23,9 @@ class LoginBox extends React.Component {
   }
 
   handleSubmit(event) {
+    const { handleLoginClick } = this.props;
     event.preventDefault();
+    handleLoginClick(this.state);
     this.setState({
       username: '',
       password: '',
@@ -46,7 +50,7 @@ class LoginBox extends React.Component {
           />
           <br />
           <input
-            type="text"
+            type="password"
             value={password}
             id="pwd"
             className={styles.text}
@@ -65,4 +69,11 @@ class LoginBox extends React.Component {
   }
 }
 
-export default LoginBox;
+const mapDispatchToProps = dispatch => ({
+  handleLoginClick: creds => dispatch(handleAuthentication(creds)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(LoginBox);
