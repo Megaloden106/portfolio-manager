@@ -1,5 +1,5 @@
 const loginModalReducer = (state = null, action) => {
-  if (action.type === 'TOGGLE_MODAL') {
+  if (action.type === 'CHANGE_MODAL') {
     return action.modalType;
   }
   return state;

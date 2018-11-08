@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import modalType from './modal';
 import modalError from './error';
+import modalType from './modal';
+import user from './user';
 
 const rootReducer = combineReducers({
-  modalType,
   modalError,
+  modalType,
+  user,
 });
 
 export default rootReducer;

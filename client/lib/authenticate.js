@@ -3,6 +3,10 @@ import { formatString, sha512 } from './hash';
 
 const authenticate = ({ username, password }) => axios.get(`/api/user/${formatString(username)}`)
   .then(({ data }) => data[0])
-  .then(creds => (creds.password === sha512(password, creds.salt) ? creds : null));
+  .then((creds) => {
+    if (!creds) { throw new Error('=Invalid username'); }
+    if (creds.password !== sha512(password, creds.salt)) { throw new Error('=Invalid password'); }
+    return creds;
+  });
 
 export default authenticate;

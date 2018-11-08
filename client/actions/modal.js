@@ -1,6 +1,6 @@
-const toggleModal = string => ({
-  type: 'TOGGLE_MODAL',
+const changeModal = string => ({
+  type: 'CHANGE_MODAL',
   modalType: string,
 });
 
-export default toggleModal;
+export default changeModal;

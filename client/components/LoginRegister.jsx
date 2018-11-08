@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { handleSignupModal } from '../actions/handleModal';
+import changeModal from '../actions/modal';
 import styles from '../styles/LoginRegister';
 
 const LoginRegister = ({ handleSingupClick }) => (
@@ -19,7 +19,7 @@ const LoginRegister = ({ handleSingupClick }) => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  handleSingupClick: () => dispatch(handleSignupModal()),
+  handleSingupClick: () => dispatch(changeModal('Signup')),
 });
 
 export default connect(

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { handleLoginModal, handleSignupModal } from '../actions/handleModal';
+import changeModal from '../actions/modal';
 import styles from '../styles/Nav';
 
 const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
@@ -34,11 +34,12 @@ const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
 
 const mapStateToProps = state => ({
   modalType: state.modalType,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLoginClick: () => dispatch(handleLoginModal()),
-  handleSingupClick: () => dispatch(handleSignupModal()),
+  handleLoginClick: () => dispatch(changeModal('Login')),
+  handleSingupClick: () => dispatch(changeModal('Signup')),
 });
 
 export default connect(

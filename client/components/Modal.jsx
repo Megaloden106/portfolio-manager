@@ -8,7 +8,7 @@ import LoginRegister from './LoginRegister';
 import Loading from './Loading';
 import styles from '../styles/Modal';
 
-const Modal = ({ modalType, modalError }) => (
+const Modal = ({ modalError, modalType }) => (
   <div
     className={styles.container}
     id="modal"
@@ -27,8 +27,8 @@ const Modal = ({ modalType, modalError }) => (
 );
 
 const mapStateToProps = state => ({
-  modalType: state.modalType,
   modalError: state.modalError,
+  modalType: state.modalType,
 });
 
 export default connect(

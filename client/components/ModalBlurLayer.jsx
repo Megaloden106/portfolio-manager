@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import toggleModal from '../actions/modal';
+import changeModalError from '../actions/error';
 import styles from '../styles/ModalBlurLayer';
-import { handleCloseModal } from '../actions/handleModal';
 
 const ModalBlurLayer = ({ handleBlurLayerClick }) => (
   <div
@@ -12,7 +13,10 @@ const ModalBlurLayer = ({ handleBlurLayerClick }) => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  handleBlurLayerClick: () => dispatch(handleCloseModal()),
+  handleBlurLayerClick: () => {
+    dispatch(toggleModal(null));
+    dispatch(changeModalError(null));
+  },
 });
 
 export default connect(
