@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Loading from './Loading';
-import LoginForm from './LoginForm';
+import Form from './Form';
 import LoginRegister from './LoginRegister';
 import ModalBanner from './ModalBanner';
 import ModalError from './ModalError';
-import SignupForm from './SignupForm';
 import styles from '../styles/Modal';
+import loginFormStyles from '../styles/LoginFormModal';
+import signupFormstyles from '../styles/SignupForm';
 
 const Modal = ({ modalError, modalType }) => (
   <div
@@ -17,11 +18,19 @@ const Modal = ({ modalError, modalType }) => (
     {modalError && <ModalError modalError={modalError} />}
     {modalType === 'Login' && (
       <div>
-        <LoginForm />
+        <Form
+          styles={loginFormStyles}
+          formType="login"
+        />
         <LoginRegister />
       </div>
     )}
-    {modalType === 'Signup' && <SignupForm />}
+    {modalType === 'Signup' && (
+      <Form
+        styles={signupFormstyles}
+        formType="signup"
+      />
+    )}
     {modalType === 'Loading' && <Loading />}
   </div>
 );

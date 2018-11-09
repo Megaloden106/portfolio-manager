@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import About from './About';
-import LoginBox from './LoginBox';
+import Form from './Form';
 import Modal from './Modal';
 import ModalBlurLayer from './ModalBlurLayer';
 import styles from '../styles/Login';
+import formStyles from '../styles/LoginFormPage';
+
 
 const Login = ({ modalType }) => (
   <div>
@@ -22,7 +24,10 @@ const Login = ({ modalType }) => (
       />
     </div>
     <div className={styles.loginContainer}>
-      <LoginBox />
+      <Form
+        styles={formStyles}
+        formType="login"
+      />
       <About />
     </div>
   </div>

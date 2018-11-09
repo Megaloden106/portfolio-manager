@@ -6,7 +6,6 @@ const currentPortfolioReducer = (state = [], action) => {
 };
 
 const portfolioListReducer = (state = [], action) => {
-  console.log(action)
   if (action.type === 'CHANGE_PORTFOLIO_LIST') {
     return action.list;
   }
