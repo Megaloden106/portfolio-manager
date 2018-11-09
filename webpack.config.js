@@ -12,6 +12,7 @@ module.exports = {
     path: publicDIR,
   },
   resolve: {
+    mainFiles: ['index'],
     extensions: ['.js', '.jsx', '.css'],
   },
   module: {

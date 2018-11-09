@@ -53,7 +53,7 @@ class ModalForm extends React.Component {
       username, password, firstName, lastName, email,
     } = this.state;
     let forms = ['Username', 'Password'];
-    if (formType === 'signup') {
+    if (formType === 'Signup') {
       forms = forms.concat(['First Name', 'Last Name', 'Email']);
     }
     const value = {
@@ -78,17 +78,17 @@ class ModalForm extends React.Component {
             onChange={this.handleChange}
             placeholder={form}
             minLength={
-              form.match(/P|U/) && formType === 'signup' ? '5' : null
+              form.match(/P|U/) && formType === 'Signup' ? '5' : null
             }
             maxLength={
-              form.match(/U/) && formType === 'signup' ? '25' : null
+              form.match(/U/) && formType === 'Signup' ? '25' : null
             }
             required
           />
         ))}
         <input
           type="submit"
-          value={formType === 'login' ? 'Log in' : 'Sign up'}
+          value={formType === 'Login' ? 'Log in' : 'Sign up'}
           className={styles.submit}
         />
       </form>
