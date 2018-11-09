@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { handleAuthentication, handleRegister } from '../actions/account';
 
-class Form extends React.Component {
+class ModalForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,7 +53,9 @@ class Form extends React.Component {
       username, password, firstName, lastName, email,
     } = this.state;
     let forms = ['Username', 'Password'];
-    if (formType === 'signup') { forms = forms.concat(['First Name', 'Last Name', 'Email']); }
+    if (formType === 'signup') {
+      forms = forms.concat(['First Name', 'Last Name', 'Email']);
+    }
     const value = {
       Username: username,
       Password: password,
@@ -76,14 +78,10 @@ class Form extends React.Component {
             onChange={this.handleChange}
             placeholder={form}
             minLength={
-              (form === 'Password' || form === 'Username') && formType === 'signup'
-                ? '5'
-                : null
+              form.match(/P|U/) && formType === 'signup' ? '5' : null
             }
             maxLength={
-              (form === 'Password' || form === 'Username') && formType === 'signup'
-                ? '25'
-                : null
+              form.match(/U/) && formType === 'signup' ? '25' : null
             }
             required
           />
@@ -106,4 +104,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps,
-)(Form);
+)(ModalForm);

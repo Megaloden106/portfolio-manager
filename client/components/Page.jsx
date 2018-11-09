@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Login from './Login';
 import Nav from './Nav';
 
-const Home = ({ user }) => (
+const Page = ({ user }) => (
   <div>
     <Nav />
     {!user && <Login />}
@@ -16,4 +16,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-)(Home);
+)(Page);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import changeModal from '../actions/modal';
 import styles from '../styles/LoginRegister';
 
-const LoginRegister = ({ handleSingupClick }) => (
+const ModalRegister = ({ handleSingupClick }) => (
   <div className={styles.container}>
     {'Don\'t have an account?'}
     <em> Register Now!</em>
@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps,
-)(LoginRegister);
+)(ModalRegister);
