@@ -49,8 +49,18 @@ class Form extends React.Component {
 
   render() {
     const { formType, styles } = this.props;
+    const {
+      username, password, firstName, lastName, email,
+    } = this.state;
     let forms = ['Username', 'Password'];
     if (formType === 'signup') { forms = forms.concat(['First Name', 'Last Name', 'Email']); }
+    const value = {
+      Username: username,
+      Password: password,
+      'First Name': firstName,
+      'Last Name': lastName,
+      Email: email,
+    };
     return (
       <form
         className={styles.container}
@@ -61,6 +71,7 @@ class Form extends React.Component {
             key={form}
             type={form === 'Password' || form === 'Email' ? form : 'text'}
             id={form}
+            value={value[form]}
             className={form.includes('Name') ? styles.name : styles.text}
             onChange={this.handleChange}
             placeholder={form}
@@ -74,12 +85,12 @@ class Form extends React.Component {
                 ? '25'
                 : null
             }
-            require={(formType === 'signup').toString()}
+            required
           />
         ))}
         <input
           type="submit"
-          value="Log in"
+          value={formType === 'login' ? 'Log in' : 'Sign up'}
           className={styles.submit}
         />
       </form>

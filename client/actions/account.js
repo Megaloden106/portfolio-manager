@@ -28,7 +28,7 @@ const handleRegister = creds => (dispatch) => {
       dispatch(handleAuthentication(creds));
     }).catch(({ response }) => {
       dispatch(changeModalError(response.data));
-      dispatch(changeModal('Signin'));
+      dispatch(changeModal('Signup'));
     });
 };
 
