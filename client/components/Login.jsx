@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import About from './About';
-import Modal from './Modal';
 import BlurLayer from './BlurLayer';
+import Modal from './Modal';
 import UserForm from './UserForm';
 import styles from '../styles/Login';
 import formStyles from '../styles/LoginFormPage';

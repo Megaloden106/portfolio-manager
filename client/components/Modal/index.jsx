@@ -8,10 +8,11 @@ import styles from '../../styles/Modal';
 const Modal = ({ modalType }) => (
   <div className={styles.container}>
     <Header />
-    {(modalType === 'Login' || modalType === 'Signup') && (
+    {modalType === 'Loading' ? (
+      <Loading />
+    ) : (
       <Form />
     )}
-    {modalType === 'Loading' && <Loading />}
   </div>
 );
 

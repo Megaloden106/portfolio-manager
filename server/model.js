@@ -10,7 +10,7 @@ const regExp = /;|'|--|\/\*|\*\/|xp_/g;
 
 const model = {
   user: {
-    get: username => queries.getUserInfo(username.replace(regExp, ''))
+    get: username => queries.getUserByUsername(username.replace(regExp, ''))
       .then(creds => queries.getPortfolios(creds.id)
         .then(portfolios => Object.assign(
           creds,

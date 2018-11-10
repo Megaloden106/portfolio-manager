@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import changeModal from '../../actions/modal';
 import UserForm from '../UserForm';
-import styles from '../../styles/Modal/Login';
+import styles from '../../styles/Modal/Form';
 import loginFormStyles from '../../styles/LoginFormModal';
 import signupFormstyles from '../../styles/SignupForm';
 

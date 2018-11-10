@@ -33,7 +33,7 @@ class ModalForm extends React.Component {
   handleSubmit(event) {
     const { formType, handleLoginClick, handleRegisterClick } = this.props;
     event.preventDefault();
-    if (formType === 'login') {
+    if (formType === 'Login') {
       handleLoginClick(this.state);
     } else {
       handleRegisterClick(this.state);

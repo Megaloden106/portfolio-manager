@@ -2,9 +2,9 @@ const Promise = require('bluebird');
 
 const initOptions = {
   promiseLib: Promise,
-  query(event) {
-    console.error('QUERY:', event.query);
-  },
+  // query(event) {
+  //   console.error('QUERY:', event.query);
+  // },
   error(error, event) {
     if (event.cn) {
       console.error('CN:', event.cn);
@@ -21,9 +21,14 @@ const db = pgp(cn);
 
 const queries = {
   getAllExchanges: () => db.any('SELECT * FROM exchanges;'),
-  getUserInfo: username => db.any(`
+  getUserByUsername: username => db.any(`
     SELECT * FROM users
     WHERE username = '${username}'
+    LIMIT 1;
+  `).then(res => res[0]),
+  getUserById: id => db.any(`
+    SELECT * FROM users
+    WHERE id = ${id}
     LIMIT 1;
   `).then(res => res[0]),
   getPortfolios: id => db.any(`
