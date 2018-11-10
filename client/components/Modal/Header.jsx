@@ -11,7 +11,7 @@ const Header = ({ modalError, modalType }) => (
     )}
     {modalError && (
       <p className={styles.errorMsg}>
-        {modalError && modalError.detail.split('=')[1].replace(/\(|\)/g, '')}
+        {modalError && modalError.detail}
       </p>
     )}
   </div>

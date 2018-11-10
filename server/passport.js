@@ -1,17 +1,16 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const queries = require('../database');
-
-const regExp = /;|'|--|\/\*|\*\/|xp_/g;
+const { sha512 } = require('./hash');
 
 passport.use(new LocalStrategy((username, password, done) => {
-  queries.getUserByUsername(username.replace(regExp, ''))
+  queries.getUserByUsername(username)
     .catch(err => done(err))
     .then((user) => {
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (!user.validPassword(password)) {
+      if (user.password !== sha512(password, user.salt)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
@@ -28,4 +27,4 @@ passport.deserializeUser((id, done) => {
     .catch(err => done(err));
 });
 
-module.export = passport;
+module.exports = passport;

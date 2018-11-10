@@ -10,21 +10,15 @@ const regExp = /;|'|--|\/\*|\*\/|xp_/g;
 
 const model = {
   user: {
-    get: username => queries.getUserByUsername(username.replace(regExp, ''))
-      .then(creds => queries.getPortfolios(creds.id)
-        .then(portfolios => Object.assign(
-          creds,
-          {
-            portfolios: portfolios.map(elem => Object.assign(
-              elem,
-              { exchange: cachedExchanges[elem.exchange_id - 1] || null },
-            )),
-          },
-        ))),
-    post: creds => queries.insertNewUser(creds)
+    register: creds => queries.insertNewUser(creds)
       .then(({ id }) => queries.insertNewPortfolio('Summary', id, null)),
-    // put: (usernameOrUserId, body) => {},
-    // delete: (usernameOrUserId) => {},
+  },
+  portfolios: {
+    get: userId => queries.getPortfoliosByUserId(userId)
+      .then(portfolios => portfolios.map(elem => Object.assign(
+        elem,
+        { exchange: cachedExchanges[elem.exchange_id - 1] || null },
+      ))),
   },
   portfolio: {
     // get: portfolioId => queries.getPortfolioById(portfolioId)

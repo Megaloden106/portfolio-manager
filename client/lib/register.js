@@ -1,16 +1,12 @@
 import axios from 'axios';
-import { formatString, genRandomString, sha512 } from './hash';
+import formatString from './util';
+import pHash from './hash';
 
-const register = (creds) => {
-  const salt = genRandomString(25);
-  const password = sha512(creds.password, salt);
-  return axios.post('/api/user', {
-    name: `${formatString(creds.firstName)} ${formatString(creds.lastName)}`,
-    email: creds.email,
-    username: formatString(creds.username),
-    password,
-    salt,
-  });
-};
+const register = creds => axios.post('/api/register', {
+  name: `${formatString(creds.firstName)} ${formatString(creds.lastName)}`,
+  email: creds.email,
+  username: formatString(creds.username),
+  password: pHash(creds.password),
+});
 
 export default register;
