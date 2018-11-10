@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import changeModalError from '../actions/error';
-import toggleModal from '../actions/modal';
+import PropTypes from 'prop-types';
+import updateModalDisplay from '../actions/modal';
 import styles from '../styles/BlurLayer';
 
 const BlurLayer = ({ modalType, handleBlurLayerClick }) => (
-  <div
+  <input
+    type="button"
     className={styles.blurContainer}
     id="blur"
     onClick={modalType !== 'Loading' ? handleBlurLayerClick : null}
@@ -17,13 +18,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleBlurLayerClick: () => {
-    dispatch(toggleModal(null));
-    dispatch(changeModalError(null));
-  },
+  handleBlurLayerClick: () => dispatch(updateModalDisplay('', '')),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(BlurLayer);
+export default connect(mapStateToProps, mapDispatchToProps)(BlurLayer);
+
+BlurLayer.propTypes = {
+  modalType: PropTypes.string.isRequired,
+  handleBlurLayerClick: PropTypes.func.isRequired,
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import About from './About';
 import BlurLayer from './BlurLayer';
 import Modal from './Modal';
@@ -37,6 +38,8 @@ const mapStateToProps = state => ({
   modalType: state.modalType,
 });
 
-export default connect(
-  mapStateToProps,
-)(Login);
+export default connect(mapStateToProps)(Login);
+
+Login.propTypes = {
+  modalType: PropTypes.string.isRequired,
+};

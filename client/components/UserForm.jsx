@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { handleAuthentication, handleRegister } from '../actions/account';
+import PropTypes from 'prop-types';
+import { handleLogin, handleRegister } from '../actions/account';
+import Input from './Input';
 
-class ModalForm extends React.Component {
+class UserForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,19 +33,19 @@ class ModalForm extends React.Component {
   }
 
   handleSubmit(event) {
-    const { formType, handleLoginClick, handleRegisterClick } = this.props;
     event.preventDefault();
+    const {
+      formType, handleLoginClick, handleRegisterClick,
+    } = this.props;
+
     if (formType === 'Login') {
       handleLoginClick(this.state);
     } else {
       handleRegisterClick(this.state);
     }
+
     this.setState({
-      email: '',
-      firstName: '',
-      lastName: '',
-      password: '',
-      username: '',
+      email: '', firstName: '', lastName: '', password: '', username: '',
     });
   }
 
@@ -52,10 +54,12 @@ class ModalForm extends React.Component {
     const {
       username, password, firstName, lastName, email,
     } = this.state;
+
     let forms = ['Username', 'Password'];
     if (formType === 'Signup') {
       forms = forms.concat(['First Name', 'Last Name', 'Email']);
     }
+
     const value = {
       Username: username,
       Password: password,
@@ -63,27 +67,20 @@ class ModalForm extends React.Component {
       'Last Name': lastName,
       Email: email,
     };
+
     return (
       <form
         className={styles.container}
         onSubmit={this.handleSubmit}
       >
         {forms.map(form => (
-          <input
+          <Input
             key={form}
-            type={form === 'Password' || form === 'Email' ? form : 'text'}
-            id={form}
-            value={value[form]}
-            className={form.includes('Name') ? styles.name : styles.text}
-            onChange={this.handleChange}
-            placeholder={form}
-            minLength={
-              form.match(/P|U/) && formType === 'Signup' ? '5' : null
-            }
-            maxLength={
-              form.match(/U/) && formType === 'Signup' ? '25' : null
-            }
-            required
+            form={form}
+            formType={formType}
+            value={value}
+            styles={styles}
+            handleChange={this.handleChange}
           />
         ))}
         <input
@@ -97,11 +94,15 @@ class ModalForm extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleLoginClick: creds => dispatch(handleAuthentication(creds)),
+  handleLoginClick: creds => dispatch(handleLogin(creds)),
   handleRegisterClick: creds => dispatch(handleRegister(creds)),
 });
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(ModalForm);
+export default connect(null, mapDispatchToProps)(UserForm);
+
+UserForm.propTypes = {
+  formType: PropTypes.string.isRequired,
+  styles: PropTypes.objectOf(PropTypes.string).isRequired,
+  handleLoginClick: PropTypes.func.isRequired,
+  handleRegisterClick: PropTypes.func.isRequired,
+};

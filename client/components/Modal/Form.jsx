@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import changeModal from '../../actions/modal';
 import UserForm from '../UserForm';
 import styles from '../../styles/Modal/Form';
 import loginFormStyles from '../../styles/LoginFormModal';
 import signupFormstyles from '../../styles/SignupForm';
 
-const Login = ({ modalType, handleSingupClick }) => (
+const Form = ({ modalType, handleSingupClick }) => (
   <div>
     <UserForm
       styles={modalType === 'Login' ? loginFormStyles : signupFormstyles}
@@ -37,4 +38,9 @@ const mapDispatchToProps = dispatch => ({
   handleSingupClick: () => dispatch(changeModal('Signup')),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
+
+Form.propTypes = {
+  modalType: PropTypes.string.isRequired,
+  handleSingupClick: PropTypes.func.isRequired,
+};

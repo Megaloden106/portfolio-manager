@@ -1,4 +1,4 @@
-const loginModalReducer = (state = null, action) => {
+const loginModalReducer = (state = '', action) => {
   if (action.type === 'CHANGE_MODAL') {
     return action.modalType;
   }

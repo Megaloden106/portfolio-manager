@@ -1,39 +1,34 @@
 import register from '../lib/register';
 import authenticate from '../lib/authenticate';
-import changeModal from './modal';
-import changeModalError from './error';
+import updateModalDisplay from './modal';
 import changeUser from './user';
 import { changePortfolioList } from './portfolio';
 
-const handleAuthentication = creds => (dispatch) => {
-  dispatch(changeModal('Loading'));
+const handleLogin = creds => (dispatch) => {
+  dispatch(updateModalDisplay('', 'Loading'));
   return authenticate(creds)
     .then(({ data }) => {
       dispatch(changeUser(data.username));
       dispatch(changePortfolioList(data.portfolios));
-      dispatch(changeModal(null));
-      dispatch(changeModalError(null));
+      dispatch(updateModalDisplay('', ''));
     }).catch(({ response }) => {
       const detail = response.data.err.message;
-      dispatch(changeModalError({ detail }));
-      dispatch(changeModal('Login'));
+      dispatch(updateModalDisplay({ detail }, 'Login'));
     });
 };
 
 const handleRegister = creds => (dispatch) => {
-  dispatch(changeModal('Loading'));
+  dispatch(updateModalDisplay('', 'Loading'));
   return register(creds)
     .then(() => {
-      dispatch(changeModal(null));
-      dispatch(changeModalError(null));
-      dispatch(handleAuthentication(creds));
+      dispatch(updateModalDisplay('', ''));
+      dispatch(handleLogin(creds));
     }).catch(({ response }) => {
       const detail = response.data.detail
         .split('=')[1]
         .replace(/\(|\)/g, '');
-      dispatch(changeModalError({ detail }));
-      dispatch(changeModal('Signup'));
+      dispatch(updateModalDisplay({ detail }, 'Signup'));
     });
 };
 
-export { handleRegister, handleAuthentication };
+export { handleRegister, handleLogin };

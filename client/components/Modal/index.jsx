@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Form from './Form';
 import Header from './Header';
 import Loading from './Loading';
@@ -22,3 +23,7 @@ const mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps)(Modal);
+
+Modal.propTypes = {
+  modalType: PropTypes.string.isRequired,
+};

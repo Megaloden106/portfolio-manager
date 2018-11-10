@@ -1,4 +1,4 @@
-const modalErrorReducer = (state = null, action) => {
+const modalErrorReducer = (state = '', action) => {
   if (action.type === 'CHANGE_MODAL_ERROR') {
     return action.modalError;
   }

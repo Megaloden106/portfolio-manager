@@ -9,9 +9,6 @@ module.exports = {
   extends: "airbnb",
   rules: {
     "no-console": ["error", { allow: ["warn", "error"] }],
-    "react/prop-types": 0,
-    "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/no-static-element-interactions": 0,
   },
   settings: {
     "import/resolver": "webpack",

@@ -1,4 +1,4 @@
-const userReducer = (state = null, action) => {
+const userReducer = (state = '', action) => {
   if (action.type === 'CHANGE_USER') {
     return action.user;
   }

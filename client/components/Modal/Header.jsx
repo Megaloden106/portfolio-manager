@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from '../../styles/Modal/Header';
 
 const Header = ({ modalError, modalType }) => (
@@ -23,3 +24,8 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Header);
+
+Header.propTypes = {
+  modalError: PropTypes.string.isRequired,
+  modalType: PropTypes.string.isRequired,
+};
