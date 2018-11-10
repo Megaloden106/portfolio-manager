@@ -12,7 +12,7 @@ const Header = ({ modalError, modalType }) => (
     )}
     {modalError && (
       <p className={styles.errorMsg}>
-        {modalError && modalError.detail}
+        {modalError}
       </p>
     )}
   </div>

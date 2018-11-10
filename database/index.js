@@ -15,6 +15,9 @@ const initOptions = {
 const pgp = require('pg-promise')(initOptions);
 
 const cn = {
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
   database: 'portfolio_manager',
 };
 const db = pgp(cn);

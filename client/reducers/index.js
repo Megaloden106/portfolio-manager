@@ -1,13 +1,12 @@
 import { combineReducers } from 'redux';
-import modalError from './error';
-import modalType from './modal';
+import { loginModalReducer, modalErrorReducer } from './modal';
 import { currentPortfolioReducer, portfolioListReducer } from './portfolio';
 import user from './user';
 
 const rootReducer = combineReducers({
   currentPortfolio: currentPortfolioReducer,
-  modalError,
-  modalType,
+  modalError: modalErrorReducer,
+  modalType: loginModalReducer,
   porfolioData: portfolioListReducer,
   user,
 });

@@ -13,7 +13,7 @@ const handleLogin = creds => (dispatch) => {
       dispatch(updateModalDisplay('', ''));
     }).catch(({ response }) => {
       const detail = response.data.err.message;
-      dispatch(updateModalDisplay({ detail }, 'Login'));
+      dispatch(updateModalDisplay(detail, 'Login'));
     });
 };
 
@@ -27,7 +27,7 @@ const handleRegister = creds => (dispatch) => {
       const detail = response.data.detail
         .split('=')[1]
         .replace(/\(|\)/g, '');
-      dispatch(updateModalDisplay({ detail }, 'Signup'));
+      dispatch(updateModalDisplay(detail, 'Signup'));
     });
 };
 

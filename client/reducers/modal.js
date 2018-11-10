@@ -5,4 +5,13 @@ const loginModalReducer = (state = '', action) => {
   return state;
 };
 
-export default loginModalReducer;
+const modalErrorReducer = (state = '', action) => {
+  console.log(action)
+  if (action.type === 'CHANGE_MODAL_ERROR') {
+    return action.modalError;
+  }
+  return state;
+};
+
+
+export { loginModalReducer, modalErrorReducer };
