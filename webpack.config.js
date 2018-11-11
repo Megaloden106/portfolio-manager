@@ -1,6 +1,7 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const clientDIR = path.join(__dirname, 'client', 'App.jsx');
 const publicDIR = path.join(__dirname, 'public');
@@ -44,5 +45,8 @@ module.exports = {
   optimization: {
     minimizer: [new UglifyJsPlugin()],
   },
-  plugins: [new CompressionPlugin()],
+  plugins: [
+    new CompressionPlugin(),
+    new Dotenv(),
+  ],
 };

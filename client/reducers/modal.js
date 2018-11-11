@@ -6,7 +6,6 @@ const loginModalReducer = (state = '', action) => {
 };
 
 const modalErrorReducer = (state = '', action) => {
-  console.log(action)
   if (action.type === 'CHANGE_MODAL_ERROR') {
     return action.modalError;
   }

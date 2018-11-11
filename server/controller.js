@@ -36,6 +36,10 @@ const controller = {
         .then(() => res.send('SUCCESS'))
         .catch(error => sendError(res, error));
     },
+    session: (req, res) => {
+      if (!req.user) { res.json({}); }
+      res.json(req.user);
+    },
   },
   portfolio: {
     get: (req, res) => model.portfolio.get(req.params.portfolio)

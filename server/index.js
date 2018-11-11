@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const compression = require('compression');
@@ -9,8 +10,9 @@ const app = express();
 const router = require('./routes.js');
 const passport = require('./passport');
 
+
 const options = {
-  secret: 'keyboard cat',
+  secret: process.env.SECRET,
   resave: true,
   saveUninitialized: true,
 };
@@ -23,11 +25,6 @@ app.use(cookieParser());
 app.use(session(options));
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use((req, res, next) => {
-  console.log(req.user);
-  next();
-});
 
 app.use('/', express.static('public'));
 

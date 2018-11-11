@@ -23,8 +23,9 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   queries.getUserById(id)
-    .then(user => done(null, user))
-    .catch(err => done(err));
+    .then(user => queries.getPortfoliosByUserId(user.id)
+      .then(portfolios => done(null, Object.assign(user, { portfolios })))
+      .catch(err => done(err)));
 });
 
 module.exports = passport;

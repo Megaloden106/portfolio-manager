@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { handleLogout } from '../actions/account';
 import About from './About';
 import BlurLayer from './BlurLayer';
 import Modal from './Modal';
 import UserForm from './UserForm';
-import styles from '../styles/Login';
+import styles from '../styles/Home';
 import formStyles from '../styles/LoginFormPage';
 
 
-const Login = ({ modalType }) => (
+const Home = ({ modalType, user, handleLogoutClick }) => (
   <div>
     {modalType && (
       <div>
@@ -25,10 +26,19 @@ const Login = ({ modalType }) => (
       />
     </div>
     <div className={styles.loginContainer}>
-      <UserForm
-        styles={formStyles}
-        formType="Login"
-      />
+      {!user ? (
+        <UserForm
+          styles={formStyles}
+          formType="Login"
+        />
+      ) : (
+        <input
+          className={formStyles.submit}
+          type="button"
+          value="Log out"
+          onClick={handleLogoutClick}
+        />
+      )}
       <About />
     </div>
   </div>
@@ -36,10 +46,17 @@ const Login = ({ modalType }) => (
 
 const mapStateToProps = state => ({
   modalType: state.modalType,
+  user: state.user,
 });
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = dispatch => ({
+  handleLogoutClick: () => dispatch(handleLogout);
+})
 
-Login.propTypes = {
+export default connect(mapStateToProps)(Home);
+
+Home.propTypes = {
   modalType: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  handleLogoutClick: PropTypes.func.isRequired,
 };

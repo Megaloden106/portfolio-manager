@@ -10,7 +10,7 @@ const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
       <ul className={styles.list}>
         <li className={styles.item}>Home</li>
       </ul>
-      {!user && (
+      {!user ? (
         <div className={styles.account}>
           <button
             type="button"
@@ -28,6 +28,8 @@ const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
             <b>Signup</b>
           </button>
         </div>
+      ) : (
+        <div className={styles.account}>{user}</div>
       )}
     </nav>
   </div>

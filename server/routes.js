@@ -1,14 +1,17 @@
 const router = require('express').Router();
 const controller = require('./controller');
 
-router.route('/login')
+router.route('/user/login')
   .post(controller.user.login);
 
-router.route('/logout')
+router.route('/user/logout')
   .post(controller.user.logout);
 
-router.route('/register')
+router.route('/user/register')
   .post(controller.user.register);
+
+router.route('/user/session')
+  .get(controller.user.session);
 
 router.route('/portfolio/:portfolio')
   .get(controller.portfolio.get)

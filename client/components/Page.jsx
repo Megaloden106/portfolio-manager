@@ -1,22 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Login from './Login';
+import { handleSessionCheck } from '../actions/account';
+import Home from './Home';
 import Nav from './Nav';
 
-const Page = ({ user }) => (
-  <div>
-    <Nav />
-    {!user && <Login />}
-  </div>
-);
+class Page extends React.Component {
+  componentDidMount() {
+    const { checkSession } = this.props;
+    checkSession();
+  }
+
+  render() {
+    const { page } = this.props;
+    return (
+      <div>
+        <Nav />
+        {page === 'Home' && <Home />}
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
-  user: state.user,
+  page: state.page,
 });
 
-export default connect(mapStateToProps)(Page);
+const mapDispatchToProps = dispatch => ({
+  checkSession: () => dispatch(handleSessionCheck()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Page);
 
 Page.propTypes = {
-  user: PropTypes.string.isRequired,
+  page: PropTypes.string.isRequired,
+  checkSession: PropTypes.func.isRequired,
 };
