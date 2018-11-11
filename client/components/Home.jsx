@@ -33,7 +33,7 @@ const Home = ({ modalType, user, handleLogoutClick }) => (
         />
       ) : (
         <input
-          className={formStyles.submit}
+          className={styles.logout}
           type="button"
           value="Log out"
           onClick={handleLogoutClick}
@@ -50,10 +50,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLogoutClick: () => dispatch(handleLogout);
-})
+  handleLogoutClick: () => dispatch(handleLogout()),
+});
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 Home.propTypes = {
   modalType: PropTypes.string.isRequired,

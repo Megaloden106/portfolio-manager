@@ -1,6 +1,6 @@
-import login from '../lib/login';
-import register from '../lib/register';
-import session from '../lib/session';
+import {
+  login, logout, register, session,
+} from '../lib/account';
 import updateModalDisplay from './modal';
 import changeUser from './user';
 import { changePortfolioList } from './portfolio';
@@ -19,15 +19,13 @@ const handleLogin = creds => (dispatch) => {
 };
 
 const handleLogout = () => (dispatch) => {
+  dispatch(updateModalDisplay('', 'Loading'));
   return logout()
-    .then(({ data }) => {
-      dispatch(changeUser(data.username));
-      dispatch(changePortfolioList(data.portfolios));
+    .then(() => {
+      dispatch(changeUser(''));
+      dispatch(changePortfolioList(''));
       dispatch(updateModalDisplay('', ''));
-    }).catch(({ response }) => {
-      const detail = response.data.err.message;
-      dispatch(updateModalDisplay(detail, 'Login'));
-    });
+    }).catch(() => console.error('Logout ERROR'));
 };
 
 const handleRegister = creds => (dispatch) => {
@@ -50,4 +48,6 @@ const handleSessionCheck = () => dispatch => session()
     dispatch(changePortfolioList(data.portfolios));
   }).catch(() => {});
 
-export { handleRegister, handleLogin, handleSessionCheck };
+export {
+  handleRegister, handleLogin, handleLogout, handleSessionCheck,
+};

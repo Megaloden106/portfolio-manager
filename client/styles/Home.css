@@ -23,3 +23,18 @@
   grid-template-areas:
     'login about'
 }
+
+.logout {
+  display: inline-block;
+  margin: auto;
+  width: 196px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+  cursor: pointer;
+}
+
+.logout:active {
+  background-color: #eee;
+}

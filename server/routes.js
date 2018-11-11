@@ -5,7 +5,7 @@ router.route('/user/login')
   .post(controller.user.login);
 
 router.route('/user/logout')
-  .post(controller.user.logout);
+  .get(controller.user.logout);
 
 router.route('/user/register')
   .post(controller.user.register);
