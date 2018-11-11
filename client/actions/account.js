@@ -46,7 +46,7 @@ const handleSessionCheck = () => dispatch => session()
   .then(({ data }) => {
     dispatch(changeUser(data.username));
     dispatch(changePortfolioList(data.portfolios));
-  }).catch(() => {});
+  }).catch(error => console.error(error));
 
 export {
   handleRegister, handleLogin, handleLogout, handleSessionCheck,

@@ -15,13 +15,13 @@ const controller = {
         if (!user) { return res.status(401).json({ err: info }); }
         return req.login(user, (err2) => {
           if (err2) {
-            return res.status(500).json({
-              err: 'Invalid password',
-            });
+            return res.status(500).json({ err: 'Invalid password' });
           }
           return model.portfolios.get(user.id)
-            .then(portfolios => res.json(Object.assign(user, { portfolios })))
-            .catch(error => sendError(res, error));
+            .then(portfolios => res.json(Object.assign(
+              user,
+              { portfolios },
+            ))).catch(error => sendError(res, error));
         });
       })(req, res, done);
     },
@@ -37,7 +37,6 @@ const controller = {
         .catch(error => sendError(res, error));
     },
     session: (req, res) => {
-      if (!req.user) { res.json({}); }
       res.json(req.user);
     },
   },
