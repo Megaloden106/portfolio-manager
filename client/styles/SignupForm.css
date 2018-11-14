@@ -3,21 +3,21 @@
   text-align: center;
 }
 
-.name {
-  outline: none;
-  border-radius: 5px;
-  border-width: 1px;
-  width: 35%;
-  height: 32px;
-  margin: 2% 0;
-  padding: 0 10px;
-}
-
 .text {
   outline: none;
   border-radius: 5px;
   border-width: 1px;
   width: 70%;
+  height: 32px;
+  margin: 2% 0;
+  padding: 0 10px;
+}
+
+.name {
+  outline: none;
+  border-radius: 5px;
+  border-width: 1px;
+  width: 35%;
   height: 32px;
   margin: 2% 0;
   padding: 0 10px;

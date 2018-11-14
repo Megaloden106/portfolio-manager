@@ -9,14 +9,14 @@
 .image-container {
   border: 1px solid black;
   margin: 0 auto;
-  width: 70%;
+  width: 1128px;
   padding: 25px 0;
 }
 
 .login-container {
   border: 1px solid black;
   margin: 0 auto;
-  width: 70%;
+  width: 1128px;
   padding: 25px 0;
   display: grid;
   grid-template-columns: 30% 60%;

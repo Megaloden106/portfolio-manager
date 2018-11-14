@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/About';
 
 const About = () => (
-  <div className={styles.container}>
+  <div className={styles.aboutContainer}>
     <p>
       &emsp;Have you been stuck managing your 401k, HSA, Roth IRA, and other porfolios?
       Originally I have used spreadsheets to manage

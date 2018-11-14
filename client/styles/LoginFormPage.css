@@ -1,3 +1,9 @@
+.container {
+  grid-area: login;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .text {
   outline: none;
   margin: 3px 0;
@@ -6,12 +12,6 @@
   width: 196px;
   height: 25px;
   padding: 0 10px;
-}
-
-.container {
-  grid-area: login;
-  margin: 0 auto;
-  text-align: center;
 }
 
 .submit {

@@ -22,7 +22,7 @@ class Page extends React.Component {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/portfolio" component={Portfolio} />
+          <Route exact path="/portfolio" component={Portfolio} />
         </Switch>
         {modalType && (
           <div>
@@ -37,6 +37,7 @@ class Page extends React.Component {
 
 const mapStateToProps = state => ({
   modalType: state.modalType,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({
