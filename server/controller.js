@@ -4,26 +4,25 @@ const passport = require('./passport');
 
 const sendError = (res, error) => {
   console.error(error.message);
-  res.status(500).send(error);
+  res.status(401).send(error);
 };
 
 const controller = {
   user: {
-    login: (req, res, done) => {
-      passport.authenticate('local', (err1, user, info) => {
-        if (err1) { return done(err1); }
+    login: (req, res, next) => {
+      passport.authenticate('local', (err, user, info) => {
+        if (err) { return next(err); }
         if (!user) { return res.status(401).json({ err: info }); }
         return req.login(user, (err2) => {
           if (err2) {
-            return res.status(500).json({ err: 'Invalid password' });
+            return res.status(401).json({ err: 'Invalid password' });
           }
           return model.portfolios.get(user.id)
-            .then(portfolios => res.json(Object.assign(
-              user,
-              { portfolios },
-            ))).catch(error => sendError(res, error));
+            .then((portfolios) => {
+              res.json(Object.assign(user, { portfolios }));
+            }).catch(error => sendError(res, error));
         });
-      })(req, res, done);
+      })(req, res, next);
     },
     logout: (req, res) => {
       req.logout();

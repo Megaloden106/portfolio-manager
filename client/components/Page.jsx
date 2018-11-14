@@ -1,9 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { handleSessionCheck } from '../actions/account';
+import BlurLayer from './BlurLayer';
 import Home from './Home';
+import Modal from './Modal';
 import Nav from './Nav';
+import Portfolio from './Portfolio';
 
 class Page extends React.Component {
   componentDidMount() {
@@ -12,27 +16,36 @@ class Page extends React.Component {
   }
 
   render() {
-    const { page } = this.props;
+    const { modalType } = this.props;
     return (
       <div>
         <Nav />
-        {page === 'Home' && <Home />}
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/portfolio" component={Portfolio} />
+        </Switch>
+        {modalType && (
+          <div>
+            <BlurLayer />
+            <Modal />
+          </div>
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  page: state.page,
+  modalType: state.modalType,
 });
 
 const mapDispatchToProps = dispatch => ({
   checkSession: () => dispatch(handleSessionCheck()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Page));
 
 Page.propTypes = {
-  page: PropTypes.string.isRequired,
+  modalType: PropTypes.string.isRequired,
   checkSession: PropTypes.func.isRequired,
 };

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const path = require('path');
 
 const app = express();
 const router = require('./routes.js');
@@ -30,7 +31,11 @@ app.use('/', express.static('public'));
 
 app.use('/api', router);
 
-app.set('port', process.env.PORT || 9999);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../public', 'index.html'));
+});
+
+app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), () => {
   console.warn(`app is listening to port ${app.get('port')}`);

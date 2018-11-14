@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import changeModal from '../../actions/modal';
+import updateModalDisplay from '../../actions/modal';
 import UserForm from '../UserForm';
 import styles from '../../styles/Modal/Form';
 import loginFormStyles from '../../styles/LoginFormModal';
@@ -35,7 +35,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleSingupClick: () => dispatch(changeModal('Signup')),
+  handleSingupClick: () => dispatch(updateModalDisplay('', 'Signup')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

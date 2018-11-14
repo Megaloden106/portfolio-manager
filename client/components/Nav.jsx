@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import updateModalDisplay from '../actions/modal';
 import styles from '../styles/Nav';
@@ -8,7 +9,14 @@ const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
   <div className={styles.navContainer}>
     <nav className={styles.navBar}>
       <ul className={styles.list}>
-        <li className={styles.item}>Home</li>
+        <li className={styles.item}>
+          <Link to="/">Home</Link>
+        </li>
+        {user && (
+          <li className={styles.item}>
+            <Link to="/portfolio">Portfolio</Link>
+          </li>
+        )}
       </ul>
       {!user ? (
         <div className={styles.account}>
@@ -45,7 +53,7 @@ const mapDispatchToProps = dispatch => ({
   handleSingupClick: () => dispatch(updateModalDisplay('', 'Signup')),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav));
 
 Nav.propTypes = {
   user: PropTypes.string.isRequired,

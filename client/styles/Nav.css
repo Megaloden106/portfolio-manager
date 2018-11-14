@@ -26,6 +26,11 @@
   padding-top: 10px;
 }
 
+a {
+  all: unset;
+  cursor: pointer;
+}
+
 .account {
   float: right;
   line-height: 52px;
