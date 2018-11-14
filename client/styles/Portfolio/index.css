@@ -2,4 +2,8 @@
   width: 1128px;
   margin: 12px auto 0 auto;
   border: 1px solid black;
+  display: grid;
+  grid-template-columns: 216px 912px;
+  grid-template-areas:
+    'sidebar content'
 }

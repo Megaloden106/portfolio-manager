@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-// import { Link, withRouter } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styles from '../../styles/Portfolio/index';
+import styles from '../../styles/Portfolio/Sidebar';
 
 const Sidebar = ({ porfolioList }) => (
   <nav className={styles.sidebarContainer}>
@@ -20,11 +19,7 @@ const Sidebar = ({ porfolioList }) => (
   </nav>
 );
 
-const mapStateToProps = state => ({
-  porfolioList: state.porfolioList,
-});
-
-export default connect(mapStateToProps)(Sidebar);
+export default Sidebar;
 
 Sidebar.propTypes = {
   porfolioList: PropTypes.arrayOf(PropTypes.shape({

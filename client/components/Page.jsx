@@ -1,12 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Route, Switch, withRouter } from 'react-router-dom';
-import { handleSessionCheck } from '../actions/account';
-import BlurLayer from './BlurLayer';
-import Home from './Home';
+import { Route, Switch } from 'react-router-dom';
+import BlurLayer from '../containers/BlurLayerContainer';
+import Home from '../containers/HomeContainer';
 import Modal from './Modal';
-import Nav from './Nav';
+import Nav from '../containers/NavContainer';
 import Portfolio from './Portfolio';
 
 class Page extends React.Component {
@@ -35,16 +33,7 @@ class Page extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  modalType: state.modalType,
-  user: state.user,
-});
-
-const mapDispatchToProps = dispatch => ({
-  checkSession: () => dispatch(handleSessionCheck()),
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Page));
+export default Page;
 
 Page.propTypes = {
   modalType: PropTypes.string.isRequired,

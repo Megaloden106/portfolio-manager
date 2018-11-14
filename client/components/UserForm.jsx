@@ -1,7 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { handleLogin, handleRegister } from '../actions/account';
 import Input from './Input';
 
 class UserForm extends React.Component {
@@ -34,9 +32,7 @@ class UserForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const {
-      formType, handleLoginClick, handleRegisterClick,
-    } = this.props;
+    const { formType, handleLoginClick, handleRegisterClick } = this.props;
 
     if (formType === 'Login') {
       handleLoginClick(this.state);
@@ -45,7 +41,11 @@ class UserForm extends React.Component {
     }
 
     this.setState({
-      email: '', firstName: '', lastName: '', password: '', username: '',
+      email: '',
+      firstName: '',
+      lastName: '',
+      password: '',
+      username: '',
     });
   }
 
@@ -93,12 +93,7 @@ class UserForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  handleLoginClick: creds => dispatch(handleLogin(creds)),
-  handleRegisterClick: creds => dispatch(handleRegister(creds)),
-});
-
-export default connect(null, mapDispatchToProps)(UserForm);
+export default UserForm;
 
 UserForm.propTypes = {
   formType: PropTypes.string.isRequired,

@@ -1,12 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { handleLogout } from '../actions/account';
 import About from './About';
-import UserForm from './UserForm';
+import UserForm from '../containers/UserFormContainer';
 import styles from '../styles/Home';
 import formStyles from '../styles/LoginFormPage';
-
 
 const Home = ({ user, handleLogoutClick }) => (
   <div>
@@ -36,15 +33,7 @@ const Home = ({ user, handleLogoutClick }) => (
   </div>
 );
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
-const mapDispatchToProps = dispatch => ({
-  handleLogoutClick: () => dispatch(handleLogout()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
 
 Home.propTypes = {
   user: PropTypes.string.isRequired,

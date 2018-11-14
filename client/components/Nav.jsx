@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import updateModalDisplay from '../actions/modal';
 import styles from '../styles/Nav';
 
 const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
@@ -43,17 +41,7 @@ const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
   </div>
 );
 
-const mapStateToProps = state => ({
-  modalType: state.modalType,
-  user: state.user,
-});
-
-const mapDispatchToProps = dispatch => ({
-  handleLoginClick: () => dispatch(updateModalDisplay('', 'Login')),
-  handleSingupClick: () => dispatch(updateModalDisplay('', 'Signup')),
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav));
+export default Nav;
 
 Nav.propTypes = {
   user: PropTypes.string.isRequired,
