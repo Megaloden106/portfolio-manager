@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Form from '../../containers/Modal/FormContainer';
-import Header from '../../containers/Modal/HeaderContainer';
+import Form from '../../containers/Modal/Form';
+import Header from '../../containers/Modal/Header';
 import Loading from './Loading';
 import styles from '../../styles/Modal';
 

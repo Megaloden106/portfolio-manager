@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import UserForm from '../../containers/UserFormContainer';
+import UserForm from '../../containers/UserForm';
 import styles from '../../styles/Modal/Form';
 import loginFormStyles from '../../styles/LoginFormModal';
 import signupFormstyles from '../../styles/SignupForm';

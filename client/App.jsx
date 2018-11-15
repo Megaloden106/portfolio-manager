@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import history from './lib/history';
 import store from './store';
-import Page from './containers/PageContainer';
+import Page from './containers/Page';
 import './App.css';
 
 ReactDOM.render(
