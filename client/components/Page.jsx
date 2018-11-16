@@ -18,11 +18,13 @@ class Page extends React.Component {
     const { modalType } = this.props;
     return (
       <div className={styles.pageContainer}>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/portfolio" component={Portfolio} />
-        </Switch>
+        <div className={modalType ? styles.blur : null}>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/portfolio" component={Portfolio} />
+          </Switch>
+        </div>
         {modalType && (
           <div>
             <BlurLayer />
