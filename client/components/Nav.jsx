@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from '../styles/Nav';
 
-const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
+const Nav = ({
+  portfolioList, user, handleLoginClick, handleSingupClick,
+}) => (
   <div className={styles.navContainer}>
     <nav className={styles.navBar}>
       <ul className={styles.list}>
@@ -12,7 +14,7 @@ const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
         </li>
         {user && (
           <li className={styles.item}>
-            <Link to="/portfolio">Portfolio</Link>
+            <Link to={`/portfolio/${portfolioList[0].id}`}>Portfolio</Link>
           </li>
         )}
       </ul>
@@ -35,7 +37,7 @@ const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
           </button>
         </div>
       ) : (
-        <div className={styles.account}>{user}</div>
+        <div className={styles.username}>{user}</div>
       )}
     </nav>
   </div>
@@ -44,6 +46,12 @@ const Nav = ({ user, handleLoginClick, handleSingupClick }) => (
 export default Nav;
 
 Nav.propTypes = {
+  portfolioList: PropTypes.arrayOf(PropTypes.shape({
+    exchange: PropTypes.string,
+    exchange_id: PropTypes.number,
+    id: PropTypes.number,
+    name: PropTypes.string,
+  })).isRequired,
   user: PropTypes.string.isRequired,
   handleLoginClick: PropTypes.func.isRequired,
   handleSingupClick: PropTypes.func.isRequired,

@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import Nav from '../components/Nav';
 import updateModalDisplay from '../actions/modal';
 
 const mapStateToProps = state => ({
-  modalType: state.modalType,
+  portfolioList: state.portfolioList,
   user: state.user,
 });
 
@@ -13,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
   handleSingupClick: () => dispatch(updateModalDisplay('', 'Signup')),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav));
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

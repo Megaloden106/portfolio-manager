@@ -6,7 +6,7 @@ queries.getAllExchanges()
   .then(data => data.forEach(({ company }) => cachedExchanges.push(company)))
   .catch(error => console.error(error));
 
-const regExp = /;|'|--|\/\*|\*\/|xp_/g;
+// const regExp = /;|'|--|\/\*|\*\/|xp_/g;
 
 const model = {
   user: {

@@ -28,12 +28,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', express.static('public'));
+app.use('/portfolio/:id', express.static('public'));
 
 app.use('/api', router);
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../public', 'index.html'));
-});
 
 app.set('port', process.env.PORT || 3000);
 

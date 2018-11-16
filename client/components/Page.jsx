@@ -6,6 +6,7 @@ import Home from '../containers/Home';
 import Modal from '../containers/Modal';
 import Nav from '../containers/Nav';
 import Portfolio from './Portfolio';
+import styles from '../styles/Page';
 
 class Page extends React.Component {
   componentDidMount() {
@@ -16,11 +17,11 @@ class Page extends React.Component {
   render() {
     const { modalType } = this.props;
     return (
-      <div>
+      <div className={styles.pageContainer}>
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/portfolio" component={Portfolio} />
+          <Route path="/portfolio" component={Portfolio} />
         </Switch>
         {modalType && (
           <div>

@@ -12,4 +12,5 @@ const portfolioListReducer = (state = [], action) => {
   return state;
 };
 
+
 export { portfolioListReducer, currentPortfolioReducer };

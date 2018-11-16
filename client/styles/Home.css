@@ -2,19 +2,22 @@
   display: block;
   margin: 0 auto;
   height: 70%;
-  width: 70%;
+  width: 90%;
   border-radius: 10%;
 }
 
 .image-container {
-  border: 1px solid black;
   margin: 0 auto;
   width: 1128px;
   padding: 25px 0;
 }
 
 .login-container {
-  border: 1px solid black;
+  position: relative;
+  bottom: 1px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  background-color: white;
   margin: 0 auto;
   width: 1128px;
   padding: 25px 0;

@@ -3,7 +3,11 @@ import styles from '../../styles/Portfolio/Content';
 
 const Content = () => (
   <div className={styles.contentContainer}>
-    Hello World
+    <div className={styles.noData}>
+      <h1 className={styles.text}>
+        Please Add Portfolio Data
+      </h1>
+    </div>
   </div>
 );
 

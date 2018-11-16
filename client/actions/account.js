@@ -7,8 +7,13 @@ import changeUser from './user';
 import { changePortfolioList } from './portfolio';
 
 const handleData = data => (dispatch) => {
-  dispatch(changeUser(data.username || ''));
-  dispatch(changePortfolioList(data.portfolios || []));
+  if (data.username) {
+    dispatch(changePortfolioList(data.portfolios));
+    dispatch(changeUser(data.username));
+  } else {
+    dispatch(changeUser(''));
+    dispatch(changePortfolioList([]));
+  }
   dispatch(updateModalDisplay('', ''));
 };
 
@@ -17,7 +22,7 @@ const handleLogin = creds => (dispatch) => {
   return login(creds)
     .then(({ data }) => {
       dispatch(handleData(data));
-      history.push('/portfolio');
+      history.push(`/portfolio/${data.portfolios[0].id}`);
     }).catch(({ response }) => {
       const detail = response.data.err.message;
       dispatch(updateModalDisplay(detail, 'Login'));
@@ -44,8 +49,13 @@ const handleRegister = creds => (dispatch) => {
 };
 
 const handleSessionCheck = () => dispatch => session()
-  .then(({ data }) => dispatch(handleData(data)))
-  .catch(error => console.error(error));
+  .then(({ data }) => {
+    if (!data.username) {
+      history.push('/');
+    } else {
+      dispatch(handleData(data));
+    }
+  }).catch(error => console.error(error));
 
 export {
   handleRegister, handleLogin, handleLogout, handleSessionCheck,

@@ -1,20 +1,21 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from '../../styles/Portfolio/Sidebar';
 
-const Sidebar = ({ porfolioList }) => (
+const Sidebar = ({ portfolioList }) => (
   <nav className={styles.sidebarContainer}>
     <div className={styles.section}>Portfolios</div>
     <ul className={styles.list}>
-      {porfolioList.map(portfolio => (
+      {portfolioList.map(portfolio => (
         <li
           key={portfolio.id}
           className={styles.item}
         >
-          {portfolio.name}
+          <Link to={`/portfolio/${portfolio.id}`}>{portfolio.name}</Link>
         </li>
       ))}
+      <li className={styles.add}>Add Portfolio</li>
     </ul>
   </nav>
 );
@@ -22,7 +23,7 @@ const Sidebar = ({ porfolioList }) => (
 export default Sidebar;
 
 Sidebar.propTypes = {
-  porfolioList: PropTypes.arrayOf(PropTypes.shape({
+  portfolioList: PropTypes.arrayOf(PropTypes.shape({
     exchange: PropTypes.string,
     exchange_id: PropTypes.number,
     id: PropTypes.number,

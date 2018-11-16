@@ -2,5 +2,20 @@
   border: 1px solid black;
   border-radius: 5px;
   margin-left: 25px;
-  grid-area: content;
+  width: 912px;
+}
+
+.no-data {
+  border: 5px dashed #ccc;
+  color: #ccc;
+  margin: 25px;
+  height: 640px;
+  text-align: center;
+  line-height: 640px;
+  padding: 0;
+}
+
+.text {
+  padding: 0;
+  margin: 0;
 }

@@ -1,11 +1,10 @@
 .nav-container {
-  border: 1px solid black;
+  background-color: #445671;
   width: 100%;
 }
 
 .nav-bar {
-  border: 1px solid black;
-  height: 52px;
+  height: 50px;
   width: 1128px;
   margin: 0 auto;
 }
@@ -18,12 +17,21 @@
 }
 
 .item {
+  color: #bdd8e3;
   display: inline-block;
-  height: 42px;
+  height: 48px;
   width: 100px;
   font-size: 24px;
   text-align: center;
-  padding-top: 10px;
+  line-height: 50px;
+}
+.item:hover {
+  color: white;
+  border-bottom: 2px solid white;
+}
+.item:active {
+  font-size: 20px;
+  border-bottom: 2px solid white;
 }
 
 a {
@@ -31,19 +39,33 @@ a {
   cursor: pointer;
 }
 
-.account {
+.account,
+.username {
+  color: #bdd8e3;
   float: right;
-  line-height: 52px;
+  line-height: 50px;
   font-size: 16px;
   margin-right: 10px;
 }
 
-.account button {
-  font-size: 16px;
-  cursor: pointer;
-  height: 100%;
+.username {
+  font-size: 24px
 }
 
+.account button {
+  background-color: inherit;
+  color: #bdd8e3;
+  font-size: 16px;
+  cursor: pointer;
+  height: 48px;
+  width: 60px;
+  text-align: center;
+}
+.account button:hover {
+  color: white;
+  border-bottom: 2px solid white;
+}
 .account button:active {
-  background-color: #eee;
+  font-size: 14px;
+  border-bottom: 2px solid white;
 }

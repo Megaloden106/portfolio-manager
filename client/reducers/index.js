@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
   currentPortfolio: currentPortfolioReducer,
   modalError: modalErrorReducer,
   modalType: loginModalReducer,
-  porfolioList: portfolioListReducer,
+  portfolioList: portfolioListReducer,
   user,
 });
 

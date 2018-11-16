@@ -18,4 +18,9 @@ const register = creds => axios.post('/api/user/register', {
 
 const session = () => axios.get('/api/user/session');
 
-export { login, logout, register, session };
+export {
+  login,
+  logout,
+  register,
+  session,
+};
