@@ -2,13 +2,12 @@
   display: block;
   margin: 0 auto;
   height: 70%;
-  width: 90%;
   border-radius: 10%;
 }
 
 .image-container {
   margin: 0 auto;
-  width: 1128px;
+  width: 912px;
   padding: 25px 0;
 }
 
@@ -19,10 +18,11 @@
   border-radius: 5px;
   background-color: white;
   margin: 0 auto;
-  width: 1128px;
-  padding: 25px 0;
+  width: 912px;
+  padding-top: 25px;
+  padding-bottom: 20px;
   display: grid;
-  grid-template-columns: 30% 60%;
+  grid-template-columns: 30% 64%;
   grid-template-areas:
     'login about'
 }
@@ -33,7 +33,7 @@
   width: 196px;
   height: 25px;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid #d9d9d9;
   outline: none;
   cursor: pointer;
 }
