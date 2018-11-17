@@ -4,15 +4,21 @@
   border-radius: 5px;
   width: 70%;
   height: 32px;
+  background-color: #547092;
+  color: white;
+  font-weight: bold;
   font-size: 16px;
   cursor: pointer;
 }
-
+.button:hover {
+  background-color: #47607e;
+}
 .button:active {
-  background-color: #eee;
+  background-color: #3e546e;
 }
 
 .register-container {
+  color: #1a1a1a;
   text-align: center;
-  margin: 5%;
+  margin: 24px;
 }
