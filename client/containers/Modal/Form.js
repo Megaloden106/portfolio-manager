@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleSingupClick: () => dispatch(updateModalDisplay('', 'Signup')),
+  handleLoginClick: () => dispatch(updateModalDisplay('', 'Login')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

@@ -85,7 +85,7 @@ class UserForm extends React.Component {
         ))}
         <input
           type="submit"
-          value={formType === 'Login' ? 'Log in' : 'Sign up'}
+          value={formType === 'Login' ? 'Log in' : 'Join Now'}
           className={styles.submit}
         />
       </form>
