@@ -26,6 +26,13 @@
   font-size: 14px;
   margin-bottom: 12px;
 }
+.item:hover {
+  color: #0173b1;
+  text-decoration: underline;
+}
+.item:active {
+  color: #015481;
+}
 
 .add {
   color: #666;

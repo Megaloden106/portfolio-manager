@@ -50,6 +50,13 @@ CREATE TABLE portfolio_data (
 
 CREATE INDEX portfolio_data_ids ON portfolio_data (portfolio_id);
 
+CREATE TABLE requests (
+  id SERIAL,
+  type VARCHAR(30) NOT NULL
+  detail TEXT NOT NULL
+  PRIMARY KEY (id)
+)
+
 INSERT INTO exchanges (company)
 VALUES ('Vanguard');
 INSERT INTO exchanges (company)

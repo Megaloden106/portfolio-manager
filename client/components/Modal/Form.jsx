@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import UserForm from '../../containers/UserForm';
 import styles from '../../styles/Modal/Form';
-import loginFormStyles from '../../styles/LoginFormModal';
-import signupFormstyles from '../../styles/SignupForm';
 
 const Form = ({ modalType, handleSingupClick, handleLoginClick }) => (
   <div>
     <UserForm
-      styles={modalType === 'Login' ? loginFormStyles : signupFormstyles}
+      styles={styles}
       formType={modalType}
     />
     {modalType === 'Login' && (

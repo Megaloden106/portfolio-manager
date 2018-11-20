@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import About from './About';
 import UserForm from '../containers/UserForm';
 import styles from '../styles/Home';
-import formStyles from '../styles/LoginFormPage';
+import formStyles from '../styles/Form';
 
 const Home = ({ user, handleLogoutClick }) => (
   <div>
