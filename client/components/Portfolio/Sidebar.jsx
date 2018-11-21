@@ -5,7 +5,18 @@ import styles from '../../styles/Portfolio/Sidebar';
 
 const Sidebar = ({ portfolioList }) => (
   <nav className={styles.sidebarContainer}>
-    <div className={styles.section}>Portfolios</div>
+    <div className={styles.section}>
+      Portfolios
+      <div className={styles.edit}>
+        <Link to="/portfolio/edit">
+          <img
+            className={styles.icon}
+            src="https://s3-us-west-1.amazonaws.com/portfolio-manager-project/edit.png"
+            alt="Edit"
+          />
+        </Link>
+      </div>
+    </div>
     <ul className={styles.list}>
       {portfolioList.map(portfolio => (
         <li
@@ -15,7 +26,6 @@ const Sidebar = ({ portfolioList }) => (
           <Link to={`/portfolio/${portfolio.id}`}>{portfolio.name}</Link>
         </li>
       ))}
-      <li className={styles.add}>Add Portfolio</li>
     </ul>
   </nav>
 );
