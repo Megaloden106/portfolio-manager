@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Content from './Content';
-import Edit from './Edit';
+import Edit from '../../containers/Portfolio/Edit';
 import Sidebar from '../../containers/Portfolio/Sidebar';
 import styles from '../../styles/Portfolio';
 

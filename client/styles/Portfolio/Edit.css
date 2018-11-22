@@ -1,0 +1,32 @@
+.register-container {
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  margin-left: 24px;
+  width: 644px;
+  padding: 40px;
+}
+
+.header {
+  margin: 0;
+  font-weight: 500;
+  color: #333;
+}
+
+.add-button {
+  float: right;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  width: 150px;
+  height: 40px;
+  outline: none;
+  color: #666;
+  cursor: pointer;
+}
+.add-button:hover {
+  background-color: #547092;
+  color: white;
+}
+.add-button:active {
+  background-color: #47607e;
+}

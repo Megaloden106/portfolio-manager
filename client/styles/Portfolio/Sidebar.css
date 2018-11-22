@@ -33,6 +33,11 @@
   height: 16px;
   color: #666;
 }
+.icon:active {
+  width: 14px;
+  height: 14px;
+  padding: 1px;
+}
 
 .item {
   color: #1a1a1a;
