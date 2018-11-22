@@ -5,48 +5,33 @@ import Input from './Input';
 class UserForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.default = {
       email: '',
       firstName: '',
       lastName: '',
       password: '',
       username: '',
     };
+    this.state = this.default;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    if (event.target.id === 'Username') {
-      this.setState({ username: event.target.value });
-    } else if (event.target.id === 'Password') {
-      this.setState({ password: event.target.value });
-    } else if (event.target.id === 'First Name') {
-      this.setState({ firstName: event.target.value });
-    } else if (event.target.id === 'Last Name') {
-      this.setState({ lastName: event.target.value });
-    } else {
-      this.setState({ email: event.target.value });
-    }
+    let target = event.target.id[0].toLowerCase();
+    target += event.target.id.slice(1);
+    this.setState({ [target.replace(' ', '')]: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const { formType, handleLoginClick, handleRegisterClick } = this.props;
-
     if (formType === 'Login') {
       handleLoginClick(this.state);
     } else {
       handleRegisterClick(this.state);
     }
-
-    this.setState({
-      email: '',
-      firstName: '',
-      lastName: '',
-      password: '',
-      username: '',
-    });
+    this.setState(this.default);
   }
 
   render() {

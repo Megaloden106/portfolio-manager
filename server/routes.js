@@ -13,12 +13,15 @@ router.route('/user/register')
 router.route('/user/session')
   .get(controller.user.session);
 
-router.route('/portfolio/:portfolio')
-  .get(controller.portfolio.get)
-  .put(controller.portfolio.put)
-  .delete(controller.portfolio.delete);
+router.route('/exchanges')
+  .get(controller.exchanges.get);
 
-router.route('/portfolio')
-  .post(controller.portfolio.post);
+// router.route('/portfolio/:portfolio')
+//   .get(controller.portfolio.get)
+//   .put(controller.portfolio.put)
+//   .delete(controller.portfolio.delete);
+
+// router.route('/portfolio')
+//   .post(controller.portfolio.post);
 
 module.exports = router;

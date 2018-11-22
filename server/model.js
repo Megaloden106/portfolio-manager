@@ -1,14 +1,14 @@
 const queries = require('../database');
 
-const cachedExchanges = [];
-
-queries.getAllExchanges()
-  .then(data => data.forEach(({ company }) => cachedExchanges.push(company)))
-  .catch(error => console.error(error));
+let cachedExchanges = [];
 
 // const regExp = /;|'|--|\/\*|\*\/|xp_/g;
 
 const model = {
+  exchanges: {
+    get: () => queries.getAllExchanges()
+      .then(data => data.map(({ company }) => company)),
+  },
   portfolios: {
     get: userId => queries.getPortfoliosByUserId(userId)
       .then(portfolios => portfolios.map(elem => Object.assign(
@@ -40,5 +40,9 @@ const model = {
       }),
   },
 };
+
+model.exchanges.get()
+  .then((data) => { cachedExchanges = data; })
+  .catch(error => console.error(error));
 
 module.exports = model;

@@ -9,6 +9,13 @@ module.exports = {
   extends: "airbnb",
   rules: {
     "no-console": ["error", { allow: ["warn", "error"] }],
+    "jsx-a11y/label-has-for": [ 2, {
+      "components": [ "Label" ],
+      "required": {
+        "some": [ "nesting", "id" ]
+      },
+      "allowChildren": false,
+    }]
   },
   settings: {
     "import/resolver": "webpack",

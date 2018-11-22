@@ -9,13 +9,13 @@ const Nav = ({
   <div className={styles.navContainer}>
     <nav className={styles.navBar}>
       <ul className={styles.list}>
-        <li className={styles.item}>
-          <Link to="/">Home</Link>
-        </li>
+        <Link to="/">
+          <li className={styles.item}>Home</li>
+        </Link>
         {user && (
-          <li className={styles.item}>
-            <Link to={`/portfolio/${portfolioList[0].id}`}>Portfolio</Link>
-          </li>
+          <Link to={`/portfolio/${portfolioList[0].id}`}>
+            <li className={styles.item}>Portfolio</li>
+          </Link>
         )}
       </ul>
       {!user ? (
