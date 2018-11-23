@@ -27,6 +27,8 @@ CREATE TABLE portfolios (
   id SERIAL,
   name VARCHAR(30) NOT NULL,
   type VARCHAR(10) NOT NULL,
+  category VARCHAR(10) NOT NULL,
+  balance MONEY NOT NULL,
   user_id INT NOT NULL,
   exchange_id INT,
   PRIMARY KEY (id),
@@ -58,16 +60,19 @@ CREATE TABLE requests (
   PRIMARY KEY (id)
 )
 
-INSERT INTO exchanges (company)
-VALUES ('Vanguard');
-INSERT INTO exchanges (company)
-VALUES ('Robinhood');
-INSERT INTO exchanges (company)
-VALUES ('E*Trade');
-INSERT INTO exchanges (company)
-VALUES ('T. Rowe Price');
-INSERT INTO exchanges (company)
-VALUES ('Health Equity');
+INSERT INTO exchanges (company) VALUES ('Vanguard');
+INSERT INTO exchanges (company) VALUES ('Robinhood');
+INSERT INTO exchanges (company) VALUES ('E*Trade');
+INSERT INTO exchanges (company) VALUES ('Charles Schwab');
+INSERT INTO exchanges (company) VALUES ('TD Ameritrade');
+INSERT INTO exchanges (company) VALUES ('T. Rowe Price');
+INSERT INTO exchanges (company) VALUES ('Interatice Broker');
+INSERT INTO exchanges (company) VALUES ('Trade Station');
+INSERT INTO exchanges (company) VALUES ('eOption');
+INSERT INTO exchanges (company) VALUES ('Chase');
+INSERT INTO exchanges (company) VALUES ('Wells Fargo');
+INSERT INTO exchanges (company) VALUES ('Ally');
+INSERT INTO exchanges (company) VALUES ('Health Equity');
 
 -- INSERT INTO users (username)
 -- VALUES ('eddielo');

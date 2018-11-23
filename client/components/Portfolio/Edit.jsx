@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddCard from './AddCard';
+import AddCard from '../../containers/Portfolio/AddCard';
 import styles from '../../styles/Portfolio/Edit';
 
 const Edit = ({ addCard, handleAddPortfolioClick }) => (

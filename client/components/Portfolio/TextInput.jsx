@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const TextInput = ({
   id, styles, value, handleChange,
 }) => (
-  <label htmlFor={id}>
+  <label htmlFor={id} className={styles.name}>
     {`${id}:`}
     <br />
     <input
@@ -13,8 +13,8 @@ const TextInput = ({
       value={value}
       className={styles.text}
       onChange={handleChange}
+      required
     />
-    <br />
   </label>
 );
 

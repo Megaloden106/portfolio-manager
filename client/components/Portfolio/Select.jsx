@@ -4,25 +4,30 @@ import PropTypes from 'prop-types';
 const Select = ({
   id, options, styles, value, handleChange,
 }) => (
-  <label htmlFor={id}>
-    {`${id}:`}
+  <label htmlFor={id} className={styles[id.toLowerCase()]}>
+    {`${id}`}
+    {id === 'Category' ? ' (Depends on Type):' : ':'}
     <br />
-    <select
-      id={id}
-      className={styles.select}
-      onChange={handleChange}
-      value={value}
-    >
-      {options.map(option => (
-        <option
-          value={option}
-          key={option}
-        >
-          {option}
-        </option>
-      ))}
-    </select>
-    <br />
+    <div className={styles.background}>
+      <select
+        id={id}
+        className={styles.select}
+        onChange={handleChange}
+        value={value.includes('Select') ? '' : value}
+        required
+      >
+        {options.map(option => (
+          <option
+            disabled={option.includes('Select') ? 'disabled' : null}
+            value={option.includes('Select') ? '' : option}
+            key={option}
+          >
+            {option}
+          </option>
+        ))}
+      </select>
+      <h1 className={styles.arrowhead}>&#8964;</h1>
+    </div>
   </label>
 );
 
