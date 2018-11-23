@@ -3,7 +3,8 @@ import updateAddCard from '../../actions/card';
 import AddCard from '../../components/Portfolio/AddCard';
 
 const mapDispatchToProps = dispatch => ({
-  handleAddPortfolioClick: () => dispatch(updateAddCard(false)),
+  handleAddClick: () => dispatch(updateAddCard(false)),
+  handleCancelClick: () => dispatch(updateAddCard(false)),
 });
 
 export default connect(null, mapDispatchToProps)(AddCard);

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from '../../styles/Portfolio/Sidebar';
 
-const Sidebar = ({ portfolioList }) => (
+const Sidebar = ({ portfolioList, handleEditClick }) => (
   <nav className={styles.sidebarContainer}>
     <div className={styles.section}>
       Portfolios
       <div className={styles.edit}>
-        <Link to="/portfolio/edit">
+        <Link to="/portfolio/edit" onClick={handleEditClick}>
           <img
             className={styles.icon}
             src="https://s3-us-west-1.amazonaws.com/portfolio-manager-project/edit.png"
@@ -39,4 +39,5 @@ Sidebar.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   })).isRequired,
+  handleEditClick: PropTypes.func.isRequired,
 };

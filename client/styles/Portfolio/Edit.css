@@ -30,3 +30,18 @@
 .add-button:active {
   background-color: #47607e;
 }
+
+.no-data {
+  border: 5px dashed #ccc;
+  border-radius: 5px;
+  color: #ccc;
+  margin: 25px;
+  text-align: center;
+  line-height: 340px;
+  padding: 0;
+}
+
+.text {
+  padding: 0;
+  margin: 0;
+}

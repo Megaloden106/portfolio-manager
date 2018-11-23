@@ -4,6 +4,7 @@ import Edit from '../../components/Portfolio/Edit';
 
 const mapStateToProps = state => ({
   addCard: state.addCard,
+  portfolioList: state.portfolioList,
 });
 
 const mapDispatchToProps = dispatch => ({

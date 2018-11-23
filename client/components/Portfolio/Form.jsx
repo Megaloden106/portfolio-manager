@@ -32,15 +32,15 @@ class Form extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { handleAddPortfolioClick } = this.props;
-    handleAddPortfolioClick();
+    const { handleAddClick } = this.props;
+    handleAddClick();
   }
 
   render() {
     const {
       name, exchange, exchanges, type, category,
     } = this.state;
-    const { handleAddPortfolioClick } = this.props;
+    const { handleCancelClick } = this.props;
     const types = ['Select a Type', 'Personal', 'Retirement', 'Education', 'Health'];
     const categories = ['Select a Category'];
     if (type === 'Personal') {
@@ -87,7 +87,7 @@ class Form extends React.Component {
             type="button"
             value="Cancel"
             className={styles.cancelButton}
-            onClick={handleAddPortfolioClick}
+            onClick={handleCancelClick}
           />
         </div>
       </form>
@@ -98,5 +98,6 @@ class Form extends React.Component {
 export default Form;
 
 Form.propTypes = {
-  handleAddPortfolioClick: PropTypes.func.isRequired,
+  handleAddClick: PropTypes.func.isRequired,
+  handleCancelClick: PropTypes.func.isRequired,
 };
