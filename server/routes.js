@@ -21,7 +21,7 @@ router.route('/exchanges')
 //   .put(controller.portfolio.put)
 //   .delete(controller.portfolio.delete);
 
-// router.route('/portfolio')
-//   .post(controller.portfolio.post);
+router.route('/portfolio')
+  .post(controller.portfolio.post);
 
 module.exports = router;

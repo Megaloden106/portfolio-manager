@@ -14,7 +14,6 @@ const Select = ({
         className={styles.select}
         onChange={handleChange}
         value={value.includes('Select') ? '' : value}
-        required
       >
         {options.map(option => (
           <option

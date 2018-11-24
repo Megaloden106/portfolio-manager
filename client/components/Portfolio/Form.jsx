@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from './TextInput';
+import Input from './Text';
 import Select from './Select';
 import getExchanges from '../../lib/exchange';
 import styles from '../../styles/Portfolio/Form';
@@ -22,7 +22,7 @@ class Form extends React.Component {
   componentDidMount() {
     getExchanges()
       .then(({ data }) => this.setState({
-        exchanges: ['Select an Exchange'].concat(data),
+        exchanges: ['Select an Exchange'].concat(data.sort((a, b) => a.localeCompare(b))),
       })).catch(error => console.error(error));
   }
 
@@ -33,7 +33,12 @@ class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { handleAddClick } = this.props;
-    handleAddClick();
+    const {
+      name, exchange, type, category,
+    } = this.state;
+    handleAddClick({
+      name, exchange, type, category,
+    });
   }
 
   render() {
@@ -82,6 +87,11 @@ class Form extends React.Component {
             type="submit"
             value="Add"
             className={styles.addButton}
+            disabled={!name
+              || exchange.includes('Select')
+              || type.includes('Select')
+              || category.includes('Select')
+            }
           />
           <input
             type="button"

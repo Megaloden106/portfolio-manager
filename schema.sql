@@ -26,10 +26,10 @@ CREATE TABLE exchanges (
 CREATE TABLE portfolios (
   id SERIAL,
   name VARCHAR(30) NOT NULL,
-  type VARCHAR(10) NOT NULL,
-  category VARCHAR(10) NOT NULL,
-  balance MONEY NOT NULL,
   user_id INT NOT NULL,
+  balance MONEY NOT NULL,
+  type VARCHAR(10),
+  category VARCHAR(10),
   exchange_id INT,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users (id),
@@ -55,10 +55,10 @@ CREATE INDEX portfolio_data_ids ON portfolio_data (portfolio_id);
 
 CREATE TABLE requests (
   id SERIAL,
-  type VARCHAR(30) NOT NULL
-  detail TEXT NOT NULL
+  type VARCHAR(30) NOT NULL,
+  details TEXT NOT NULL,
   PRIMARY KEY (id)
-)
+);
 
 INSERT INTO exchanges (company) VALUES ('Vanguard');
 INSERT INTO exchanges (company) VALUES ('Robinhood');

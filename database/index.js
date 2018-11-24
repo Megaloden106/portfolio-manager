@@ -49,9 +49,16 @@ const queries = {
     VALUES ('${name}', '${username}', '${email}', ${false}, '${password}', '${salt}')
     RETURNING id;
   `).then(res => res[0]),
-  insertNewPortfolio: (name, userId, exchangeId) => db.any(`
-    INSERT INTO portfolios (name, user_id, exchange_id)
-    VALUES ('${name}', ${userId}, ${exchangeId});
+  insertNewPortfolio: (
+    name,
+    userId,
+    balance = 0,
+    type = null,
+    category = null,
+    exchangeId = null,
+  ) => db.any(`
+    INSERT INTO portfolios (name, user_id, balance, type, category, exchange_id)
+    VALUES ('${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId + 1});
   `),
 };
 

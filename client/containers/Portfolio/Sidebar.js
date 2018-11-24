@@ -7,7 +7,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleEditClick: () => dispatch(updateAddCard(false)),
+  handleEditClick: () => {
+    if (!window.location.pathname.includes('edit')) {
+      dispatch(updateAddCard(false));
+    }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

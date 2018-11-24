@@ -11,6 +11,7 @@
   margin: 0;
   padding: 0;
   position: relative;
+  margin-bottom: 6px;
 }
 
 .section {
@@ -41,16 +42,17 @@
 }
 
 .item a {
+  display: inline-block;
   background-color: transparent;
-  padding: 6px 135px 6px 24px;
+  padding: 6px 0 6px 24px;
+  width: 192px;
   cursor: pointer;
 }
 .item {
   color: #1a1a1a;
   position: relative;
   font-size: 14px;
-  margin-bottom: 12px;
-  padding: 6px 0;
+  margin-bottom: 6px;
 }
 .item:hover {
   color: #0173b1;

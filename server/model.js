@@ -2,12 +2,18 @@ const queries = require('../database');
 
 let cachedExchanges = [];
 
+const cacheExchanges =() => queries.getAllExchanges()
+  .catch(error => console.error(error))
+  .then(data => data.map(({ company }) => company))
+  .then((data) => { cachedExchanges = data; });
+
+cacheExchanges();
+
 // const regExp = /;|'|--|\/\*|\*\/|xp_/g;
 
 const model = {
   exchanges: {
-    get: () => queries.getAllExchanges()
-      .then(data => data.map(({ company }) => company)),
+    get: () => cachedExchanges,
   },
   portfolios: {
     get: userId => queries.getPortfoliosByUserId(userId)
@@ -26,23 +32,23 @@ const model = {
     //     returns: entry.returns,
     //     cumulativeReturns: entry.cumulative_returns,
     //   }))),
-    // post: body => queries.getPortfoliosByUsername(body.username),
-    //   .then(({ data }) => { console.log(data); }),
+    post: ({ body, user }) => queries.insertNewPortfolio(
+      body.name,
+      user.id,
+      0,
+      body.type,
+      body.category,
+      cachedExchanges.indexOf(body.exchange),
+    ),
     // put: (portfolioId, body) => {},
     // delete: (portfolioId) => {},
   },
   user: {
     register: creds => queries.insertNewUser(creds)
-      .then(({ id }) => {
-        queries.insertNewPortfolio('Summary', id, null);
-        queries.insertNewPortfolio('Personal', id, null);
-        return queries.insertNewPortfolio('Retirement', id, null);
-      }),
+      .then(({ id }) => queries.insertNewPortfolio('Summary', id)
+        .then(() => queries.insertNewPortfolio('Personal', id))
+        .then(() => queries.insertNewPortfolio('Retirement', id))),
   },
 };
-
-model.exchanges.get()
-  .then((data) => { cachedExchanges = data; })
-  .catch(error => console.error(error));
 
 module.exports = model;

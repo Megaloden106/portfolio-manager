@@ -9,15 +9,13 @@ const sendError = (res, error) => {
 
 const controller = {
   exchanges: {
-    get: (req, res) => model.exchanges.get()
-      .then(data => res.json(data))
-      .catch(error => sendError(res, error)),
+    get: (req, res) => res.json(model.exchanges.get()),
   },
   portfolio: {
     get: (req, res) => model.portfolio.get(req.params.portfolio)
       .then(data => res.json(data))
       .catch(error => sendError(res, error)),
-    post: (req, res) => model.portfolio.post(req.body)
+    post: (req, res) => model.portfolio.post(req)
       .then(() => res.send('SUCCESS'))
       .catch(error => sendError(res, error)),
     put: (req, res) => model.portfolio.put(req.params.portfolio, req.body)
