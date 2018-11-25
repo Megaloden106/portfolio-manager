@@ -2,14 +2,14 @@ const queries = require('../database');
 
 let cachedExchanges = [];
 
-const cacheExchanges =() => queries.getAllExchanges()
+const cacheExchanges = () => queries.getAllExchanges()
   .catch(error => console.error(error))
   .then(data => data.map(({ company }) => company))
   .then((data) => { cachedExchanges = data; });
 
 cacheExchanges();
 
-// const regExp = /;|'|--|\/\*|\*\/|xp_/g;
+const regExp = /;|'|--|\/\*|\*\/|xp_/g;
 
 const model = {
   exchanges: {
@@ -40,7 +40,15 @@ const model = {
       body.category,
       cachedExchanges.indexOf(body.exchange),
     ),
-    // put: (portfolioId, body) => {},
+    put: (portfolioId, { body, user }) => queries.updatePortfolio(
+      portfolioId.replace(regExp, ''),
+      body.name,
+      user.id,
+      0,
+      body.type,
+      body.category,
+      cachedExchanges.indexOf(body.exchange),
+    ),
     // delete: (portfolioId) => {},
   },
   user: {
@@ -48,6 +56,10 @@ const model = {
       .then(({ id }) => queries.insertNewPortfolio('Summary', id)
         .then(() => queries.insertNewPortfolio('Personal', id))
         .then(() => queries.insertNewPortfolio('Retirement', id))),
+    get: param => (Number.isNaN(Number(param))
+      ? queries.getUserByUsername(param)
+      : queries.getUserById(param)
+    ),
   },
 };
 

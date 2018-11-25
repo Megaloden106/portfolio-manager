@@ -22,7 +22,7 @@ class Page extends React.Component {
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/portfolio" component={Portfolio} />
+            <Route path="/portfolio/" component={Portfolio} />
           </Switch>
         </div>
         {modalType && (

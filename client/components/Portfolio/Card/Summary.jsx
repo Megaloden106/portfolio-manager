@@ -9,11 +9,18 @@ class Summary extends React.Component {
     this.state = {
       dropdown: false,
     };
-    this.handlePortfolioClick = this.handlePortfolioClick.bind(this);
+    this.handleDropdownToggle = this.handleDropdownToggle.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handlePortfolioClick() {
+  handleDropdownToggle() {
     this.setState(prevState => ({ dropdown: !prevState.dropdown }));
+  }
+
+  handleSubmit(data) {
+    const { portfolio, handleUpdate } = this.props;
+    handleUpdate(data, portfolio.id);
+    this.setState({ dropdown: false });
   }
 
   render() {
@@ -23,7 +30,7 @@ class Summary extends React.Component {
       <div className={styles.summaryContainer}>
         <div
           className={styles.dropdownButton}
-          onClick={this.handlePortfolioClick}
+          onClick={this.handleDropdownToggle}
           role="button"
           tabIndex="0"
           onKeyDown={() => {}}
@@ -41,9 +48,9 @@ class Summary extends React.Component {
         {dropdown && (
           <div className={styles.dropdownContainer}>
             <Form
-              type="edit"
-              handleAddClick={this.handlePortfolioClick}
-              handleCancelClick={this.handlePortfolioClick}
+              form="edit"
+              handleSubmit={this.handleSubmit}
+              handleCancel={this.handleDropdownToggle}
             />
           </div>
         )}
@@ -61,4 +68,5 @@ Summary.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   }).isRequired,
+  handleUpdate: PropTypes.func.isRequired,
 };

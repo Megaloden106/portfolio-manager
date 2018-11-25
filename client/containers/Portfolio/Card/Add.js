@@ -5,13 +5,13 @@ import AddCard from '../../../components/Portfolio/Card/Add';
 import { registerPortfolio } from '../../../lib/portfolio';
 
 const mapDispatchToProps = dispatch => ({
-  handleAddClick: (data) => {
+  handleSubmit: (data) => {
     dispatch(updateAddCard(false));
     registerPortfolio(data)
       .then(() => dispatch(handleSessionCheck()))
       .catch(error => console.error(error));
   },
-  handleCancelClick: () => dispatch(updateAddCard(false)),
+  handleCancel: () => dispatch(updateAddCard(false)),
 });
 
 export default connect(null, mapDispatchToProps)(AddCard);

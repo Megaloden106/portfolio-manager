@@ -60,6 +60,19 @@ const queries = {
     INSERT INTO portfolios (name, user_id, balance, type, category, exchange_id)
     VALUES ('${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId + 1});
   `),
+  updatePortfolio: (
+    portfolioId,
+    name,
+    userId,
+    balance = 0,
+    type = null,
+    category = null,
+    exchangeId = null,
+  ) => db.any(`
+    UPDATE portfolios SET (name, user_id, balance, type, category, exchange_id)
+    = ('${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId + 1})
+    WHERE id=${portfolioId};
+  `),
 };
 
 module.exports = queries;

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import Form from './Form';
 import styles from '../../../styles/Portfolio/Card/Add';
 
-const AddCard = ({ handleAddClick, handleCancelClick }) => (
+const AddCard = ({ handleSubmit, handleCancel }) => (
   <div className={styles.addContainer}>
     <h2 className={styles.header}>Add Portfolio</h2>
     <Form
-      type="add"
-      handleAddClick={handleAddClick}
-      handleCancelClick={handleCancelClick}
+      form="add"
+      handleSubmit={handleSubmit}
+      handleCancel={handleCancel}
     />
   </div>
 );
@@ -17,6 +17,6 @@ const AddCard = ({ handleAddClick, handleCancelClick }) => (
 export default AddCard;
 
 AddCard.propTypes = {
-  handleAddClick: PropTypes.func.isRequired,
-  handleCancelClick: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleCancel: PropTypes.func.isRequired,
 };

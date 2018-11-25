@@ -1,9 +1,9 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const queries = require('../database');
+const model = require('./model');
 const { sha512 } = require('./hash');
 
-passport.use(new LocalStrategy((username, password, done) => queries.getUserByUsername(username)
+passport.use(new LocalStrategy((username, password, done) => model.user.get(username)
   .catch(err => done(err))
   .then((user) => {
     if (!user) {
@@ -19,8 +19,8 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser((id, done) => queries.getUserById(id)
-  .then(user => queries.getPortfoliosByUserId(user.id)
+passport.deserializeUser((id, done) => model.user.get(id)
+  .then(user => model.portfolios.get(user.id)
     .then(portfolios => done(null, Object.assign(user, { portfolios })))
     .catch(err => done(err))));
 

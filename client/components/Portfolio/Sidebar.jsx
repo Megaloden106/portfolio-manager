@@ -8,7 +8,7 @@ const Sidebar = ({ portfolioList, handleEditClick }) => (
     <div className={styles.section}>
       Portfolios
       <div className={styles.edit}>
-        <Link to="/portfolio/edit" onClick={handleEditClick}>
+        <Link to="/portfolio/edit/" onClick={handleEditClick}>
           <img
             className={styles.icon}
             src="https://s3-us-west-1.amazonaws.com/portfolio-manager-project/edit.png"
@@ -23,7 +23,7 @@ const Sidebar = ({ portfolioList, handleEditClick }) => (
           key={portfolio.id}
           className={styles.item}
         >
-          <Link to={`/portfolio/${portfolio.id}`}>{portfolio.name}</Link>
+          <Link to={`/portfolio/${portfolio.id}/`}>{portfolio.name}</Link>
         </li>
       ))}
     </ul>

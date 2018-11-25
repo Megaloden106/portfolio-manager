@@ -3,7 +3,6 @@
 }
 
 .dropdown-button {
-  user-select: none;
   cursor: pointer;
   padding: 12px 0;
   outline: none;
@@ -17,7 +16,7 @@
 .arrowhead {
   position: absolute;
   transform: scale(2.5, 1.25);
-  top: 16px;
+  top: 19px;
   left: 9px;
   color: #999;
   font-weight: 100;

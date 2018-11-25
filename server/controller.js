@@ -12,16 +12,16 @@ const controller = {
     get: (req, res) => res.json(model.exchanges.get()),
   },
   portfolio: {
-    get: (req, res) => model.portfolio.get(req.params.portfolio)
+    get: (req, res) => model.portfolio.get(req.params.id)
       .then(data => res.json(data))
       .catch(error => sendError(res, error)),
     post: (req, res) => model.portfolio.post(req)
       .then(() => res.send('SUCCESS'))
       .catch(error => sendError(res, error)),
-    put: (req, res) => model.portfolio.put(req.params.portfolio, req.body)
+    put: (req, res) => model.portfolio.put(req.params.id, req)
       .then(() => res.send('SUCCESS'))
       .catch(error => sendError(res, error)),
-    delete: (req, res) => model.portfolio.put(req.params.portfolio)
+    delete: (req, res) => model.portfolio.put(req.params.id)
       .then(() => res.send('SUCCESS'))
       .catch(error => sendError(res, error)),
   },

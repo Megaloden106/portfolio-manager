@@ -16,10 +16,10 @@ router.route('/user/session')
 router.route('/exchanges')
   .get(controller.exchanges.get);
 
-// router.route('/portfolio/:portfolio')
-//   .get(controller.portfolio.get)
-//   .put(controller.portfolio.put)
-//   .delete(controller.portfolio.delete);
+router.route('/portfolio/:id')
+  .get(controller.portfolio.get)
+  .put(controller.portfolio.put)
+  .delete(controller.portfolio.delete);
 
 router.route('/portfolio')
   .post(controller.portfolio.post);

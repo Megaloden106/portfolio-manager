@@ -22,7 +22,7 @@ const handleLogin = creds => (dispatch) => {
   return login(creds)
     .then(({ data }) => {
       dispatch(handleData(data));
-      history.push(`/portfolio/${data.portfolios[0].id}`);
+      history.push(`/portfolio/${data.portfolios[0].id}/`);
     }).catch(({ response }) => {
       const detail = response.data.err.message;
       dispatch(updateModalDisplay(detail, 'Login'));

@@ -13,7 +13,7 @@ const Nav = ({
           <li className={styles.item}>Home</li>
         </Link>
         {user && (
-          <Link to={`/portfolio/${portfolioList[0].id}`}>
+          <Link to={`/portfolio/${portfolioList[0].id}/`}>
             <li className={styles.item}>Portfolio</li>
           </Link>
         )}

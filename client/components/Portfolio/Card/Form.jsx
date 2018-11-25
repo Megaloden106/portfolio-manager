@@ -32,11 +32,11 @@ class Form extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { handleAddClick } = this.props;
+    const { handleSubmit } = this.props;
     const {
       name, exchange, type, category,
     } = this.state;
-    handleAddClick({
+    handleSubmit({
       name, exchange, type, category,
     });
   }
@@ -45,7 +45,7 @@ class Form extends React.Component {
     const {
       name, exchange, exchanges, type, category,
     } = this.state;
-    const { handleCancelClick } = this.props;
+    const { form, handleCancel } = this.props;
     const types = ['Select a Type', 'Personal', 'Retirement', 'Education', 'Health'];
     const categories = ['Select a Category'];
     if (type === 'Personal') {
@@ -85,7 +85,7 @@ class Form extends React.Component {
         <div className={styles.button}>
           <input
             type="submit"
-            value="Add"
+            value={form === 'add' ? 'Add' : 'Save'}
             className={styles.addButton}
             disabled={!name
               || exchange.includes('Select')
@@ -97,7 +97,7 @@ class Form extends React.Component {
             type="button"
             value="Cancel"
             className={styles.cancelButton}
-            onClick={handleCancelClick}
+            onClick={handleCancel}
           />
         </div>
       </form>
@@ -108,6 +108,7 @@ class Form extends React.Component {
 export default Form;
 
 Form.propTypes = {
-  handleAddClick: PropTypes.func.isRequired,
-  handleCancelClick: PropTypes.func.isRequired,
+  form: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleCancel: PropTypes.func.isRequired,
 };
