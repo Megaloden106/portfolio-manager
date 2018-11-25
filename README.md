@@ -7,7 +7,7 @@
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
+1. [Requirements](#Requirements)
 <!-- 1. [Development](#development) -->
 1. [API Routes](#API)
 
@@ -37,14 +37,22 @@ npm install
 
 ### User
 
-- GET /api/user/:usernameOrUserId
-- POST /api/user
-- PUT /api/user/:usernameOrUserId
-- DELETE /api/user/:usernameOrUserId
+- GET /api/user/session
+- GET /api/user/logout
+- POST /api/user/login
+- POST /api/user/register
 
 ### Portfolio
 
-- GET /api/portfolio/:portfolioId
-- POST /api/portfolio/:portfolioId
-- PUT / api/portfolio/:portfolioId
-- DELETE / api/portfolio/:portfolioId
+<!-- - GET /api/portfolio/:portfolioId -->
+- POST /api/portfolio
+- PUT /api/portfolio/:portfolioId
+<!-- - DELETE / api/portfolio/:portfolioId -->
+
+### Portfolios
+
+- GET /api/portfolios/:userId
+
+### Exchanges
+
+- GET /api/exchanges
