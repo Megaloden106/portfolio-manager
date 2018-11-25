@@ -51,6 +51,7 @@ const handleRegister = creds => (dispatch) => {
 const handleSessionCheck = () => dispatch => session()
   .then(({ data }) => {
     if (!data.username) {
+      dispatch(changeUser(''));
       history.push('/');
     } else {
       dispatch(handleData(data));

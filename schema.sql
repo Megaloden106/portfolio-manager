@@ -73,6 +73,7 @@ INSERT INTO exchanges (company) VALUES ('Chase');
 INSERT INTO exchanges (company) VALUES ('Wells Fargo');
 INSERT INTO exchanges (company) VALUES ('Ally');
 INSERT INTO exchanges (company) VALUES ('Health Equity');
+INSERT INTO exchanges (company) VALUES ('Cryptocurrency');
 
 -- INSERT INTO users (username)
 -- VALUES ('eddielo');
