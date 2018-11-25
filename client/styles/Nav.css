@@ -1,4 +1,6 @@
 .nav-container {
+  position: sticky;
+  top: 0;
   background-color: #445671;
   width: 100%;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AddCard from '../../containers/Portfolio/Card/Add';
-import CompanyCard from '../../containers/Portfolio/Card/Company';
+import CompanyCard from './Card/Company';
 import styles from '../../styles/Portfolio/Edit';
 
 const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {

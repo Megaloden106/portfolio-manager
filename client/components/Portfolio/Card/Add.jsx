@@ -7,6 +7,7 @@ const AddCard = ({ handleAddClick, handleCancelClick }) => (
   <div className={styles.addContainer}>
     <h2 className={styles.header}>Add Portfolio</h2>
     <Form
+      type="add"
       handleAddClick={handleAddClick}
       handleCancelClick={handleCancelClick}
     />

@@ -1,0 +1,38 @@
+.summaryContainer {
+  position: relative;
+}
+
+.dropdown-button {
+  user-select: none;
+  cursor: pointer;
+  padding: 12px 0;
+  outline: none;
+}
+
+.arrowhead, .data {
+  font-weight: normal;
+  margin: 0;
+}
+
+.arrowhead {
+  position: absolute;
+  transform: scale(2.5, 1.25);
+  top: 16px;
+  left: 9px;
+  color: #999;
+  font-weight: 100;
+}
+
+.data {
+  padding-left: 24px;
+}
+
+.balance {
+  float: right;
+}
+
+.dropdown-Container {
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 12px;
+}

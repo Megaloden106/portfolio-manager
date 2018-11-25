@@ -1,6 +1,7 @@
 .company-container {
   width: 596px;
-  margin: 24px 0;
+  margin-top: 24px;
+  margin-bottom:36px;
   padding: 24px;
   background-color: #f8f8f8;
   box-shadow: 2px 2px 2px #e8e8e8;
@@ -14,6 +15,7 @@
   border-bottom: 1px solid #d9d9d9;
   font-weight: 500;
   color: #333;
+  margin-bottom: 12px;
 }
 
 .last-update {
