@@ -8,11 +8,12 @@ import styles from '../../../styles/Portfolio/Card/Form';
 class Form extends React.Component {
   constructor(props) {
     super(props);
+    const { prefill } = this.props;
     this.state = {
-      name: '',
-      exchange: 'Select an Exchange',
-      type: 'Select a Type',
-      category: 'Select a Category',
+      name: prefill ? prefill.name : '',
+      exchange: prefill ? prefill.exchange : 'Select an Exchange',
+      type: prefill ? prefill.type : 'Select a Type',
+      category: prefill ? prefill.category : 'Select a Category',
       exchanges: [],
     };
     this.handleChange = this.handleChange.bind(this);
@@ -109,6 +110,16 @@ export default Form;
 
 Form.propTypes = {
   form: PropTypes.string.isRequired,
+  prefill: PropTypes.shape({
+    exchange: PropTypes.string,
+    exchange_id: PropTypes.number,
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }),
   handleSubmit: PropTypes.func.isRequired,
   handleCancel: PropTypes.func.isRequired,
+};
+
+Form.defaultProps = {
+  prefill: null,
 };

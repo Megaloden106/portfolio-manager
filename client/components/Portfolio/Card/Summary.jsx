@@ -49,6 +49,7 @@ class Summary extends React.Component {
           <div className={styles.dropdownContainer}>
             <Form
               form="edit"
+              prefill={portfolio}
               handleSubmit={this.handleSubmit}
               handleCancel={this.handleDropdownToggle}
             />
