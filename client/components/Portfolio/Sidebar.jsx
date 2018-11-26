@@ -23,7 +23,9 @@ const Sidebar = ({ portfolioList, handleEditClick }) => (
           key={portfolio.id}
           className={styles.item}
         >
-          <Link to={`/portfolio/${portfolio.id}/`}>{portfolio.name}</Link>
+          <Link to={`/portfolio/${portfolio.id}/`}>
+            {portfolio.name}
+          </Link>
         </li>
       ))}
     </ul>

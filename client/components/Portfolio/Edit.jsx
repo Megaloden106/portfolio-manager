@@ -12,7 +12,7 @@ const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
     companyPortfolioList[exchange] = companyPortfolioList[exchange] || [];
     companyPortfolioList[exchange].push(portfolio);
   }
-  const companies = Object.keys(companyPortfolioList);
+  const companies = Object.keys(companyPortfolioList).sort((a, b) => a.localeCompare(b));
   return (
     <div className={styles.registerContainer}>
       <h1 className={styles.header}>

@@ -57,8 +57,8 @@ const queries = {
     category = null,
     exchangeId = null,
   ) => db.any(`
-    INSERT INTO portfolios (date_created, name, user_id, balance, type, category, exchange_id)
-    VALUES (NOW(), '${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId + 1});
+    INSERT INTO portfolios (date_created, last_updated, name, user_id, balance, type, category, exchange_id)
+    VALUES (NOW(), NOW(), '${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId !== null ? exchangeId + 1 : null});
   `),
   updatePortfolio: (
     portfolioId,

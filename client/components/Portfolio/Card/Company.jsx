@@ -1,22 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import Summary from '../../../containers/Portfolio/Card/Summary';
 import styles from '../../../styles/Portfolio/Card/Company';
 
-const CompanyCard = ({ company, portfolios }) => (
-  <div className={styles.companyContainer}>
-    <h2 className={styles.header}>
-      {company}
-      <span className={styles.lastUpdate}>Last Updated...</span>
-    </h2>
-    {portfolios.map(portfolio => (
-      <Summary
-        key={portfolio.id}
-        portfolio={portfolio}
-      />
-    ))}
-  </div>
-);
+const CompanyCard = ({ company, portfolios }) => {
+  let updated = moment();
+  portfolios.forEach(({ lastUpdated }) => {
+    const date = moment(lastUpdated);
+    if (date < updated) updated = date;
+  });
+  return (
+    <div className={styles.companyContainer}>
+      <h2 className={styles.header}>
+        {company}
+        <span className={styles.lastUpdate}>
+          Last Updated&nbsp;
+          {updated.fromNow()}
+        </span>
+      </h2>
+      {portfolios.map(portfolio => (
+        <Summary
+          key={portfolio.id}
+          portfolio={portfolio}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default CompanyCard;
 

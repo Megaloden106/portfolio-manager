@@ -9,6 +9,7 @@ const cacheExchanges = () => queries.getAllExchanges()
 
 cacheExchanges();
 
+
 const regExp = /;|'|--|\/\*|\*\/|xp_/g;
 
 const model = {
@@ -20,7 +21,17 @@ const model = {
       .then(portfolios => portfolios.map(elem => Object.assign(
         elem,
         { exchange: cachedExchanges[elem.exchange_id - 1] || null },
-      ))),
+      )))
+      .then(portfolios => portfolios.map(entry => ({
+        balance: entry.balance,
+        category: entry.category,
+        dateCreated: entry.date_created,
+        exchange: cachedExchanges[entry.exchange_id - 1] || null,
+        id: entry.id,
+        lastUpdated: entry.last_updated,
+        name: entry.name,
+        type: entry.type,
+      }))),
   },
   portfolio: {
     get: portfolioId => queries.getPortfolioDataById(portfolioId.replace(regExp, ''))
