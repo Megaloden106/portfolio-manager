@@ -4,14 +4,14 @@ import styles from '../../../styles/Portfolio/Content';
 
 class Content extends React.Component {
   componentDidMount() {
-    const { match, updatePortfolioData } = this.props;
-    updatePortfolioData(match.params.id);
+    const { match, handlePageLoad } = this.props;
+    handlePageLoad(match.params.id);
   }
 
   componentDidUpdate(prevProps) {
-    const { match, updatePortfolioData } = this.props;
+    const { match, handlePageLoad } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
-      updatePortfolioData(match.params.id);
+      handlePageLoad(match.params.id);
     }
   }
 
@@ -50,5 +50,5 @@ Content.propTypes = {
     returns: PropTypes.string.isRequired,
     cumulativeReturns: PropTypes.string.isRequired,
   })).isRequired,
-  updatePortfolioData: PropTypes.func.isRequired,
+  handlePageLoad: PropTypes.func.isRequired,
 };
