@@ -23,15 +23,15 @@ const model = {
       ))),
   },
   portfolio: {
-    // get: portfolioId => queries.getPortfolioById(portfolioId)
-    //   .then(data => data.map(entry => ({
-    //     date: entry.date,
-    //     balance: entry.balance,
-    //     deposit: entry.deposit,
-    //     withdrawal: entry.withdrawal,
-    //     returns: entry.returns,
-    //     cumulativeReturns: entry.cumulative_returns,
-    //   }))),
+    get: portfolioId => queries.getPortfolioDataById(portfolioId.replace(regExp, ''))
+      .then(data => data.map(entry => ({
+        date: entry.date,
+        balance: entry.balance,
+        deposit: entry.deposit,
+        withdrawal: entry.withdrawal,
+        returns: entry.returns,
+        cumulativeReturns: entry.cumulative_returns,
+      }))),
     post: ({ body, user }) => queries.insertNewPortfolio(
       body.name,
       user.id,

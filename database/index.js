@@ -57,8 +57,8 @@ const queries = {
     category = null,
     exchangeId = null,
   ) => db.any(`
-    INSERT INTO portfolios (name, user_id, balance, type, category, exchange_id)
-    VALUES ('${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId + 1});
+    INSERT INTO portfolios (date_created, name, user_id, balance, type, category, exchange_id)
+    VALUES (NOW(), '${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId + 1});
   `),
   updatePortfolio: (
     portfolioId,
@@ -72,6 +72,11 @@ const queries = {
     UPDATE portfolios SET (name, user_id, balance, type, category, exchange_id)
     = ('${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId + 1})
     WHERE id=${portfolioId};
+  `),
+  getPortfolioDataById: portfolioId => db.any(`
+    SELECT * FROM portfolio_data
+    WHERE portfolio_id=${portfolioId}
+    ORDER BY date DESC;
   `),
 };
 

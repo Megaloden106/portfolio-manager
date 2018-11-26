@@ -25,6 +25,7 @@ CREATE TABLE exchanges (
 
 CREATE TABLE portfolios (
   id SERIAL,
+  date_created DATE NOT NULL,
   name VARCHAR(30) NOT NULL,
   user_id INT NOT NULL,
   balance MONEY NOT NULL,
