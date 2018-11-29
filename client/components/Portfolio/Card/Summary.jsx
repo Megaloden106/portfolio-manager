@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { handleSessionCheck } from '../../../actions/auth';
-import { updatePortfolio } from '../../../lib/portfolio';
+import { updatePortfolio } from '../../../service/portfolio';
 import Form from './Form';
 import styles from '../../../styles/Portfolio/Card/Summary';
 

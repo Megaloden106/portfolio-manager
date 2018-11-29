@@ -1,6 +1,6 @@
 import { changeCurrentPortfolio, changeAddCard } from './actionCreators';
 import { handleSessionCheck } from './auth';
-import { getPortfolioData, registerPortfolio } from '../lib/portfolio';
+import { getPortfolioData, registerPortfolio } from '../service/portfolio';
 
 export const updatePortfolioData = (id, history) => dispatch => getPortfolioData(id)
   .then(({ data }) => dispatch(changeCurrentPortfolio(data)))

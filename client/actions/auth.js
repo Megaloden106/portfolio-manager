@@ -1,6 +1,6 @@
 import { changePortfolioList, changeUser } from './actionCreators';
 import updateModalDisplay from './modal';
-import * as auth from '../lib/account';
+import * as auth from '../service/account';
 
 const handleData = data => (dispatch) => {
   if (data.username) {

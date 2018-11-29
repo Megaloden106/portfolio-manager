@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Input from './Text';
 import Select from './Select';
-import getExchanges from '../../../lib/exchange';
+import { getExchanges } from '../../../service/portfolio';
 import styles from '../../../styles/Portfolio/Card/Form';
 
 class Form extends React.Component {
