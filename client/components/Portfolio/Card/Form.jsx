@@ -33,13 +33,8 @@ class Form extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { handleSubmit } = this.props;
-    const {
-      name, exchange, type, category,
-    } = this.state;
-    handleSubmit({
-      name, exchange, type, category,
-    });
+    const { handleSubmit, history } = this.props;
+    handleSubmit(this.state, history);
   }
 
   render() {

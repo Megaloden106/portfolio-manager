@@ -18,8 +18,9 @@ class Summary extends React.Component {
   }
 
   handleSubmit(data) {
-    const { portfolio, handleUpdate } = this.props;
-    handleUpdate(data, portfolio.id);
+    const { portfolio, handleUpdate, history } = this.props;
+    console.log(history)
+    handleUpdate(data, portfolio.id, history);
     this.setState({ dropdown: false });
   }
 

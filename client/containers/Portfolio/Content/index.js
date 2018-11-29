@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handlePageLoad: id => dispatch(updatePortfolioData(id)),
+  handlePageLoad: (id, history) => dispatch(updatePortfolioData(id, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

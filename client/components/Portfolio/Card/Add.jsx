@@ -23,7 +23,7 @@ AddCard.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  handleSubmit: data => dispatch(registerNewPortfolio(data)),
+  handleSubmit: (data, history) => dispatch(registerNewPortfolio(data, history)),
   handleCancel: () => dispatch(changeAddCard(false)),
 });
 

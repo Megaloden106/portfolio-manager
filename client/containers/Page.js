@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  checkSession: () => dispatch(handleSessionCheck()),
+  checkSession: history => dispatch(handleSessionCheck(history)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Page));

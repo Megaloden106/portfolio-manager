@@ -4,8 +4,8 @@ import Summary from '../../../components/Portfolio/Card/Summary';
 import { updatePortfolio } from '../../../lib/portfolio';
 
 const mapDispatchToProps = dispatch => ({
-  handleUpdate: (data, id) => updatePortfolio(data, id)
-    .then(() => dispatch(handleSessionCheck()))
+  handleUpdate: (data, id, history) => updatePortfolio(data, id)
+    .then(() => dispatch(handleSessionCheck(history)))
     .catch(error => console.error(error)),
 });
 

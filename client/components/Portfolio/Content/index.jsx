@@ -5,8 +5,8 @@ import styles from '../../../styles/Portfolio/Content';
 
 class Content extends React.Component {
   componentDidMount() {
-    const { match, handlePageLoad } = this.props;
-    handlePageLoad(match.params.id);
+    const { match, handlePageLoad, history } = this.props;
+    handlePageLoad(match.params.id, history);
   }
 
   componentDidUpdate(prevProps) {

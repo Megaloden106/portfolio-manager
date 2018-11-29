@@ -10,8 +10,8 @@ import styles from '../styles/Page';
 
 class Page extends React.Component {
   componentDidMount() {
-    const { checkSession } = this.props;
-    checkSession();
+    const { checkSession, history } = this.props;
+    checkSession(history);
   }
 
   render() {
