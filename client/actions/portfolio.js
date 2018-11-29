@@ -1,17 +1,9 @@
-import { getPortfolioData } from '../lib/portfolio';
+import { changeCurrentPortfolio, changeAddCard } from './actionCreators';
+import { handleSessionCheck } from './auth';
+import { getPortfolioData, registerPortfolio } from '../lib/portfolio';
 import history from '../lib/history';
 
-const changeCurrentPortfolio = data => ({
-  type: 'CHANGE_CURRENT_PORTFOLIO',
-  data,
-});
-
-const changePortfolioList = list => ({
-  type: 'CHANGE_PORTFOLIO_LIST',
-  list,
-});
-
-const updatePortfolioData = id => dispatch => getPortfolioData(id)
+export const updatePortfolioData = id => dispatch => getPortfolioData(id)
   .then(({ data }) => dispatch(changeCurrentPortfolio(data)))
   .catch(({ response }) => {
     if (response.data.message.includes('Unauthorized')) {
@@ -19,4 +11,9 @@ const updatePortfolioData = id => dispatch => getPortfolioData(id)
     }
   });
 
-export { updatePortfolioData, changePortfolioList };
+export const registerNewPortfolio = data => (dispatch) => {
+  dispatch(changeAddCard(false));
+  registerPortfolio(data)
+    .then(() => dispatch(handleSessionCheck()))
+    .catch(error => console.error(error));
+};

@@ -4,6 +4,7 @@ import Content from '../../../components/Portfolio/Content';
 
 const mapStateToProps = state => ({
   currentPortfolio: state.currentPortfolio,
+  portfolioList: state.portfolioList,
   user: state.user,
 });
 

@@ -16,7 +16,18 @@ const model = {
   exchanges: {
     get: () => cachedExchanges,
   },
-  portfolios: {
+  portfolio: {
+    data: {
+      get: portfolioId => queries.getPortfolioDataById(portfolioId.replace(regExp, ''))
+        .then(data => data.map(entry => ({
+          date: entry.date,
+          balance: entry.balance,
+          deposit: entry.deposit,
+          withdrawal: entry.withdrawal,
+          returns: entry.returns,
+          cumulativeReturns: entry.cumulative_returns,
+        }))),
+    },
     get: userId => queries.getPortfoliosByUserId(userId)
       .then(portfolios => portfolios.map(elem => Object.assign(
         elem,
@@ -31,17 +42,6 @@ const model = {
         lastUpdated: entry.last_updated,
         name: entry.name,
         type: entry.type,
-      }))),
-  },
-  portfolio: {
-    get: portfolioId => queries.getPortfolioDataById(portfolioId.replace(regExp, ''))
-      .then(data => data.map(entry => ({
-        date: entry.date,
-        balance: entry.balance,
-        deposit: entry.deposit,
-        withdrawal: entry.withdrawal,
-        returns: entry.returns,
-        cumulativeReturns: entry.cumulative_returns,
       }))),
     post: ({ body, user }) => queries.insertNewPortfolio(
       body.name,

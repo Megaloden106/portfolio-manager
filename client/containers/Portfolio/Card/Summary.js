@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { handleSessionCheck } from '../../../actions/account';
+import { handleSessionCheck } from '../../../actions/auth';
 import Summary from '../../../components/Portfolio/Card/Summary';
 import { updatePortfolio } from '../../../lib/portfolio';
 

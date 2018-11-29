@@ -12,24 +12,26 @@ const controller = {
     get: (req, res) => res.json(model.exchanges.get()),
   },
   portfolio: {
-    get: (req, res) => {
-      let isValidId = false;
-      if (!req.user) {
-        return sendError(res, { message: 'Invalid User' });
-      }
-      const { portfolios } = req.user;
-      for (let i = 0; i < portfolios.length; i += 1) {
-        if (portfolios[i].id === Number(req.params.id)) {
-          isValidId = true;
-          break;
+    data: {
+      get: (req, res) => {
+        let isValidId = false;
+        if (!req.user) {
+          return sendError(res, { message: 'Invalid User' });
         }
-      }
-      if (isValidId) {
-        return model.portfolio.get(req.params.id)
-          .then(data => res.json(data))
-          .catch(error => sendError(res, error));
-      }
-      return sendError(res, { message: 'Unauthorized Access To Portfolio' });
+        const { portfolios } = req.user;
+        for (let i = 0; i < portfolios.length; i += 1) {
+          if (portfolios[i].id === Number(req.params.id)) {
+            isValidId = true;
+            break;
+          }
+        }
+        if (isValidId) {
+          return model.portfolio.data.get(req.params.id)
+            .then(data => res.json(data))
+            .catch(error => sendError(res, error));
+        }
+        return sendError(res, { message: 'Unauthorized Access To Portfolio' });
+      },
     },
     post: (req, res) => model.portfolio.post(req)
       .then(() => res.send('SUCCESS'))
@@ -50,7 +52,7 @@ const controller = {
           if (err2) {
             return res.status(401).json({ err: 'Invalid password' });
           }
-          return model.portfolios.get(user.id)
+          return model.portfolio.get(user.id)
             .then((portfolios) => {
               res.json(Object.assign(user, { portfolios }));
             }).catch(error => sendError(res, error));

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Page from '../components/Page';
-import { handleSessionCheck } from '../actions/account';
+import { handleSessionCheck } from '../actions/auth';
 
 const mapStateToProps = state => ({
   modalType: state.modalType,

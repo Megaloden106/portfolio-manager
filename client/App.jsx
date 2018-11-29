@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import history from './lib/history';
+import { BrowserRouter as Router } from 'react-router-dom';
 import store from './store';
 import Page from './containers/Page';
 import './App.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <Router>
       <Page />
     </Router>
   </Provider>,

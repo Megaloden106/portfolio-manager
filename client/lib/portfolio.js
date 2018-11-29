@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const getPortfolioData = id => axios.get(`/api/portfolio/${id}`);
+export const getPortfolioData = id => axios.get(`/api/portfolio/data/${id}`);
 
-const registerPortfolio = data => axios.post('/api/portfolio', data);
+export const registerPortfolio = data => axios.post('/api/portfolio', data);
 
-const updatePortfolio = (data, id) => axios.put(`/api/portfolio/${id}`, data);
-
-export { getPortfolioData, registerPortfolio, updatePortfolio };
+export const updatePortfolio = (data, id) => axios.put(`/api/portfolio/${id}`, data);

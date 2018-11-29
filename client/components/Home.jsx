@@ -6,7 +6,7 @@ import styles from '../styles/Home';
 import formStyles from '../styles/Form';
 
 const Home = ({ user, handleLogoutClick }) => (
-  <div>
+  <React.Fragment>
     <div className={styles.imageContainer}>
       <img
         src="https://s3-us-west-1.amazonaws.com/portfolio-manager-project/login.jpg"
@@ -30,7 +30,7 @@ const Home = ({ user, handleLogoutClick }) => (
       )}
       <About />
     </div>
-  </div>
+  </React.Fragment>
 );
 
 export default Home;

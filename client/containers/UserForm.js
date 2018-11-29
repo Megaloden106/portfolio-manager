@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { handleLogin, handleRegister } from '../actions/account';
+import { handleLogin, handleRegister } from '../actions/auth';
 import UserForm from '../components/UserForm';
 
 const mapDispatchToProps = dispatch => ({

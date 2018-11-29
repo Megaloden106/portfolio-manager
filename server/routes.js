@@ -17,11 +17,14 @@ router.route('/exchanges')
   .get(controller.exchanges.get);
 
 router.route('/portfolio/:id')
-  .get(controller.portfolio.get)
   .put(controller.portfolio.put)
   .delete(controller.portfolio.delete);
 
 router.route('/portfolio')
   .post(controller.portfolio.post);
+
+router.route('/portfolio/data/:id')
+  .get(controller.portfolio.data.get);
+
 
 module.exports = router;

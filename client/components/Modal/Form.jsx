@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import updateModalDisplay from '../../actions/modal';
 import UserForm from '../../containers/UserForm';
 import styles from '../../styles/Modal/Form';
 
 const Form = ({ modalType, handleSingupClick, handleLoginClick }) => (
-  <div>
+  <React.Fragment>
     <UserForm
       styles={styles}
       formType={modalType}
@@ -33,13 +35,22 @@ const Form = ({ modalType, handleSingupClick, handleLoginClick }) => (
         </button>
       </div>
     )}
-  </div>
+  </React.Fragment>
 );
-
-export default Form;
 
 Form.propTypes = {
   modalType: PropTypes.string.isRequired,
   handleSingupClick: PropTypes.func.isRequired,
   handleLoginClick: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = state => ({
+  modalType: state.modalType,
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleSingupClick: () => dispatch(updateModalDisplay('', 'Signup')),
+  handleLoginClick: () => dispatch(updateModalDisplay('', 'Login')),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

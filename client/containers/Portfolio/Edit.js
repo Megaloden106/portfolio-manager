@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import updateAddCard from '../../actions/card';
+import { changeAddCard } from '../../actions/actionCreators';
 import Edit from '../../components/Portfolio/Edit';
 
 const mapStateToProps = state => ({
@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleAddPortfolioClick: () => dispatch(updateAddCard(true)),
+  handleAddPortfolioClick: bool => dispatch(changeAddCard(!bool)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Edit);

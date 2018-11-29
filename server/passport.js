@@ -20,7 +20,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => model.user.get(id)
-  .then(user => model.portfolios.get(user.id)
+  .then(user => model.portfolio.get(user.id)
     .then(portfolios => done(null, Object.assign(user, { portfolios })))
     .catch(err => done(err))));
 

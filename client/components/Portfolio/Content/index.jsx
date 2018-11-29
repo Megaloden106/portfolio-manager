@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AddData from './AddData';
 import styles from '../../../styles/Portfolio/Content';
 
 class Content extends React.Component {
@@ -16,16 +17,25 @@ class Content extends React.Component {
   }
 
   render() {
-    const { currentPortfolio } = this.props;
+    const { currentPortfolio, match, portfolioList } = this.props;
+    const defaultPortfoliosIds = [];
+    if (portfolioList.length > 0) {
+      for (let i = 0; i < 3; i += 1) {
+        defaultPortfoliosIds.push(portfolioList[i].id);
+      }
+    }
     return (
       <div className={styles.contentContainer}>
-        {currentPortfolio.length === 0 && (
-          <div className={styles.noData}>
-            <h1 className={styles.text}>
-              Please Add Portfolio Data
-            </h1>
-          </div>
-        )}
+        {!defaultPortfoliosIds.includes(Number(match.params.id)) && <AddData />}
+        <div className={styles.noDataContainer}>
+          {currentPortfolio.length === 0 && (
+            <div className={styles.border}>
+              <h1 className={styles.text}>
+                Please Add Portfolio Data
+              </h1>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
@@ -49,6 +59,12 @@ Content.propTypes = {
     withdrawal: PropTypes.string.isRequired,
     returns: PropTypes.string.isRequired,
     cumulativeReturns: PropTypes.string.isRequired,
+  })).isRequired,
+  portfolioList: PropTypes.arrayOf(PropTypes.shape({
+    exchange: PropTypes.string,
+    exchange_id: PropTypes.number,
+    id: PropTypes.number,
+    name: PropTypes.string,
   })).isRequired,
   handlePageLoad: PropTypes.func.isRequired,
 };

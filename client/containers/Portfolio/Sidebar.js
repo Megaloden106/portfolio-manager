@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import updateAddCard from '../../actions/card';
+import { changeAddCard } from '../../actions/actionCreators';
 import Sidebar from '../../components/Portfolio/Sidebar';
 
 const mapStateToProps = state => ({
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleEditClick: () => {
     if (!window.location.pathname.includes('edit')) {
-      dispatch(updateAddCard(false));
+      dispatch(changeAddCard(false));
     }
   },
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddCard from '../../containers/Portfolio/Card/Add';
+import AddCard from './Card/Add';
 import CompanyCard from './Card/Company';
 import styles from '../../styles/Portfolio/Edit';
 
@@ -21,7 +21,7 @@ const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
           type="button"
           value="+ ADD PORTFOLIO"
           className={styles.addButton}
-          onClick={handleAddPortfolioClick}
+          onClick={() => handleAddPortfolioClick(addCard)}
         />
       </h1>
       {addCard && <AddCard />}

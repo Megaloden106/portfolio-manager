@@ -1,9 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from '../../styles/Modal/Header';
 
 const Header = ({ modalError, modalType }) => (
-  <div>
+  <React.Fragment>
     {modalType !== 'Loading' && (
       <div className={styles.headerContainer}>
         {modalType}
@@ -14,12 +15,17 @@ const Header = ({ modalError, modalType }) => (
         {modalError}
       </p>
     )}
-  </div>
+  </React.Fragment>
 );
-
-export default Header;
 
 Header.propTypes = {
   modalError: PropTypes.string.isRequired,
   modalType: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = state => ({
+  modalError: state.modalError,
+  modalType: state.modalType,
+});
+
+export default connect(mapStateToProps)(Header);

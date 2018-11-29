@@ -10,6 +10,7 @@ const CompanyCard = ({ company, portfolios }) => {
     const date = moment(lastUpdated);
     if (date < updated) updated = date;
   });
+  const orderedList = portfolios.sort((a, b) => a.name.localeCompare(b.name));
   return (
     <div className={styles.companyContainer}>
       <h2 className={styles.header}>
@@ -19,7 +20,7 @@ const CompanyCard = ({ company, portfolios }) => {
           {updated.fromNow()}
         </span>
       </h2>
-      {portfolios.map(portfolio => (
+      {orderedList.map(portfolio => (
         <Summary
           key={portfolio.id}
           portfolio={portfolio}

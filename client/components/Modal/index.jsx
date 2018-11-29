@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Form from '../../containers/Modal/Form';
-import Header from '../../containers/Modal/Header';
+import Form from './Form';
+import Header from './Header';
 import Loading from './Loading';
 import styles from '../../styles/Modal';
 
@@ -16,8 +17,12 @@ const Modal = ({ modalType }) => (
   </div>
 );
 
-export default Modal;
-
 Modal.propTypes = {
   modalType: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = state => ({
+  modalType: state.modalType,
+});
+
+export default connect(mapStateToProps)(Modal);
