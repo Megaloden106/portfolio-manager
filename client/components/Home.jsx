@@ -46,6 +46,10 @@ const mapDispatchToProps = dispatch => ({
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 Home.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.string,
   handleLogoutClick: PropTypes.func.isRequired,
+};
+
+Home.defaultProps = {
+  user: null,
 };

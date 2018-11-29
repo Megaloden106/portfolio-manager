@@ -1,12 +1,14 @@
-const loginModalReducer = (state = '', action) => {
-  if (action.type === 'CHANGE_MODAL') {
+import { CHANGE_MODAL, CHANGE_MODAL_ERROR } from '../actions/actionTypes';
+
+const loginModalReducer = (state = null, action) => {
+  if (action.type === CHANGE_MODAL) {
     return action.modalType;
   }
   return state;
 };
 
-const modalErrorReducer = (state = '', action) => {
-  if (action.type === 'CHANGE_MODAL_ERROR') {
+const modalErrorReducer = (state = null, action) => {
+  if (action.type === CHANGE_MODAL_ERROR) {
     return action.modalError;
   }
   return state;

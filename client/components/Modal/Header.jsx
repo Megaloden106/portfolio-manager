@@ -26,6 +26,11 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(Header);
 
 Header.propTypes = {
-  modalError: PropTypes.string.isRequired,
-  modalType: PropTypes.string.isRequired,
+  modalError: PropTypes.string,
+  modalType: PropTypes.string,
+};
+
+Header.defaultProps = {
+  modalError: null,
+  modalType: null,
 };

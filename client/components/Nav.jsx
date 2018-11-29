@@ -64,7 +64,11 @@ Nav.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   })).isRequired,
-  user: PropTypes.string.isRequired,
+  user: PropTypes.string,
   handleLoginClick: PropTypes.func.isRequired,
   handleSingupClick: PropTypes.func.isRequired,
+};
+
+Nav.defaultProps = {
+  user: null,
 };

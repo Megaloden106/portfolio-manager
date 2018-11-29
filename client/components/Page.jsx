@@ -50,7 +50,7 @@ const mapDispatchToProps = dispatch => ({
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Page));
 
 Page.propTypes = {
-  modalType: PropTypes.string.isRequired,
+  modalType: PropTypes.string,
   checkSession: PropTypes.func.isRequired,
   history: PropTypes.shape({
     action: PropTypes.string.isRequired,
@@ -70,4 +70,8 @@ Page.propTypes = {
     push: PropTypes.func.isRequired,
     replace: PropTypes.func.isRequired,
   }).isRequired,
+};
+
+Page.defaultProps = {
+  modalType: null,
 };

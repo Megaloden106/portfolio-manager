@@ -7,14 +7,14 @@ const handleData = data => (dispatch) => {
     dispatch(changePortfolioList(data.portfolios));
     dispatch(changeUser(data.username));
   } else {
-    dispatch(changeUser(''));
+    dispatch(changeUser(null));
     dispatch(changePortfolioList([]));
   }
-  dispatch(updateModalDisplay('', ''));
+  dispatch(updateModalDisplay(null, null));
 };
 
 export const handleLogin = (creds, history) => (dispatch) => {
-  dispatch(updateModalDisplay('', 'Loading'));
+  dispatch(updateModalDisplay(null, 'Loading'));
   return auth.login(creds)
     .then(({ data }) => {
       dispatch(handleData(data));
@@ -26,14 +26,14 @@ export const handleLogin = (creds, history) => (dispatch) => {
 };
 
 export const handleLogout = () => (dispatch) => {
-  dispatch(updateModalDisplay('', 'Loading'));
+  dispatch(updateModalDisplay(null, 'Loading'));
   return auth.logout()
     .then(() => dispatch(handleData({})))
     .catch(() => console.error('Logout ERROR'));
 };
 
 export const handleRegister = (creds, history) => (dispatch) => {
-  dispatch(updateModalDisplay('', 'Loading'));
+  dispatch(updateModalDisplay(null, 'Loading'));
   return auth.register(creds)
     .then(() => dispatch(handleLogin(creds, history)))
     .catch(({ response }) => {
@@ -47,7 +47,7 @@ export const handleRegister = (creds, history) => (dispatch) => {
 export const handleSessionCheck = history => dispatch => auth.session()
   .then(({ data }) => {
     if (!data.username) {
-      dispatch(changeUser(''));
+      dispatch(changeUser(null));
       history.push('/');
     } else {
       dispatch(handleData(data));
