@@ -45,7 +45,11 @@ class UserForm extends React.Component {
   render() {
     const { formType, styles } = this.props;
     const {
-      username, password, firstName, lastName, email,
+      username,
+      password,
+      firstName,
+      lastName,
+      email,
     } = this.state;
 
     let forms = ['Username', 'Password'];
@@ -63,7 +67,7 @@ class UserForm extends React.Component {
 
     return (
       <form
-        className={styles.container}
+        className={styles.formContainer}
         onSubmit={this.handleSubmit}
       >
         {forms.map(form => (

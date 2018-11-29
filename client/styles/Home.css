@@ -44,3 +44,47 @@
 .logout:active {
   background-color: #3e546e;
 }
+
+.form-container {
+  grid-area: login;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text {
+  border: 1px solid #333;
+  outline: none;
+  margin: 3px 0;
+  border-radius: 3px;
+  border-width: 1px;
+  width: 196px;
+  height: 25px;
+  font-size: 12px;
+  padding: 0 10px;
+}
+
+.submit {
+  display: inline-block;
+  margin: 3px 0;
+  width: 196px;
+  height: 25px;
+  background-color: #547092;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+.submit:hover {
+  background-color: #47607e;
+}
+.submit:active {
+  background-color: #3e546e;
+}
+
+.about-container {
+  color: #1a1a1a;
+  grid-area: about;
+  border-left: 1px solid #d9d9d9;
+  padding-left: 40px;
+}

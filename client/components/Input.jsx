@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Input = ({
-  form, formType, value, styles, handleChange,
+  form,
+  formType,
+  value,
+  styles,
+  handleChange,
 }) => (
   <input
     type={form === 'Password' || form === 'Email' ? form : 'text'}

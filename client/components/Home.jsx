@@ -2,10 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { handleLogout } from '../actions/auth';
-import About from './About';
 import UserForm from './UserForm';
 import styles from '../styles/Home';
-import formStyles from '../styles/Form';
 
 const Home = ({ user, handleLogoutClick }) => (
   <React.Fragment>
@@ -19,7 +17,7 @@ const Home = ({ user, handleLogoutClick }) => (
     <div className={styles.loginContainer}>
       {!user ? (
         <UserForm
-          styles={formStyles}
+          styles={styles}
           formType="Login"
         />
       ) : (
@@ -30,7 +28,14 @@ const Home = ({ user, handleLogoutClick }) => (
           onClick={handleLogoutClick}
         />
       )}
-      <About />
+      <div className={styles.aboutContainer}>
+        <p>
+          &emsp;Have you been stuck managing your 401k, HSA, Roth IRA, and other porfolios?
+          Originally I have used spreadsheets to manage
+          this process and found it to be a painful upkeep.
+          This ongoing project was inspired to simplify this manual task.
+        </p>
+      </div>
     </div>
   </React.Fragment>
 );

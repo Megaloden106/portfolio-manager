@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { handleSessionCheck } from '../actions/auth';
-import BlurLayer from './BlurLayer';
+import updateModalDisplay from '../actions/modal';
 import Home from './Home';
 import Modal from './Modal';
 import Nav from './Nav';
@@ -17,7 +17,7 @@ class Page extends React.Component {
   }
 
   render() {
-    const { modalType } = this.props;
+    const { modalType, handleBlurLayerClick } = this.props;
     return (
       <div className={styles.pageContainer}>
         <div className={modalType ? styles.blur : null}>
@@ -29,7 +29,12 @@ class Page extends React.Component {
         </div>
         {modalType && (
           <div>
-            <BlurLayer />
+            <input
+              type="button"
+              className={styles.blurContainer}
+              id="blur"
+              onClick={modalType !== 'Loading' ? handleBlurLayerClick : null}
+            />
             <Modal />
           </div>
         )}
@@ -44,6 +49,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  handleBlurLayerClick: () => dispatch(updateModalDisplay(null, null)),
   checkSession: history => dispatch(handleSessionCheck(history)),
 });
 
@@ -51,6 +57,7 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Page));
 
 Page.propTypes = {
   modalType: PropTypes.string,
+  handleBlurLayerClick: PropTypes.func.isRequired,
   checkSession: PropTypes.func.isRequired,
   history: PropTypes.shape({
     action: PropTypes.string.isRequired,
