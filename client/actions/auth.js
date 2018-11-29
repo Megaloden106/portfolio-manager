@@ -32,10 +32,10 @@ export const handleLogout = () => (dispatch) => {
     .catch(() => console.error('Logout ERROR'));
 };
 
-export const handleRegister = creds => (dispatch) => {
+export const handleRegister = (creds, history) => (dispatch) => {
   dispatch(updateModalDisplay('', 'Loading'));
   return auth.register(creds)
-    .then(() => dispatch(handleLogin(creds)))
+    .then(() => dispatch(handleLogin(creds, history)))
     .catch(({ response }) => {
       const detail = response.data.detail
         .split('=')[1]

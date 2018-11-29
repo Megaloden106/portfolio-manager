@@ -17,14 +17,14 @@ const AddCard = ({ handleSubmit, handleCancel }) => (
   </div>
 );
 
-AddCard.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  handleCancel: PropTypes.func.isRequired,
-};
-
 const mapDispatchToProps = dispatch => ({
   handleSubmit: (data, history) => dispatch(registerNewPortfolio(data, history)),
   handleCancel: () => dispatch(changeAddCard(false)),
 });
 
 export default connect(null, mapDispatchToProps)(AddCard);
+
+AddCard.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  handleCancel: PropTypes.func.isRequired,
+};

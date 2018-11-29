@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import updateModalDisplay from '../actions/modal';
 import styles from '../styles/BlurLayer';
 
 const BlurLayer = ({ modalType, handleBlurLayerClick }) => (
@@ -11,7 +13,15 @@ const BlurLayer = ({ modalType, handleBlurLayerClick }) => (
   />
 );
 
-export default BlurLayer;
+const mapStateToProps = state => ({
+  modalType: state.modalType,
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleBlurLayerClick: () => dispatch(updateModalDisplay('', '')),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlurLayer);
 
 BlurLayer.propTypes = {
   modalType: PropTypes.string.isRequired,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Input from './Text';
 import Select from './Select';
@@ -101,7 +102,7 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default withRouter(Form);
 
 Form.propTypes = {
   form: PropTypes.string.isRequired,
@@ -111,6 +112,24 @@ Form.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   }),
+  history: PropTypes.shape({
+    action: PropTypes.string.isRequired,
+    block: PropTypes.func.isRequired,
+    createHref: PropTypes.func.isRequired,
+    go: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
+    goForward: PropTypes.func.isRequired,
+    length: PropTypes.number.isRequired,
+    listen: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      hash: PropTypes.string.isRequired,
+      key: PropTypes.string.isRequired,
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string.isRequired,
+    }),
+    push: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
+  }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleCancel: PropTypes.func.isRequired,
 };

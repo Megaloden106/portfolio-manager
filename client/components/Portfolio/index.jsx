@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Content from '../../containers/Portfolio/Content';
-import Edit from '../../containers/Portfolio/Edit';
-import Sidebar from '../../containers/Portfolio/Sidebar';
+import Content from './Content';
+import Edit from './Edit';
+import Sidebar from './Sidebar';
 import Unauthorized from './Unauthorized';
 import styles from '../../styles/Portfolio';
 

@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { handleLogout } from '../actions/auth';
 import About from './About';
-import UserForm from '../containers/UserForm';
+import UserForm from './UserForm';
 import styles from '../styles/Home';
 import formStyles from '../styles/Form';
 
@@ -33,7 +35,15 @@ const Home = ({ user, handleLogoutClick }) => (
   </React.Fragment>
 );
 
-export default Home;
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleLogoutClick: () => dispatch(handleLogout()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 Home.propTypes = {
   user: PropTypes.string.isRequired,

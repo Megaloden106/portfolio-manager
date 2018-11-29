@@ -17,12 +17,12 @@ const Modal = ({ modalType }) => (
   </div>
 );
 
-Modal.propTypes = {
-  modalType: PropTypes.string.isRequired,
-};
-
 const mapStateToProps = state => ({
   modalType: state.modalType,
 });
 
 export default connect(mapStateToProps)(Modal);
+
+Modal.propTypes = {
+  modalType: PropTypes.string.isRequired,
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import Summary from '../../../containers/Portfolio/Card/Summary';
+import Summary from './Summary';
 import styles from '../../../styles/Portfolio/Card/Company';
 
 const CompanyCard = ({ company, portfolios }) => {

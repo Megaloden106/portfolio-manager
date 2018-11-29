@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { updatePortfolioData } from '../../../actions/portfolio';
 import AddData from './AddData';
 import styles from '../../../styles/Portfolio/Content';
 
@@ -41,7 +44,17 @@ class Content extends React.Component {
   }
 }
 
-export default Content;
+const mapStateToProps = state => ({
+  currentPortfolio: state.currentPortfolio,
+  portfolioList: state.portfolioList,
+  user: state.user,
+});
+
+const mapDispatchToProps = dispatch => ({
+  handlePageLoad: (id, history) => dispatch(updatePortfolioData(id, history)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Content));
 
 Content.propTypes = {
   match: PropTypes.shape({
@@ -60,6 +73,24 @@ Content.propTypes = {
     returns: PropTypes.string.isRequired,
     cumulativeReturns: PropTypes.string.isRequired,
   })).isRequired,
+  history: PropTypes.shape({
+    action: PropTypes.string.isRequired,
+    block: PropTypes.func.isRequired,
+    createHref: PropTypes.func.isRequired,
+    go: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
+    goForward: PropTypes.func.isRequired,
+    length: PropTypes.number.isRequired,
+    listen: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      hash: PropTypes.string.isRequired,
+      key: PropTypes.string.isRequired,
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string.isRequired,
+    }),
+    push: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
+  }).isRequired,
   portfolioList: PropTypes.arrayOf(PropTypes.shape({
     exchange: PropTypes.string,
     exchange_id: PropTypes.number,

@@ -1,5 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { handleSessionCheck } from '../../../actions/auth';
+import { updatePortfolio } from '../../../lib/portfolio';
 import Form from './Form';
 import styles from '../../../styles/Portfolio/Card/Summary';
 
@@ -19,7 +23,6 @@ class Summary extends React.Component {
 
   handleSubmit(data) {
     const { portfolio, handleUpdate, history } = this.props;
-    console.log(history)
     handleUpdate(data, portfolio.id, history);
     this.setState({ dropdown: false });
   }
@@ -61,7 +64,13 @@ class Summary extends React.Component {
   }
 }
 
-export default Summary;
+const mapDispatchToProps = dispatch => ({
+  handleUpdate: (data, id, history) => updatePortfolio(data, id)
+    .then(() => dispatch(handleSessionCheck(history)))
+    .catch(error => console.error(error)),
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(Summary));
 
 Summary.propTypes = {
   portfolio: PropTypes.shape({
@@ -69,6 +78,24 @@ Summary.propTypes = {
     exchange_id: PropTypes.number,
     id: PropTypes.number,
     name: PropTypes.string,
+  }).isRequired,
+  history: PropTypes.shape({
+    action: PropTypes.string.isRequired,
+    block: PropTypes.func.isRequired,
+    createHref: PropTypes.func.isRequired,
+    go: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
+    goForward: PropTypes.func.isRequired,
+    length: PropTypes.number.isRequired,
+    listen: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      hash: PropTypes.string.isRequired,
+      key: PropTypes.string.isRequired,
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string.isRequired,
+    }),
+    push: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
   }).isRequired,
   handleUpdate: PropTypes.func.isRequired,
 };

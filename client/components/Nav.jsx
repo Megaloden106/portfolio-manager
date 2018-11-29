@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import updateModalDisplay from '../actions/modal';
 import styles from '../styles/Nav';
 
 const Nav = ({
@@ -43,7 +45,17 @@ const Nav = ({
   </div>
 );
 
-export default Nav;
+const mapStateToProps = state => ({
+  portfolioList: state.portfolioList,
+  user: state.user,
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleLoginClick: () => dispatch(updateModalDisplay('', 'Login')),
+  handleSingupClick: () => dispatch(updateModalDisplay('', 'Signup')),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
 
 Nav.propTypes = {
   portfolioList: PropTypes.arrayOf(PropTypes.shape({

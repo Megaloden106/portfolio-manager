@@ -18,14 +18,14 @@ const Header = ({ modalError, modalType }) => (
   </React.Fragment>
 );
 
-Header.propTypes = {
-  modalError: PropTypes.string.isRequired,
-  modalType: PropTypes.string.isRequired,
-};
-
 const mapStateToProps = state => ({
   modalError: state.modalError,
   modalType: state.modalType,
 });
 
 export default connect(mapStateToProps)(Header);
+
+Header.propTypes = {
+  modalError: PropTypes.string.isRequired,
+  modalType: PropTypes.string.isRequired,
+};

@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { changeAddCard } from '../../actions/actionCreators';
 import AddCard from './Card/Add';
 import CompanyCard from './Card/Company';
 import styles from '../../styles/Portfolio/Edit';
@@ -44,7 +46,16 @@ const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
   );
 };
 
-export default Edit;
+const mapStateToProps = state => ({
+  addCard: state.addCard,
+  portfolioList: state.portfolioList,
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleAddPortfolioClick: bool => dispatch(changeAddCard(!bool)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Edit);
 
 Edit.propTypes = {
   addCard: PropTypes.bool.isRequired,

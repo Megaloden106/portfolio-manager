@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { handleLogin, handleRegister } from '../actions/auth';
 import Input from './Input';
 
 class UserForm extends React.Component {
@@ -25,11 +28,16 @@ class UserForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { formType, handleLoginClick, handleRegisterClick } = this.props;
+    const {
+      formType,
+      handleLoginClick,
+      handleRegisterClick,
+      history,
+    } = this.props;
     if (formType === 'Login') {
-      handleLoginClick(this.state);
+      handleLoginClick(this.state, history);
     } else {
-      handleRegisterClick(this.state);
+      handleRegisterClick(this.state, history);
     }
     this.setState(this.default);
   }
@@ -78,11 +86,34 @@ class UserForm extends React.Component {
   }
 }
 
-export default UserForm;
-
 UserForm.propTypes = {
   formType: PropTypes.string.isRequired,
   styles: PropTypes.objectOf(PropTypes.string).isRequired,
+  history: PropTypes.shape({
+    action: PropTypes.string.isRequired,
+    block: PropTypes.func.isRequired,
+    createHref: PropTypes.func.isRequired,
+    go: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
+    goForward: PropTypes.func.isRequired,
+    length: PropTypes.number.isRequired,
+    listen: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      hash: PropTypes.string.isRequired,
+      key: PropTypes.string.isRequired,
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string.isRequired,
+    }),
+    push: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
+  }).isRequired,
   handleLoginClick: PropTypes.func.isRequired,
   handleRegisterClick: PropTypes.func.isRequired,
 };
+
+const mapDispatchToProps = dispatch => ({
+  handleLoginClick: (creds, history) => dispatch(handleLogin(creds, history)),
+  handleRegisterClick: (creds, history) => dispatch(handleRegister(creds, history)),
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(UserForm));
