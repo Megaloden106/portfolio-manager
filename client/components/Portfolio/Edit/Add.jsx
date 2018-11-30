@@ -6,25 +6,25 @@ import { registerNewPortfolio } from '../../../actions/portfolio';
 import Form from './Form';
 import styles from '../../../styles/Portfolio/Card/Add';
 
-const AddCard = ({ handleSubmit, handleCancel }) => (
+const AddCard = ({ handleCancel, handleSubmit }) => (
   <div className={styles.addContainer}>
     <h2 className={styles.header}>Add Portfolio</h2>
     <Form
       form="add"
-      handleSubmit={handleSubmit}
       handleCancel={handleCancel}
+      handleSubmit={handleSubmit}
     />
   </div>
 );
 
 const mapDispatchToProps = dispatch => ({
-  handleSubmit: (data, history) => dispatch(registerNewPortfolio(data, history)),
   handleCancel: () => dispatch(changeAddCard(false)),
+  handleSubmit: (data, history) => dispatch(registerNewPortfolio(data, history)),
 });
 
 export default connect(null, mapDispatchToProps)(AddCard);
 
 AddCard.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
   handleCancel: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };

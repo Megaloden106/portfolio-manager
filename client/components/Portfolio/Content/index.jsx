@@ -8,19 +8,19 @@ import styles from '../../../styles/Portfolio/Content';
 
 class Content extends React.Component {
   componentDidMount() {
-    const { match, handlePageLoad, history } = this.props;
+    const { handlePageLoad, history, match } = this.props;
     handlePageLoad(match.params.id, history);
   }
 
   componentDidUpdate(prevProps) {
-    const { match, handlePageLoad } = this.props;
+    const { handlePageLoad, match } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
       handlePageLoad(match.params.id);
     }
   }
 
   render() {
-    const { currentPortfolio, match, portfolioList } = this.props;
+    const { currentPortfolio, portfolioList, match } = this.props;
     const defaultPortfoliosIds = [];
     if (portfolioList.length > 0) {
       for (let i = 0; i < 3; i += 1) {
@@ -57,14 +57,6 @@ const mapDispatchToProps = dispatch => ({
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Content));
 
 Content.propTypes = {
-  match: PropTypes.shape({
-    isExact: PropTypes.bool.isRequired,
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }),
-    path: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-  }).isRequired,
   currentPortfolio: PropTypes.arrayOf(PropTypes.shape({
     date: PropTypes.string.isRequired,
     balance: PropTypes.string.isRequired,
@@ -73,6 +65,13 @@ Content.propTypes = {
     returns: PropTypes.string.isRequired,
     cumulativeReturns: PropTypes.string.isRequired,
   })).isRequired,
+  portfolioList: PropTypes.arrayOf(PropTypes.shape({
+    exchange: PropTypes.string,
+    exchange_id: PropTypes.number,
+    id: PropTypes.number,
+    name: PropTypes.string,
+  })).isRequired,
+  handlePageLoad: PropTypes.func.isRequired,
   history: PropTypes.shape({
     action: PropTypes.string.isRequired,
     block: PropTypes.func.isRequired,
@@ -91,11 +90,12 @@ Content.propTypes = {
     push: PropTypes.func.isRequired,
     replace: PropTypes.func.isRequired,
   }).isRequired,
-  portfolioList: PropTypes.arrayOf(PropTypes.shape({
-    exchange: PropTypes.string,
-    exchange_id: PropTypes.number,
-    id: PropTypes.number,
-    name: PropTypes.string,
-  })).isRequired,
-  handlePageLoad: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    isExact: PropTypes.bool.isRequired,
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+    path: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  }).isRequired,
 };

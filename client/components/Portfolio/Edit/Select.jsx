@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const Select = ({
   id,
   options,
-  styles,
   value,
   handleChange,
+  styles,
 }) => (
   <label htmlFor={id} className={styles[id.toLowerCase()]}>
     {`${id}`}
@@ -39,7 +39,7 @@ export default Select;
 Select.propTypes = {
   id: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  styles: PropTypes.objectOf(PropTypes.string).isRequired,
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  styles: PropTypes.objectOf(PropTypes.string).isRequired,
 };

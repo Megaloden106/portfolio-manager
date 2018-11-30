@@ -49,8 +49,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleBlurLayerClick: () => dispatch(updateModalDisplay(null, null)),
   checkSession: history => dispatch(handleSessionCheck(history)),
+  handleBlurLayerClick: () => dispatch(updateModalDisplay(null, null)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Page));

@@ -9,8 +9,8 @@ import styles from '../styles/Modal';
 const Modal = ({
   modalError,
   modalType,
-  handleSingupClick,
-  handleLoginClick,
+  handleLogin,
+  handleSingup,
 }) => (
   <div className={styles.container}>
     {modalType !== 'Loading' && (
@@ -45,7 +45,7 @@ const Modal = ({
         <button
           type="button"
           className={styles.button}
-          onClick={handleSingupClick}
+          onClick={handleSingup}
         >
           <em> Register Now!</em>
         </button>
@@ -57,7 +57,7 @@ const Modal = ({
         <button
           type="button"
           className={styles.button}
-          onClick={handleLoginClick}
+          onClick={handleLogin}
         >
           <em> Sign In Now!</em>
         </button>
@@ -72,8 +72,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleSingupClick: () => dispatch(updateModalDisplay('', 'Signup')),
-  handleLoginClick: () => dispatch(updateModalDisplay('', 'Login')),
+  handleLogin: () => dispatch(updateModalDisplay('', 'Login')),
+  handleSingup: () => dispatch(updateModalDisplay('', 'Signup')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
@@ -81,8 +81,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(Modal);
 Modal.propTypes = {
   modalError: PropTypes.string,
   modalType: PropTypes.string,
-  handleSingupClick: PropTypes.func.isRequired,
-  handleLoginClick: PropTypes.func.isRequired,
+  handleSingup: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
 };
 
 Modal.defaultProps = {

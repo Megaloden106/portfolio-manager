@@ -5,8 +5,8 @@ const Input = ({
   form,
   formType,
   value,
-  styles,
   handleChange,
+  styles,
 }) => (
   <input
     type={form === 'Password' || form === 'Email' ? form : 'text'}
@@ -31,6 +31,6 @@ Input.propTypes = {
   form: PropTypes.string.isRequired,
   formType: PropTypes.string.isRequired,
   value: PropTypes.objectOf(PropTypes.string).isRequired,
-  styles: PropTypes.objectOf(PropTypes.string).isRequired,
   handleChange: PropTypes.func.isRequired,
+  styles: PropTypes.objectOf(PropTypes.string).isRequired,
 };

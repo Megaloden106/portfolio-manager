@@ -6,7 +6,7 @@ import updateModalDisplay from '../actions/modal';
 import styles from '../styles/Nav';
 
 const Nav = ({
-  portfolioList, user, handleLoginClick, handleSingupClick,
+  portfolioList, user, handleLogin, handleSingup,
 }) => (
   <div className={styles.navContainer}>
     <nav className={styles.navBar}>
@@ -24,7 +24,7 @@ const Nav = ({
         <div className={styles.account}>
           <button
             type="button"
-            onClick={handleLoginClick}
+            onClick={handleLogin}
             id="loginSubmit"
           >
             <b>Login</b>
@@ -32,7 +32,7 @@ const Nav = ({
           or
           <button
             type="button"
-            onClick={handleSingupClick}
+            onClick={handleSingup}
             id="loginSubmit"
           >
             <b>Signup</b>
@@ -51,8 +51,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLoginClick: () => dispatch(updateModalDisplay('', 'Login')),
-  handleSingupClick: () => dispatch(updateModalDisplay('', 'Signup')),
+  handleLogin: () => dispatch(updateModalDisplay('', 'Login')),
+  handleSingup: () => dispatch(updateModalDisplay('', 'Signup')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
@@ -65,8 +65,8 @@ Nav.propTypes = {
     name: PropTypes.string,
   })).isRequired,
   user: PropTypes.string,
-  handleLoginClick: PropTypes.func.isRequired,
-  handleSingupClick: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleSingup: PropTypes.func.isRequired,
 };
 
 Nav.defaultProps = {

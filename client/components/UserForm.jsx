@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { handleLogin, handleRegister } from '../actions/auth';
+import * as auth from '../actions/auth';
 import Input from './Input';
 
 class UserForm extends React.Component {
@@ -30,14 +30,14 @@ class UserForm extends React.Component {
     event.preventDefault();
     const {
       formType,
-      handleLoginClick,
-      handleRegisterClick,
+      handleLogin,
+      handleRegister,
       history,
     } = this.props;
     if (formType === 'Login') {
-      handleLoginClick(this.state, history);
+      handleLogin(this.state, history);
     } else {
-      handleRegisterClick(this.state, history);
+      handleRegister(this.state, history);
     }
     this.setState(this.default);
   }
@@ -90,6 +90,13 @@ class UserForm extends React.Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  handleLogin: (creds, history) => dispatch(auth.handleLogin(creds, history)),
+  handleRegister: (creds, history) => dispatch(auth.handleRegister(creds, history)),
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(UserForm));
+
 UserForm.propTypes = {
   formType: PropTypes.string.isRequired,
   styles: PropTypes.objectOf(PropTypes.string).isRequired,
@@ -111,13 +118,6 @@ UserForm.propTypes = {
     push: PropTypes.func.isRequired,
     replace: PropTypes.func.isRequired,
   }).isRequired,
-  handleLoginClick: PropTypes.func.isRequired,
-  handleRegisterClick: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleRegister: PropTypes.func.isRequired,
 };
-
-const mapDispatchToProps = dispatch => ({
-  handleLoginClick: (creds, history) => dispatch(handleLogin(creds, history)),
-  handleRegisterClick: (creds, history) => dispatch(handleRegister(creds, history)),
-});
-
-export default withRouter(connect(null, mapDispatchToProps)(UserForm));

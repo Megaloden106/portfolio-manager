@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { handleLogout } from '../actions/auth';
+import * as auth from '../actions/auth';
 import UserForm from './UserForm';
 import styles from '../styles/Home';
 
-const Home = ({ user, handleLogoutClick }) => (
+const Home = ({ user, handleLogout }) => (
   <React.Fragment>
     <div className={styles.imageContainer}>
       <img
@@ -25,7 +25,7 @@ const Home = ({ user, handleLogoutClick }) => (
           className={styles.logout}
           type="button"
           value="Log out"
-          onClick={handleLogoutClick}
+          onClick={handleLogout}
         />
       )}
       <div className={styles.aboutContainer}>
@@ -45,14 +45,14 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLogoutClick: () => dispatch(handleLogout()),
+  handleLogout: () => dispatch(auth.handleLogout()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 Home.propTypes = {
   user: PropTypes.string,
-  handleLogoutClick: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
 
 Home.defaultProps = {

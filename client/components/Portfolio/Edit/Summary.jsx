@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { handleSessionCheck } from '../../../actions/auth';
-import { updatePortfolio } from '../../../service/portfolio';
+import { editPortfolio } from '../../../actions/portfolio';
 import Form from './Form';
 import styles from '../../../styles/Portfolio/Card/Summary';
 
@@ -22,8 +21,8 @@ class Summary extends React.Component {
   }
 
   handleSubmit(data) {
-    const { portfolio, handleUpdate, history } = this.props;
-    handleUpdate(data, portfolio.id, history);
+    const { portfolio, handleEdit, history } = this.props;
+    handleEdit(data, portfolio.id, history);
     this.setState({ dropdown: false });
   }
 
@@ -65,9 +64,7 @@ class Summary extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleUpdate: (data, id, history) => updatePortfolio(data, id)
-    .then(() => dispatch(handleSessionCheck(history)))
-    .catch(error => console.error(error)),
+  handleEdit: (data, id, history) => dispatch(editPortfolio(data, id, history)),
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(Summary));
@@ -97,5 +94,5 @@ Summary.propTypes = {
     push: PropTypes.func.isRequired,
     replace: PropTypes.func.isRequired,
   }).isRequired,
-  handleUpdate: PropTypes.func.isRequired,
+  handleEdit: PropTypes.func.isRequired,
 };

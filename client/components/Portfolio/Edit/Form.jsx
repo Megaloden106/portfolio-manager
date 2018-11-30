@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Input from './Text';
-import Select from './Select';
 import { getExchanges } from '../../../service/portfolio';
+import Select from './Select';
+import Input from './Text';
 import styles from '../../../styles/Portfolio/Card/Form';
 
 class Form extends React.Component {
@@ -11,11 +11,11 @@ class Form extends React.Component {
     super(props);
     const { prefill } = this.props;
     this.state = {
-      name: prefill ? prefill.name : '',
-      exchange: prefill ? prefill.exchange : 'Select an Exchange',
-      type: prefill ? prefill.type : 'Select a Type',
       category: prefill ? prefill.category : 'Select a Category',
+      exchange: prefill ? prefill.exchange : 'Select an Exchange',
       exchanges: [],
+      name: prefill ? prefill.name : '',
+      type: prefill ? prefill.type : 'Select a Type',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,21 +40,21 @@ class Form extends React.Component {
 
   render() {
     const {
-      name,
+      category,
       exchange,
       exchanges,
+      name,
       type,
-      category,
     } = this.state;
     const { form, handleCancel } = this.props;
-    const types = ['Select a Type', 'Personal', 'Retirement', 'Education', 'Health'];
     const categories = ['Select a Category'];
+    const types = ['Select a Type', 'Personal', 'Retirement', 'Education', 'Health'];
     if (type === 'Personal') {
       categories.push('Personal');
     } else if (type === 'Retirement') {
       categories.push('Retirement');
     } else if (type === 'Education' || type === 'Health') {
-      categories.push(...['Personal', 'Retirement', 'Other']);
+      categories.concat(['Personal', 'Retirement', 'Other']);
     }
     const selects = [
       { id: 'Exchange', value: exchange, options: exchanges },
@@ -69,18 +69,18 @@ class Form extends React.Component {
       >
         <Input
           id="Name"
-          styles={styles}
           value={name}
           handleChange={this.handleChange}
+          styles={styles}
         />
         {selects.map(({ id, value, options }) => (
           <Select
             key={id}
             id={id}
             options={options}
-            styles={styles}
             value={value}
             handleChange={this.handleChange}
+            styles={styles}
           />
         ))}
         <div className={styles.button}>
