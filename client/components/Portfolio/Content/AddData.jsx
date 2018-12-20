@@ -1,4 +1,6 @@
 import React from 'react';
+import BalanceForm from './BalanceForm';
+import UploadCSV from './UploadCSV';
 import styles from '../../../styles/Portfolio/Content/AddData';
 
 class AddData extends React.Component {
@@ -24,13 +26,9 @@ class AddData extends React.Component {
     return (
       <React.Fragment>
         {showAddForm ? (
-          <div className={styles.addContainer}>
-            <input
-              type="button"
-              value="Cancel"
-              className={styles.addButton}
-              onClick={this.handleCancelClick}
-            />
+          <div className={styles.addContentContainer}>
+            <UploadCSV />
+            <BalanceForm />
           </div>
         ) : (
           <div className={styles.addContainer}>

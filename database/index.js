@@ -69,8 +69,8 @@ const queries = {
     category = null,
     exchangeId = null,
   ) => db.any(`
-    UPDATE portfolios SET (name, user_id, balance, type, category, exchange_id)
-    = ('${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId + 1})
+    UPDATE portfolios SET (last_updated, name, user_id, balance, type, category, exchange_id)
+    = (NOW(), '${name}', ${userId}, ${balance}, '${type}', '${category}', ${exchangeId + 1})
     WHERE id=${portfolioId};
   `),
   getPortfolioDataById: portfolioId => db.any(`

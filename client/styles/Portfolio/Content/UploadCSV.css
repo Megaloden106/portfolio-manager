@@ -1,0 +1,8 @@
+.csv-container {
+  display: inline-block;
+  margin: 12px;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  text-align: center;
+  padding: 50px 150px;
+}
