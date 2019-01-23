@@ -54,7 +54,7 @@ class Form extends React.Component {
     } else if (type === 'Retirement') {
       categories.push('Retirement');
     } else if (type === 'Education' || type === 'Health') {
-      categories.concat(['Personal', 'Retirement', 'Other']);
+      categories.push('Personal', 'Retirement', 'Other');
     }
     const selects = [
       { id: 'Exchange', value: exchange, options: exchanges },

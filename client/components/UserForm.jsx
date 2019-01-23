@@ -53,9 +53,7 @@ class UserForm extends React.Component {
     } = this.state;
 
     let forms = ['Username', 'Password'];
-    if (formType === 'Signup') {
-      forms = ['First Name', 'Last Name', 'Email'].concat(forms);
-    }
+    if (formType === 'Signup') forms = ['First Name', 'Last Name', 'Email'].concat(forms);
 
     const value = {
       Username: username,

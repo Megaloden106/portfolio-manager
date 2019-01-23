@@ -1,8 +1,13 @@
 .csv-container {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   margin: 12px;
-  border: 1px dashed #ccc;
+  border: 2px dashed #ccc;
   border-radius: 5px;
-  text-align: center;
-  padding: 50px 150px;
+}
+
+.csv-loader {
+  margin: 50px auto;
+  outline: none;
 }

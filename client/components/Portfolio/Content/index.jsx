@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { updatePortfolioData } from '../../../actions/portfolio';
-import AddData from './AddData';
+// import AddData from './AddData';
 import styles from '../../../styles/Portfolio/Content';
 
 class Content extends React.Component {
@@ -21,16 +21,35 @@ class Content extends React.Component {
 
   render() {
     const { currentPortfolio, portfolioList, match } = this.props;
-    const defaultPortfoliosIds = [];
-    if (portfolioList.length > 0) {
-      for (let i = 0; i < 3; i += 1) {
-        defaultPortfoliosIds.push(portfolioList[i].id);
-      }
+    const portfolioIds = {};
+    for (let i = 0; i < portfolioList.length; i += 1) {
+      const data = {
+        name: portfolioList[i].name,
+        exchange: portfolioList[i].exchange,
+        add: i >= 3,
+      };
+      portfolioIds[portfolioList[i].id] = data;
     }
     return (
       <div className={styles.contentContainer}>
-        {!defaultPortfoliosIds.includes(Number(match.params.id)) && <AddData />}
         <div className={styles.noDataContainer}>
+          {portfolioIds[match.params.id] && (
+            <h1 className={styles.header}>
+              {portfolioIds[match.params.id].exchange && `${portfolioIds[match.params.id].exchange} - `}
+              {portfolioIds[match.params.id].name}
+              {portfolioIds[match.params.id].add && (
+                <input
+                  type="button"
+                  value="+ ADD DATA"
+                  className={styles.addButton}
+                  onClick={() => {}}
+                />
+              )}
+              {/* {portfolioIds[match.params.id].add && (
+                <AddData key={match.params.id} />
+              )} */}
+            </h1>
+          )}
           {currentPortfolio.length === 0 && (
             <div className={styles.border}>
               <h1 className={styles.text}>

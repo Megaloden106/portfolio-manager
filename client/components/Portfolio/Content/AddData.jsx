@@ -11,6 +11,7 @@ class AddData extends React.Component {
     };
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleCancelClick = this.handleCancelClick.bind(this);
+    this.handleSingleFormSubmit = this.handleSingleFormSubmit.bind(this);
   }
 
   handleAddClick() {
@@ -21,6 +22,11 @@ class AddData extends React.Component {
     this.setState({ showAddForm: false });
   }
 
+  handleSingleFormSubmit(event) {
+    event.preventDefault();
+    this.setState({ showAddForm: false });
+  }
+
   render() {
     const { showAddForm } = this.state;
     return (
@@ -28,7 +34,15 @@ class AddData extends React.Component {
         {showAddForm ? (
           <div className={styles.addContentContainer}>
             <UploadCSV />
-            <BalanceForm />
+            <form
+              className={styles.singleForm}
+              onSubmit={this.handleSingleFormSubmit}
+            >
+              <BalanceForm />
+              <input
+                type="submit"
+              />
+            </form>
           </div>
         ) : (
           <div className={styles.addContainer}>

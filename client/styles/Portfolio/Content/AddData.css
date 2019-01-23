@@ -23,11 +23,16 @@
 }
 
 .add-content-container {
+  display: flex;
   border: 1px solid #d9d9d9;
   border-radius: 5px;
-  width: 100%;
-  font-size: 16px;
-  color: #666;
+   color: #666;
   background-color: white;
   margin-bottom: 12px;
+}
+
+.single-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
