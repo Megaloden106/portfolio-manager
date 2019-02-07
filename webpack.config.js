@@ -43,6 +43,7 @@ module.exports = {
     ],
   },
   optimization: {
+    nodeEnv: 'production',
     minimizer: [new UglifyJsPlugin()],
   },
   plugins: [

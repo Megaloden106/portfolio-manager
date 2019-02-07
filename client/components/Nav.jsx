@@ -6,7 +6,10 @@ import updateModalDisplay from '../actions/modal';
 import styles from '../styles/Nav';
 
 const Nav = ({
-  portfolioList, user, handleLogin, handleSingup,
+  portfolioList,
+  user,
+  handleLogin,
+  handleSingup,
 }) => (
   <div className={styles.navContainer}>
     <nav className={styles.navBar}>

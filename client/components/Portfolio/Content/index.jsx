@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { updatePortfolioData } from '../../../actions/portfolio';
-// import AddData from './AddData';
+import updateModalDisplay from '../../../actions/modal';
 import styles from '../../../styles/Portfolio/Content';
 
 class Content extends React.Component {
@@ -20,7 +20,12 @@ class Content extends React.Component {
   }
 
   render() {
-    const { currentPortfolio, portfolioList, match } = this.props;
+    const {
+      currentPortfolio,
+      portfolioList,
+      match,
+      handleAddDataClick,
+    } = this.props;
     const portfolioIds = {};
     for (let i = 0; i < portfolioList.length; i += 1) {
       const data = {
@@ -32,7 +37,7 @@ class Content extends React.Component {
     }
     return (
       <div className={styles.contentContainer}>
-        <div className={styles.noDataContainer}>
+        <div className={styles.graphContainer}>
           {portfolioIds[match.params.id] && (
             <h1 className={styles.header}>
               {portfolioIds[match.params.id].exchange && `${portfolioIds[match.params.id].exchange} - `}
@@ -42,12 +47,9 @@ class Content extends React.Component {
                   type="button"
                   value="+ ADD DATA"
                   className={styles.addButton}
-                  onClick={() => {}}
+                  onClick={handleAddDataClick}
                 />
               )}
-              {/* {portfolioIds[match.params.id].add && (
-                <AddData key={match.params.id} />
-              )} */}
             </h1>
           )}
           {currentPortfolio.length === 0 && (
@@ -71,6 +73,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handlePageLoad: (id, history) => dispatch(updatePortfolioData(id, history)),
+  handleAddDataClick: () => dispatch(updateModalDisplay('', 'Data')),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Content));
@@ -91,6 +94,7 @@ Content.propTypes = {
     name: PropTypes.string,
   })).isRequired,
   handlePageLoad: PropTypes.func.isRequired,
+  handleAddDataClick: PropTypes.func.isRequired,
   history: PropTypes.shape({
     action: PropTypes.string.isRequired,
     block: PropTypes.func.isRequired,

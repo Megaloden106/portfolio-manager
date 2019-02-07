@@ -4,8 +4,9 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { handleSessionCheck } from '../actions/auth';
 import updateModalDisplay from '../actions/modal';
+import UserModal from './UserModal';
+import DataModal from './DataModal';
 import Home from './Home';
-import Modal from './Modal';
 import Nav from './Nav';
 import Portfolio from './Portfolio';
 import styles from '../styles/Page';
@@ -28,15 +29,19 @@ class Page extends React.Component {
           </Switch>
         </div>
         {modalType && (
-          <div>
+          <React.Fragment>
             <input
               type="button"
               className={styles.blurContainer}
               id="blur"
               onClick={modalType !== 'Loading' ? handleBlurLayerClick : null}
             />
-            <Modal />
-          </div>
+            {modalType !== 'Data' ? (
+              <UserModal />
+            ) : (
+              <DataModal />
+            )}
+          </React.Fragment>
         )}
       </div>
     );

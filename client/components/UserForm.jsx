@@ -1,92 +1,104 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as auth from '../actions/auth';
-import Input from './Input';
 
-class UserForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.default = {
-      email: '',
-      firstName: '',
-      lastName: '',
-      password: '',
-      username: '',
-    };
-    this.state = this.default;
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const UserForm = ({
+  formType,
+  handleLogin,
+  handleRegister,
+  history,
+  styles,
+}) => {
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
 
-  handleChange(event) {
-    let target = event.target.id[0].toLowerCase();
-    target += event.target.id.slice(1);
-    this.setState({ [target.replace(' ', '')]: event.target.value });
-  }
-
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const {
-      formType,
-      handleLogin,
-      handleRegister,
-      history,
-    } = this.props;
-    if (formType === 'Login') {
-      handleLogin(this.state, history);
-    } else {
-      handleRegister(this.state, history);
-    }
-    this.setState(this.default);
-  }
-
-  render() {
-    const { formType, styles } = this.props;
-    const {
-      username,
-      password,
+    const data = {
+      email,
       firstName,
       lastName,
-      email,
-    } = this.state;
-
-    let forms = ['Username', 'Password'];
-    if (formType === 'Signup') forms = ['First Name', 'Last Name', 'Email'].concat(forms);
-
-    const value = {
-      Username: username,
-      Password: password,
-      'First Name': firstName,
-      'Last Name': lastName,
-      Email: email,
+      password,
+      username,
     };
 
-    return (
-      <form
-        className={styles.formContainer}
-        onSubmit={this.handleSubmit}
-      >
-        {forms.map(form => (
-          <Input
-            key={form}
-            form={form}
-            formType={formType}
-            value={value}
-            styles={styles}
-            handleChange={this.handleChange}
+    if (formType === 'Login') {
+      handleLogin(data, history);
+    } else {
+      handleRegister(data, history);
+      setEmail('');
+      setFirstName('');
+      setLastName('');
+    }
+    setPassword('');
+    setUsername('');
+  };
+
+  return (
+    <form
+      className={styles.formContainer}
+      onSubmit={handleSubmit}
+    >
+      <input
+        type="text"
+        value={username}
+        className={styles.text}
+        onChange={e => setUsername(e.target.value)}
+        placeholder="Username"
+        minLength="5"
+        required
+      />
+      <input
+        type="password"
+        value={password}
+        className={styles.text}
+        onChange={e => setPassword(e.target.value)}
+        placeholder="Password"
+        minLength="5"
+        maxLength="25"
+        required
+      />
+      {formType === 'Signup' && (
+        <React.Fragment>
+          <input
+            type="text"
+            value={firstName}
+            className={styles.name}
+            onChange={e => setFirstName(e.target.value)}
+            placeholder="First Name"
+            required
           />
-        ))}
-        <input
-          type="submit"
-          value={formType === 'Login' ? 'Log in' : 'Join Now'}
-          className={styles.submit}
-        />
-      </form>
-    );
-  }
-}
+          <input
+            type="text"
+            value={lastName}
+            className={styles.name}
+            onChange={e => setLastName(e.target.value)}
+            placeholder="Last Name"
+            required
+          />
+          <input
+            type="email"
+            value={email}
+            className={styles.text}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="Email"
+            required
+          />
+        </React.Fragment>
+      )}
+      <input
+        type="submit"
+        value={formType === 'Login' ? 'Log in' : 'Join Now'}
+        className={styles.submit}
+      />
+    </form>
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
   handleLogin: (creds, history) => dispatch(auth.handleLogin(creds, history)),

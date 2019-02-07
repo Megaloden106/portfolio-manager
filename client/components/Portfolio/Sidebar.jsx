@@ -14,7 +14,7 @@ const Sidebar = ({ portfolioList, handleEditClick }) => (
           <img
             className={styles.icon}
             src="https://s3-us-west-1.amazonaws.com/portfolio-manager-project/edit.png"
-            alt="Edit"
+            alt="E"
           />
         </Link>
       </div>
