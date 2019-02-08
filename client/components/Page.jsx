@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -11,46 +11,41 @@ import Nav from './Nav';
 import Portfolio from './Portfolio';
 import styles from '../styles/Page';
 
-class Page extends React.Component {
-  componentDidMount() {
-    const { checkSession, history } = this.props;
+const Page = ({
+  checkSession,
+  history,
+  modalType,
+  handleBlurLayerClick,
+}) => {
+  useEffect(() => {
     checkSession(history);
-  }
+  }, [history]);
 
-  render() {
-    const { modalType, handleBlurLayerClick } = this.props;
-    return (
-      <div className={styles.pageContainer}>
-        <div className={modalType ? styles.blur : null}>
-          <Nav />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/portfolio/" component={Portfolio} />
-          </Switch>
-        </div>
-        {modalType && (
-          <React.Fragment>
-            <input
-              type="button"
-              className={styles.blurContainer}
-              id="blur"
-              onClick={modalType !== 'Loading' ? handleBlurLayerClick : null}
-            />
-            {modalType !== 'Data' ? (
-              <UserModal />
-            ) : (
-              <DataModal />
-            )}
-          </React.Fragment>
-        )}
+  return (
+    <div className={styles.pageContainer}>
+      <div className={modalType ? styles.blur : null}>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/portfolio/" component={Portfolio} />
+        </Switch>
       </div>
-    );
-  }
-}
+      {modalType && (
+        <React.Fragment>
+          <input
+            type="button"
+            className={styles.blurContainer}
+            onClick={modalType !== 'Loading' ? handleBlurLayerClick : null}
+          />
+          {modalType !== 'Data' ? <UserModal /> : <DataModal />}
+        </React.Fragment>
+      )}
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   modalType: state.modalType,
-  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({
