@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { changeAddCard } from '../../../actions/actionCreators';
 import AddCard from './Add';
-import CompanyCard from './Company';
+import CompanyCard from './CompanyCard';
 import styles from '../../../styles/Portfolio/Edit';
 
 const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
@@ -11,8 +11,7 @@ const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
   for (let i = 3; i < portfolioList.length; i += 1) {
     const portfolio = portfolioList[i];
     const { exchange } = portfolio;
-    companyPortfolioList[exchange] = companyPortfolioList[exchange] || [];
-    companyPortfolioList[exchange].push(portfolio);
+    companyPortfolioList[exchange] = (companyPortfolioList[exchange] || []).concat([portfolio]);
   }
   const companies = Object.keys(companyPortfolioList).sort((a, b) => a.localeCompare(b));
   return (
