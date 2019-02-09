@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { editPortfolio } from '../../../actions/portfolio';
-import Form from './Form';
+import PortfolioForm from './PortfolioForm';
 import styles from '../../../styles/Portfolio/Card/Summary';
 
 const Summary = ({ portfolio, handleEdit, history }) => {
@@ -35,7 +35,7 @@ const Summary = ({ portfolio, handleEdit, history }) => {
       </div>
       {dropdown && (
         <div className={styles.dropdownContainer}>
-          <Form
+          <PortfolioForm
             form="edit"
             prefill={portfolio}
             handleSubmit={handleSubmit}

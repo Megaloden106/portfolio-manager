@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -6,64 +6,105 @@ import { updatePortfolioData } from '../../../actions/portfolio';
 import updateModalDisplay from '../../../actions/modal';
 import styles from '../../../styles/Portfolio/Content';
 
-class Content extends React.Component {
-  componentDidMount() {
-    const { handlePageLoad, history, match } = this.props;
+const Content = ({
+  currentPortfolio,
+  portfolioList,
+  handleAddBalance,
+  handleAddPortfolio,
+  handlePageLoad,
+  history,
+  match,
+}) => {
+  const [dropdown, setDropdown] = useState(false);
+
+  useEffect(() => {
     handlePageLoad(match.params.id, history);
+  }, [match.params.id]);
+
+  const toggleDropdown = () => {
+    setDropdown(true);
+    document.addEventListener('click', function close(event) {
+      if (!document.getElementById('dropdown') || !document.getElementById('dropdown').contains(event.target)) {
+        document.removeEventListener('click', close);
+        setDropdown(false);
+      }
+    });
+  };
+
+  const portfolioIds = {};
+  for (let i = 0; i < portfolioList.length; i += 1) {
+    const data = {
+      name: portfolioList[i].name,
+      exchange: portfolioList[i].exchange,
+      index: i,
+    };
+    portfolioIds[portfolioList[i].id] = data;
   }
 
-  componentDidUpdate(prevProps) {
-    const { handlePageLoad, match } = this.props;
-    if (prevProps.match.params.id !== match.params.id) {
-      handlePageLoad(match.params.id);
-    }
-  }
-
-  render() {
-    const {
-      currentPortfolio,
-      portfolioList,
-      match,
-      handleAddDataClick,
-    } = this.props;
-    const portfolioIds = {};
-    for (let i = 0; i < portfolioList.length; i += 1) {
-      const data = {
-        name: portfolioList[i].name,
-        exchange: portfolioList[i].exchange,
-        add: i >= 3,
-      };
-      portfolioIds[portfolioList[i].id] = data;
-    }
-    return (
-      <div className={styles.contentContainer}>
-        <div className={styles.graphContainer}>
-          {portfolioIds[match.params.id] && (
-            <h1 className={styles.header}>
-              {portfolioIds[match.params.id].exchange && `${portfolioIds[match.params.id].exchange} - `}
-              {portfolioIds[match.params.id].name}
-              {portfolioIds[match.params.id].add && (
+  return (
+    <div className={styles.contentContainer}>
+      <div className={styles.graphContainer}>
+        {portfolioIds[match.params.id] && (
+          <h1 className={styles.header}>
+            {portfolioIds[match.params.id].exchange && `${portfolioIds[match.params.id].exchange} - `}
+            {portfolioIds[match.params.id].name}
+            {portfolioIds[match.params.id].index > 2 ? (
+              <input
+                type="button"
+                value="+ ADD"
+                className={styles.addButton}
+                onClick={toggleDropdown}
+              />
+            ) : (
+              <input
+                type="button"
+                value="+ ADD PORTFOLIO"
+                className={styles.addButton}
+                onClick={() => {
+                  setDropdown(false);
+                  handleAddPortfolio();
+                }}
+              />
+            )}
+            {dropdown && (
+              <div
+                className={styles.dropdownContainer}
+                id="dropdown"
+              >
+                <div className={styles.dropdownHeader}>Add New</div>
                 <input
                   type="button"
-                  value="+ ADD DATA"
-                  className={styles.addButton}
-                  onClick={handleAddDataClick}
+                  value="Portfolio"
+                  className={styles.dropdownButton}
+                  onClick={() => {
+                    setDropdown(false);
+                    handleAddPortfolio();
+                  }}
                 />
-              )}
+                <input
+                  type="button"
+                  value="Balance"
+                  className={styles.dropdownButton}
+                  onClick={() => {
+                    setDropdown(false);
+                    handleAddBalance();
+                  }}
+                />
+              </div>
+            )}
+          </h1>
+        )}
+        {currentPortfolio.length === 0 && (
+          <div className={styles.border}>
+            <h1 className={styles.text}>
+              Please Add Portfolio Data
             </h1>
-          )}
-          {currentPortfolio.length === 0 && (
-            <div className={styles.border}>
-              <h1 className={styles.text}>
-                Please Add Portfolio Data
-              </h1>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   currentPortfolio: state.currentPortfolio,
@@ -73,7 +114,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handlePageLoad: (id, history) => dispatch(updatePortfolioData(id, history)),
-  handleAddDataClick: () => dispatch(updateModalDisplay('', 'Data')),
+  handleAddBalance: () => dispatch(updateModalDisplay('', 'Balance')),
+  handleAddPortfolio: () => dispatch(updateModalDisplay('', 'Portfolio')),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Content));
@@ -93,8 +135,9 @@ Content.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   })).isRequired,
+  handleAddBalance: PropTypes.func.isRequired,
+  handleAddPortfolio: PropTypes.func.isRequired,
   handlePageLoad: PropTypes.func.isRequired,
-  handleAddDataClick: PropTypes.func.isRequired,
   history: PropTypes.shape({
     action: PropTypes.string.isRequired,
     block: PropTypes.func.isRequired,

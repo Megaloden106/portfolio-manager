@@ -5,17 +5,17 @@ import { getExchanges } from '../../../service/portfolio';
 import Select from './Select';
 import styles from '../../../styles/Portfolio/Card/Form';
 
-const Form = ({
+const PortfolioForm = ({
   form,
   prefill,
   handleCancel,
   handleSubmit,
 }) => {
-  const [category, setCategory] = useState(prefill.category || 'Select a Category');
-  const [exchange, setExchange] = useState(prefill.exchange || 'Select a Exchange');
+  const [category, setCategory] = useState(prefill ? prefill.category : 'Select a Category');
+  const [exchange, setExchange] = useState(prefill ? prefill.exchange : 'Select a Exchange');
   const [exchanges, setExchanges] = useState([]);
-  const [name, setName] = useState(prefill.name || '');
-  const [type, setType] = useState(prefill.type || 'Select a Type');
+  const [name, setName] = useState(prefill ? prefill.name : '');
+  const [type, setType] = useState(prefill ? prefill.type : 'Select a Type');
 
   useEffect(() => {
     getExchanges()
@@ -113,9 +113,9 @@ const Form = ({
   );
 };
 
-export default withRouter(Form);
+export default withRouter(PortfolioForm);
 
-Form.propTypes = {
+PortfolioForm.propTypes = {
   form: PropTypes.string.isRequired,
   prefill: PropTypes.shape({
     exchange: PropTypes.string,
@@ -127,6 +127,6 @@ Form.propTypes = {
   handleCancel: PropTypes.func.isRequired,
 };
 
-Form.defaultProps = {
+PortfolioForm.defaultProps = {
   prefill: null,
 };

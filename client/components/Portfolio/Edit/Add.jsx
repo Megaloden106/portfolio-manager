@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { changeAddCard } from '../../../actions/actionCreators';
 import { registerNewPortfolio } from '../../../actions/portfolio';
-import Form from './Form';
+import PortfolioForm from './PortfolioForm';
 import styles from '../../../styles/Portfolio/Card/Add';
 
 const AddCard = ({ handleCancel, handleSubmit }) => (
   <div className={styles.addContainer}>
     <h2 className={styles.header}>Add Portfolio</h2>
-    <Form
+    <PortfolioForm
       form="add"
       handleCancel={handleCancel}
       handleSubmit={handleSubmit}
