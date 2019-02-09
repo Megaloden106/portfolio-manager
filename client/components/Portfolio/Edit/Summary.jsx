@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { editPortfolio } from '../../../actions/portfolio';
 import PortfolioForm from '../../PortfolioForm';
 import styles from '../../../styles/Portfolio/Edit/Summary';
+import formStyles from '../../../styles/Portfolio/Edit/Form';
 
 const Summary = ({ portfolio, handleEdit, history }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -37,6 +38,7 @@ const Summary = ({ portfolio, handleEdit, history }) => {
         <div className={styles.dropdownContainer}>
           <PortfolioForm
             form="edit"
+            styles={formStyles}
             prefill={portfolio}
             handleSubmit={handleSubmit}
             handleCancel={() => setDropdown(false)}

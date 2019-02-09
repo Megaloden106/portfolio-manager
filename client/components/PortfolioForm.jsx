@@ -3,11 +3,11 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getExchanges } from '../service/portfolio';
 import Select from './Select';
-import styles from '../styles/PortfolioForm';
 
 const PortfolioForm = ({
   form,
   prefill,
+  styles,
   handleCancel,
   handleSubmit,
 }) => {
@@ -123,6 +123,7 @@ PortfolioForm.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   }),
+  styles: PropTypes.objectOf(PropTypes.string).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleCancel: PropTypes.func.isRequired,
 };

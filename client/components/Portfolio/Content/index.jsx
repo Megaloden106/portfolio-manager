@@ -114,8 +114,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handlePageLoad: (id, history) => dispatch(updatePortfolioData(id, history)),
-  handleAddBalance: () => dispatch(updateModalDisplay('', 'Balance')),
-  handleAddPortfolio: () => dispatch(updateModalDisplay('', 'Portfolio')),
+  handleAddBalance: () => dispatch(updateModalDisplay('', 'Add Balance')),
+  handleAddPortfolio: () => dispatch(updateModalDisplay('', 'Add Portfolio')),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Content));

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import updateModalDisplay from '../actions/modal';
 import UserForm from './UserForm';
 import styles from '../styles/UserModal';
+import PortfolioForm from './PortfolioForm';
+import formStyles from '../styles/PortfolioForm';
 
 const UserModal = ({
   modalError,
@@ -23,7 +25,7 @@ const UserModal = ({
         {modalError}
       </p>
     )}
-    {modalType === 'Loading' ? (
+    {modalType === 'Loading' && (
       <div className={styles.loadContainer}>
         <ReactLoading
           type="spokes"
@@ -33,10 +35,19 @@ const UserModal = ({
           className={styles.spoke}
         />
       </div>
-    ) : (
+    )}
+    {(modalType === 'Login' || modalType === 'Signup') && (
       <UserForm
         styles={styles}
         formType={modalType}
+      />
+    )}
+    {modalType.includes('Portfolio') && (
+      <PortfolioForm
+        form="add"
+        styles={formStyles}
+        handleCancel={() => {}}
+        handleSubmit={() => {}}
       />
     )}
     {modalType === 'Login' && (

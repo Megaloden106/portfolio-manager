@@ -5,12 +5,14 @@ import { changeAddCard } from '../../../actions/actionCreators';
 import { registerNewPortfolio } from '../../../actions/portfolio';
 import PortfolioForm from '../../PortfolioForm';
 import styles from '../../../styles/Portfolio/Edit/Add';
+import formStyles from '../../../styles/Portfolio/Edit/Form';
 
 const AddCard = ({ handleCancel, handleSubmit }) => (
   <div className={styles.addContainer}>
     <h2 className={styles.header}>Add Portfolio</h2>
     <PortfolioForm
       form="add"
+      styles={formStyles}
       handleCancel={handleCancel}
       handleSubmit={handleSubmit}
     />

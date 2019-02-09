@@ -1,0 +1,115 @@
+.form {
+  margin: 12px 0 ;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    'name type'
+    'exchange category'
+    'null button';
+}
+
+.text, .select,
+.background {
+  width: 280px;
+  height: 35px;
+}
+
+.text, .select {
+  font-size: 12px;
+  padding: 0 16px;
+  border: 1px solid #d9d9d9;
+  outline: none;
+}
+
+.text, .background {
+  margin-top: 8px;
+  border-radius: 5px;
+}
+
+.background {
+  background-color: white;
+}
+
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.background:hover .arrowhead {
+  color: #333
+}
+
+.arrowhead {
+  position: absolute;
+  font-weight: 500;
+  margin: 0;
+  user-select: none;
+  pointer-events: none;
+  top: 18px;
+  color: #999;
+}
+
+.type .arrowhead,
+.category .arrowhead {
+  right: 12px;
+}
+
+.exchange .arrowhead {
+  right: 24px;
+}
+
+.cancel-button,
+.add-button {
+  width: 120px;
+  height: 37px;
+  float: right;
+  padding: 0;
+  margin-top: 18px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.cancel-button {
+  background-color: #c02e2e;
+}
+
+.add-button {
+  background-color: #03ce8b;
+  margin-left: 12px;
+}
+.add-button:disabled {
+  background-color: #03ce8b33
+}
+
+.name, .exchange,
+.type, .category {
+  margin-top: 12px;
+  position: relative;
+}
+
+.type, .category {
+  padding-left: 18px;
+}
+
+.name {
+  grid-area: name;
+}
+.exchange {
+  grid-area: exchange;
+}
+.type {
+  grid-area: type;
+}
+.category {
+  grid-area: category;
+}
+.button {
+  grid-area: button;
+}

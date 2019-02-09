@@ -73,6 +73,6 @@ INSERT INTO exchanges (company) VALUES ('Trade Station');
 INSERT INTO exchanges (company) VALUES ('eOption');
 INSERT INTO exchanges (company) VALUES ('Chase');
 INSERT INTO exchanges (company) VALUES ('Wells Fargo');
-INSERT INTO exchanges (company) VALUES ('Ally');
+INSERT INTO exchanges (company) VALUES ('Ally Bank');
 INSERT INTO exchanges (company) VALUES ('Health Equity');
 INSERT INTO exchanges (company) VALUES ('Cryptocurrency');
