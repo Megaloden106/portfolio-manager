@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { changeAddCard } from '../../../actions/actionCreators';
 import AddCard from './Add';
-import CompanyCard from './CompanyCard';
+import Card from './Card';
 import styles from '../../../styles/Portfolio/Edit';
 
 const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
@@ -28,7 +28,7 @@ const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
       {addCard && <AddCard />}
       {portfolioList.length > 3 ? (
         companies.map(company => (
-          <CompanyCard
+          <Card
             key={company}
             company={company}
             portfolios={companyPortfolioList[company]}

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { handleSessionCheck } from '../actions/auth';
 import updateModalDisplay from '../actions/modal';
 import UserModal from './UserModal';
-import DataModal from './PortfolioModal';
 import Home from './Home';
 import Nav from './Nav';
 import Portfolio from './Portfolio';
@@ -37,7 +36,7 @@ const Page = ({
             className={styles.blurContainer}
             onClick={modalType !== 'Loading' ? handleBlurLayerClick : null}
           />
-          {modalType !== 'Data' ? <UserModal /> : <DataModal />}
+          <UserModal />
         </React.Fragment>
       )}
     </div>

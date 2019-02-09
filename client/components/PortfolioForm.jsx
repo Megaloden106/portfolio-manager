@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { getExchanges } from '../../../service/portfolio';
+import { getExchanges } from '../service/portfolio';
 import Select from './Select';
-import styles from '../../../styles/Portfolio/Card/Form';
+import styles from '../styles/PortfolioForm';
 
 const PortfolioForm = ({
   form,

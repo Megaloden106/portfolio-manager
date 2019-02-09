@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Summary from './Summary';
-import styles from '../../../styles/Portfolio/Card/Company';
+import styles from '../../../styles/Portfolio/Edit/Card';
 
-const CompanyCard = ({ company, portfolios }) => {
+const Card = ({ company, portfolios }) => {
   let updated = moment();
   portfolios.forEach(({ lastUpdated }) => {
     const date = moment(lastUpdated);
@@ -30,9 +30,9 @@ const CompanyCard = ({ company, portfolios }) => {
   );
 };
 
-export default CompanyCard;
+export default Card;
 
-CompanyCard.propTypes = {
+Card.propTypes = {
   company: PropTypes.string.isRequired,
   portfolios: PropTypes.arrayOf(PropTypes.shape({
     exchange: PropTypes.string,

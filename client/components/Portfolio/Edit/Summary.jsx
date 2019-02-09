@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { editPortfolio } from '../../../actions/portfolio';
-import PortfolioForm from './PortfolioForm';
-import styles from '../../../styles/Portfolio/Card/Summary';
+import PortfolioForm from '../../PortfolioForm';
+import styles from '../../../styles/Portfolio/Edit/Summary';
 
 const Summary = ({ portfolio, handleEdit, history }) => {
   const [dropdown, setDropdown] = useState(false);

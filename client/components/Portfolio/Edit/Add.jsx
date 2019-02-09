@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { changeAddCard } from '../../../actions/actionCreators';
 import { registerNewPortfolio } from '../../../actions/portfolio';
-import PortfolioForm from './PortfolioForm';
-import styles from '../../../styles/Portfolio/Card/Add';
+import PortfolioForm from '../../PortfolioForm';
+import styles from '../../../styles/Portfolio/Edit/Add';
 
 const AddCard = ({ handleCancel, handleSubmit }) => (
   <div className={styles.addContainer}>
