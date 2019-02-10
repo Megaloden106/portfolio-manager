@@ -2,15 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { changeAddCard } from '../../actions/actionCreators';
 import styles from '../../styles/Portfolio/Sidebar';
 
-const Sidebar = ({ portfolioList, handleEditClick }) => (
+const Sidebar = ({ portfolioList }) => (
   <nav className={styles.sidebarContainer}>
     <div className={styles.section}>
       Portfolios
       <div className={styles.edit}>
-        <Link to="/portfolio/edit/" onClick={handleEditClick}>
+        <Link to="/portfolio/edit/">
           <img
             className={styles.icon}
             src="https://s3-us-west-1.amazonaws.com/portfolio-manager-project/edit.png"
@@ -36,15 +35,7 @@ const mapStateToProps = state => ({
   portfolioList: state.portfolioList,
 });
 
-const mapDispatchToProps = dispatch => ({
-  handleEditClick: () => {
-    if (!window.location.pathname.includes('edit')) {
-      dispatch(changeAddCard(false));
-    }
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default connect(mapStateToProps)(Sidebar);
 
 Sidebar.propTypes = {
   portfolioList: PropTypes.arrayOf(PropTypes.shape({

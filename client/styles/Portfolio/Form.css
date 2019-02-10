@@ -1,11 +1,5 @@
 .form {
   margin: 12px 0 ;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-areas:
-    'name type'
-    'exchange category'
-    'null button';
 }
 
 .text, .select,

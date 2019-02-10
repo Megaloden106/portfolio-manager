@@ -4,9 +4,9 @@ import ReactLoading from 'react-loading';
 import PropTypes from 'prop-types';
 import updateModalDisplay from '../actions/modal';
 import UserForm from './UserForm';
-import styles from '../styles/UserModal';
-import PortfolioForm from './PortfolioForm';
-import formStyles from '../styles/PortfolioForm';
+import styles from '../styles/Modal';
+import PortfolioForm from './Portfolio/Form';
+import formStyles from '../styles/Portfolio/Form';
 
 const UserModal = ({
   modalError,

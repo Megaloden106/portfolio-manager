@@ -14,7 +14,6 @@ const Select = ({
     <br />
     <div className={styles.background}>
       <select
-        id={id}
         className={styles.select}
         onChange={handleChange}
         value={value.includes('Select') ? '' : value}

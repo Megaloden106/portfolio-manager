@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { handleSessionCheck } from '../actions/auth';
 import updateModalDisplay from '../actions/modal';
-import UserModal from './UserModal';
+import Modal from './Modal';
 import Home from './Home';
 import Nav from './Nav';
 import Portfolio from './Portfolio';
@@ -36,7 +36,7 @@ const Page = ({
             className={styles.blurContainer}
             onClick={modalType !== 'Loading' ? handleBlurLayerClick : null}
           />
-          <UserModal />
+          <Modal />
         </React.Fragment>
       )}
     </div>

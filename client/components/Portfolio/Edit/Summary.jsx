@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { editPortfolio } from '../../../actions/portfolio';
-import PortfolioForm from '../../PortfolioForm';
+import PortfolioForm from '../Form';
 import styles from '../../../styles/Portfolio/Edit/Summary';
 import formStyles from '../../../styles/Portfolio/Edit/Form';
 

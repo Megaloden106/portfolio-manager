@@ -18,11 +18,6 @@ export const changePortfolioList = list => ({
   list,
 });
 
-export const changeAddCard = bool => ({
-  type: types.CHANGE_ADD_CARD,
-  addCard: bool,
-});
-
 
 // Modal action creators
 export const changeModal = string => ({

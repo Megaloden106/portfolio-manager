@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { changeAddCard } from '../../../actions/actionCreators';
-import AddCard from './Add';
 import Card from './Card';
+import updateModalDisplay from '../../../actions/modal';
 import styles from '../../../styles/Portfolio/Edit';
 
-const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
+const Edit = ({ portfolioList, handleAddPortfolio }) => {
   const companyPortfolioList = {};
   for (let i = 3; i < portfolioList.length; i += 1) {
     const portfolio = portfolioList[i];
@@ -22,10 +21,9 @@ const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
           type="button"
           value="+ ADD PORTFOLIO"
           className={styles.addButton}
-          onClick={() => handleAddPortfolioClick(addCard)}
+          onClick={handleAddPortfolio}
         />
       </h1>
-      {addCard && <AddCard />}
       {portfolioList.length > 3 ? (
         companies.map(company => (
           <Card
@@ -37,7 +35,7 @@ const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
       ) : (
         <div className={styles.noData}>
           <h1 className={styles.text}>
-            Please Add A Portfolio
+            Please Add a Portfolio
           </h1>
         </div>
       )}
@@ -46,23 +44,21 @@ const Edit = ({ addCard, portfolioList, handleAddPortfolioClick }) => {
 };
 
 const mapStateToProps = state => ({
-  addCard: state.addCard,
   portfolioList: state.portfolioList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleAddPortfolioClick: bool => dispatch(changeAddCard(!bool)),
+  handleAddPortfolio: () => dispatch(updateModalDisplay('', 'Add Portfolio')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Edit);
 
 Edit.propTypes = {
-  addCard: PropTypes.bool.isRequired,
   portfolioList: PropTypes.arrayOf(PropTypes.shape({
     exchange: PropTypes.string,
     exchange_id: PropTypes.number,
     id: PropTypes.number,
     name: PropTypes.string,
   })).isRequired,
-  handleAddPortfolioClick: PropTypes.func.isRequired,
+  handleAddPortfolio: PropTypes.func.isRequired,
 };
