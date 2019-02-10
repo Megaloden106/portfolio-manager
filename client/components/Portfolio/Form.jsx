@@ -75,6 +75,7 @@ const PortfolioForm = ({
           className={styles.text}
           onChange={e => setName(e.target.value)}
         />
+        <br />
       </label>
       {selects.map(({
         id,

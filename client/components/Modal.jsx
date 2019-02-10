@@ -14,7 +14,10 @@ const UserModal = ({
   handleLogin,
   handleSingup,
 }) => (
-  <div className={styles.container}>
+  <div className={`${styles.container} ${!modalType.includes('Portfolio')
+    ? styles.width1
+    : styles.width2}`}
+  >
     {modalType !== 'Loading' && (
       <div className={styles.headerContainer}>
         {modalType}

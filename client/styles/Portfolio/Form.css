@@ -1,5 +1,6 @@
 .form {
-  margin: 12px 0 ;
+  margin: 24px;
+  padding: 0 36px;
 }
 
 .text, .select,
@@ -16,11 +17,12 @@
 }
 
 .text, .background {
-  margin-top: 8px;
+  margin: 8px 0 12px 0;
   border-radius: 5px;
 }
 
 .background {
+  position: relative;
   background-color: white;
 }
 
@@ -48,21 +50,18 @@
 }
 
 .type .arrowhead,
-.category .arrowhead {
-  right: 12px;
-}
-
+.category .arrowhead,
 .exchange .arrowhead {
-  right: 24px;
+  right: 12px;
+  top: -8px;
 }
 
 .cancel-button,
 .add-button {
   width: 120px;
   height: 37px;
-  float: right;
   padding: 0;
-  margin-top: 18px;
+  margin-top: 6px;
   color: white;
   outline: none;
   cursor: pointer;
@@ -77,33 +76,8 @@
 .add-button {
   background-color: #03ce8b;
   margin-left: 12px;
+  float: right;
 }
 .add-button:disabled {
   background-color: #03ce8b33
-}
-
-.name, .exchange,
-.type, .category {
-  margin-top: 12px;
-  position: relative;
-}
-
-.type, .category {
-  padding-left: 18px;
-}
-
-.name {
-  grid-area: name;
-}
-.exchange {
-  grid-area: exchange;
-}
-.type {
-  grid-area: type;
-}
-.category {
-  grid-area: category;
-}
-.button {
-  grid-area: button;
 }
