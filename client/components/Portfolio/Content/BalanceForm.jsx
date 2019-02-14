@@ -1,77 +1,99 @@
-import React from 'react';
-import moment from 'moment';
+import React, { useState } from 'react';
+import styles from '../../../styles/Portfolio/Content/BalanceForm';
 
-class BalanceForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: moment().format('YYYY-M-D'),
-      balance: '',
-      deposit: '',
-      withdrawal: '',
-    };
-    this.handleFormChange = this.handleFormChange.bind(this);
-  }
+const BalanceForm = () => {
+  const [date, setDate] = useState(new Date());
+  const [balance, setBalance] = useState('');
+  const [deposit, setDeposit] = useState('');
+  const [withdrawal, setWithdrawal] = useState('');
 
-  handleFormChange(event) {
-    const target = event.target.className;
-    const value = event.target.type === 'text'
-      ? Number(event.target.value.replace(/,/g, '')).toLocaleString('en-US')
-      : event.target.value;
-    this.setState({ [target]: value });
-  }
+  const formatCurrency = (event, prev) => {
+    const val = event.target.value;
+    if (val.length > 20) return prev;
+    if (+val === 0) return '';
+    const result = (+val.replace(/[^0-9]/g, '') / 100)
+      .toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+      .slice(1);
 
-  render() {
-    const {
-      date,
-      balance,
-      deposit,
-      withdrawal,
-    } = this.state;
-    return (
-      <React.Fragment>
-        <label htmlFor="balanceForm">
-          Date:&nbsp;
-          <input
-            type="date"
-            className="date"
-            value={date}
-            onChange={this.handleFormChange}
-          />
-        </label>
-        <label htmlFor="balanceForm">
-          Balance:&nbsp;
-          <input
-            type="text"
-            className="balance"
-            value={balance}
-            onChange={this.handleFormChange}
-            placeholder="0"
-          />
-        </label>
-        <label htmlFor="balanceForm">
-          Deposit:&nbsp;
-          <input
-            type="text"
-            className="deposit"
-            value={deposit}
-            onChange={this.handleFormChange}
-            placeholder="0"
-          />
-        </label>
-        <label htmlFor="balanceForm">
-          Withdrawal:&nbsp;
-          <input
-            type="text"
-            className="withdrawal"
-            value={withdrawal}
-            onChange={this.handleFormChange}
-            placeholder="0"
-          />
-        </label>
-      </React.Fragment>
-    );
-  }
-}
+    let caret = event.target.selectionStart;
+    const element = event.target;
+    if (caret !== val.length) {
+      if (val[1] === ',' && val.length < prev.length) caret -= 1;
+      if (result[1] === ',' && val.length > prev.length) caret += 1;
+      if (val.length < 4 && +val.replace(/[^0-9]/g, '') < +prev.replace(/[^0-9]/g, '')) caret += 1;
+      window.requestAnimationFrame(() => {
+        element.selectionStart = caret;
+        element.selectionEnd = caret;
+      });
+    }
+
+    return result;
+  };
+
+  return (
+    <form
+      className={styles.form}
+      onSubmit={() => {}}
+    >
+      <label htmlFor="balanceForm">
+        Date:
+        <input
+          type="text"
+          className={styles.date}
+          value={date}
+          onChange={() => {}}
+        />
+      </label>
+      <label htmlFor="balanceForm" className={styles.label}>
+        Balance:
+        <span className={styles.dollar}>$</span>
+        <input
+          type="text"
+          className={styles.money}
+          value={balance}
+          onChange={e => setBalance(formatCurrency(e, balance))}
+          placeholder="0.00"
+        />
+      </label>
+      <label htmlFor="balanceForm" className={styles.label}>
+        Deposit:
+        <span className={styles.dollar}>$</span>
+        <input
+          type="text"
+          className={styles.money}
+          value={deposit}
+          onChange={e => setDeposit(formatCurrency(e, deposit))}
+          placeholder="0.00"
+        />
+      </label>
+      <label htmlFor="balanceForm" className={styles.label}>
+        Withdrawal:
+        <span className={styles.dollar}>$</span>
+        <input
+          type="text"
+          className={styles.money}
+          value={withdrawal}
+          onChange={e => setWithdrawal(formatCurrency(e, withdrawal))}
+          placeholder="0.00"
+        />
+      </label>
+      <div className="TODO">
+        <input
+          type="button"
+          value="Cancel"
+          className={styles.cancelButton}
+          onClick={() => {}}
+        />
+        <input
+          type="submit"
+          value="Add"
+          className={styles.addButton}
+          onClick={() => {}}
+          disabled={!balance || !deposit || !withdrawal}
+        />
+      </div>
+    </form>
+  );
+};
 
 export default BalanceForm;

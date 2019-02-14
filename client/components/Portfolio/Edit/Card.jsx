@@ -5,10 +5,10 @@ import Summary from './Summary';
 import styles from '../../../styles/Portfolio/Edit/Card';
 
 const Card = ({ company, portfolios }) => {
-  let updated = moment();
+  let updated = null;
   portfolios.forEach(({ lastUpdated }) => {
     const date = moment(lastUpdated);
-    if (date < updated) updated = date;
+    if (!updated || date > updated) updated = date;
   });
   const orderedList = portfolios.sort((a, b) => a.name.localeCompare(b.name));
   return (

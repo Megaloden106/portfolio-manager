@@ -1,6 +1,6 @@
 import { CHANGE_MODAL, CHANGE_MODAL_ERROR } from '../actions/actionTypes';
 
-const loginModalReducer = (state = null, action) => {
+const modalReducer = (state = 'Add Balance', action) => {
   if (action.type === CHANGE_MODAL) {
     return action.modalType;
   }
@@ -14,4 +14,4 @@ const modalErrorReducer = (state = null, action) => {
   return state;
 };
 
-export { loginModalReducer, modalErrorReducer };
+export { modalReducer, modalErrorReducer };

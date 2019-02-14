@@ -3,57 +3,36 @@
   padding: 0 36px;
 }
 
-.text, .select,
-.background {
+.date, .money {
   width: 280px;
   height: 35px;
-}
-
-.text, .select {
-  font-size: 12px;
+  font-size: 14px;
   padding: 0 16px;
   border: 1px solid #d9d9d9;
   outline: none;
-}
-
-.text, .background {
   margin: 8px 0 12px 0;
   border-radius: 5px;
+  background: transparent;
 }
 
-.background {
+.date {
+  padding: 0 16px;
+}
+
+.money {
+  padding: 0 28px;
+}
+
+.label{
   position: relative;
-  background-color: white;
 }
 
-.select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.background:hover .arrowhead {
-  color: #333
-}
-
-.arrowhead {
+.dollar {
   position: absolute;
-  font-weight: 500;
-  margin: 0;
+  left: 16px;
+  top: 35px;
+  font-size: 14px;
   user-select: none;
-  pointer-events: none;
-  top: 18px;
-  color: #999;
-}
-
-.type .arrowhead,
-.category .arrowhead,
-.exchange .arrowhead {
-  right: 12px;
-  top: -8px;
 }
 
 .cancel-button,

@@ -3,18 +3,22 @@ import { connect } from 'react-redux';
 import ReactLoading from 'react-loading';
 import PropTypes from 'prop-types';
 import updateModalDisplay from '../actions/modal';
+import { registerNewPortfolio } from '../actions/portfolio';
+import BalanceForm from './Portfolio/Content/BalanceForm';
+import PortfolioForm from './Portfolio/Form';
 import UserForm from './UserForm';
 import styles from '../styles/Modal';
-import PortfolioForm from './Portfolio/Form';
 import formStyles from '../styles/Portfolio/Form';
 
 const UserModal = ({
   modalError,
   modalType,
+  handleCloseModal,
   handleLogin,
   handleSingup,
+  handleSubmit,
 }) => (
-  <div className={`${styles.container} ${!modalType.includes('Portfolio')
+  <div className={`${styles.container} ${!modalType.includes('Add')
     ? styles.width1
     : styles.width2}`}
   >
@@ -49,9 +53,12 @@ const UserModal = ({
       <PortfolioForm
         form="add"
         styles={formStyles}
-        handleCancel={() => {}}
-        handleSubmit={() => {}}
+        handleCancel={handleCloseModal}
+        handleSubmit={handleSubmit}
       />
+    )}
+    {modalType.includes('Balance') && (
+      <BalanceForm />
     )}
     {modalType === 'Login' && (
       <div className={styles.formContainer}>
@@ -86,8 +93,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  handleCloseModal: () => dispatch(updateModalDisplay(null, null)),
   handleLogin: () => dispatch(updateModalDisplay('', 'Login')),
   handleSingup: () => dispatch(updateModalDisplay('', 'Signup')),
+  handleSubmit: (data, history) => dispatch(registerNewPortfolio(data, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserModal);
@@ -95,8 +104,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(UserModal);
 UserModal.propTypes = {
   modalError: PropTypes.string,
   modalType: PropTypes.string,
+  handleCloseModal: PropTypes.func.isRequired,
   handleSingup: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 UserModal.defaultProps = {

@@ -45,19 +45,19 @@ const PortfolioForm = ({
       id: 'Exchange',
       value: exchange,
       options: exchanges,
-      change: e => setExchange(e.target.value),
+      onChange: e => setExchange(e.target.value),
     },
     {
       id: 'Type',
       value: type,
       options: ['Select a Type', 'Personal', 'Retirement', 'Education', 'Health'],
-      change: e => setType(e.target.value),
+      onChange: e => setType(e.target.value),
     },
     {
       id: 'Category',
       value: category,
       options: categories,
-      change: e => setCategory(e.target.value),
+      onChange: e => setCategory(e.target.value),
     },
   ];
 
@@ -81,14 +81,14 @@ const PortfolioForm = ({
         id,
         value,
         options,
-        change,
+        onChange,
       }) => (
         <Select
           key={id}
           id={id}
           options={options}
           value={value}
-          handleChange={change}
+          handleChange={onChange}
           styles={styles}
         />
       ))}
