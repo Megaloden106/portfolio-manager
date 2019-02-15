@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import moment from 'moment';
+import Calendar from './Calendar';
 import styles from '../../../styles/Portfolio/Content/BalanceForm';
 
 const BalanceForm = () => {
@@ -6,6 +8,7 @@ const BalanceForm = () => {
   const [balance, setBalance] = useState('');
   const [deposit, setDeposit] = useState('');
   const [withdrawal, setWithdrawal] = useState('');
+  const [calendar, setCalendar] = useState(false);
 
   const formatCurrency = (event, prev) => {
     const val = event.target.value;
@@ -14,7 +17,6 @@ const BalanceForm = () => {
     const result = (+val.replace(/[^0-9]/g, '') / 100)
       .toLocaleString('en-US', { style: 'currency', currency: 'USD' })
       .slice(1);
-
     let caret = event.target.selectionStart;
     const element = event.target;
     if (caret !== val.length) {
@@ -26,8 +28,17 @@ const BalanceForm = () => {
         element.selectionEnd = caret;
       });
     }
-
     return result;
+  };
+
+  const toggleCalendar = () => {
+    setCalendar(true);
+    document.addEventListener('click', function close(event) {
+      if (!document.getElementById('calendar') || !event.target.className.match('react-calendar')) {
+        document.removeEventListener('click', close);
+        setCalendar(false);
+      }
+    });
   };
 
   return (
@@ -40,9 +51,11 @@ const BalanceForm = () => {
         <input
           type="text"
           className={styles.date}
-          value={date}
-          onChange={() => {}}
+          value={moment(date).format('dddd, MMMM D, YYYY')}
+          onClick={!calendar && toggleCalendar}
+          readOnly
         />
+        {calendar && <Calendar date={date} setDate={setDate} />}
       </label>
       <label htmlFor="balanceForm" className={styles.label}>
         Balance:

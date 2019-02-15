@@ -24,7 +24,8 @@ const Content = ({
   const toggleDropdown = () => {
     setDropdown(true);
     document.addEventListener('click', function close(event) {
-      if (!document.getElementById('dropdown') || !document.getElementById('dropdown').contains(event.target)) {
+      const element = document.getElementById('dropdown');
+      if (!element || !element.contains(event.target)) {
         document.removeEventListener('click', close);
         setDropdown(false);
       }
@@ -53,7 +54,7 @@ const Content = ({
                 type="button"
                 value="+ ADD"
                 className={styles.addButton}
-                onClick={toggleDropdown}
+                onClick={!dropdown && toggleDropdown}
               />
             ) : (
               <input
